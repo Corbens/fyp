@@ -1,12 +1,16 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { useAuthContext } from './hooks/useAuthContext'
 
-//pages and components 
 import Home from './pages/Home'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
 import BlankGame from './pages/BlankGame'
+import Placeholder from './pages/Placeholder'
 import Navbar from './components/Navbar'
+
+import axios from "axios";
+
+axios.defaults.baseURL = process.env.REACT_APP_API_BASE_URL
 
 function App() {
   const { user } = useAuthContext()
@@ -32,6 +36,10 @@ function App() {
             <Route
               path="/blankGame"
               element={user ? <BlankGame /> : <Navigate to="/" />}
+            />
+            <Route
+              path="/placeholder"
+              element={user ? <Placeholder /> : <Navigate to="/" />}
             />
           </Routes>
         </div>

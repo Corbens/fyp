@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { NavLink } from "react-router-dom";
 import { useLogout } from '../hooks/useLogout'
 import { useAuthContext } from '../hooks/useAuthContext'
 
@@ -13,23 +13,24 @@ const Navbar = () => {
     return(
         <header>
             <div className="container">
-                <Link to="/">
+                <NavLink style={({ isActive }) => ({color: isActive ? '#5e89b5' : '#333'})} exact to="/">
                     <h1>Learn Japanese</h1>
-                </Link>
+                </NavLink>
                 <nav>
                     {user && (
                         <div>
-                            <Link to="/blankGame">
-                                <h2>Fill in Blanks</h2>
-                            </Link>
-                            <span>{user.email}</span>
+                            <NavLink style={({ isActive }) => ({color: isActive ? '#5e89b5' : '#333'})} to="/blankGame">Drag & Drop</NavLink>
+                            <NavLink style={({ isActive }) => ({color: isActive ? '#5e89b5' : '#333'})} to="/placeholder">Flashcards</NavLink>
+                            <NavLink style={({ isActive }) => ({color: isActive ? '#5e89b5' : '#333'})} to="/placeholder">Kanji</NavLink>
+                            <NavLink style={({ isActive }) => ({color: isActive ? '#5e89b5' : '#333'})} to="/placeholder">Forums</NavLink>
+                            <span> | {user.username} </span>
                             <button onClick={handleClick}>Logout</button>
                         </div>
                     )}
                     {!user && (
                         <div>
-                            <Link to="/login">Login</Link>
-                            <Link to="/signup">Signup</Link>
+                            <NavLink style={({ isActive }) =>({color: isActive ? '#5e89b5' : '#333'})} to="/login">Login</NavLink>
+                            <NavLink style={({ isActive }) => ({color: isActive ? '#5e89b5' : '#333'})} to="/signup">Signup</NavLink>
                         </div>
                     )}
                 </nav>
