@@ -1,16 +1,27 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { useSignup } from '../hooks/useSignup'
 
 const Signup = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [hiddenPassword, setHiddenPassword] = useState('')
     const [hide, setHide] = useState(true)
     const [username, setUsername] = useState('')
+    const passwordRef = useRef('password')
     const {signup, error, isLoading} = useSignup()
 
     const handleSubmit = async (e) => {
         e.preventDefault()
         await signup(email, password, username)
+    }
+
+    const updatePasswords = (e) => {
+        setPassword(e.target.value)
+        setHiddenPassword("㊙️".repeat(e.target.value.length))
+    }
+
+    const setFocus = () => {
+        passwordRef.current.focus()
     }
 
     return (
@@ -24,9 +35,35 @@ const Signup = () => {
             />
             <label>Password:</label>
             <input
-                type={hide ? "password" : "text"}
-                onChange={(e) => setPassword(e.target.value)}
+                type="text"
+                style={hide ? {
+                    clip:"rect(0 0 0 0)",
+                    clippath:"inset(50%)",
+                    height:"1px",
+                    overflow:"hidden",
+                    position:"absolute",
+                    width:"1px"
+                } : {
+                    height:"auto"
+                }}
+                onChange={(e) => updatePasswords(e)}
                 value={password} 
+                ref={passwordRef}
+            />
+            <input
+                type="text"
+                style={!hide ? {
+                    clip:"rect(0 0 0 0)",
+                    clippath:"inset(50%)",
+                    height:"1px",
+                    overflow:"hidden",
+                    position:"absolute",
+                    width:"1px"
+                } : {
+                    height:"auto"
+                }}
+                value={hiddenPassword} 
+                onFocus={setFocus}
             />
             <label>Hide:</label>
             <input 
