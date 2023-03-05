@@ -1,6 +1,13 @@
 import { useState, useRef } from 'react'
 import { useSignup } from '../hooks/useSignup'
 
+import TextField from '@mui/material/TextField';
+import IconButton from "@mui/material/IconButton";
+import Visibility from "@mui/icons-material/Visibility";
+import InputAdornment from "@mui/material/InputAdornment";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import Button from '@mui/material/Button';
+
 const Signup = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -27,15 +34,27 @@ const Signup = () => {
     return (
         <form className="signup" onSubmit={handleSubmit}>
             <h3>Signup</h3>
-            <label>Email:</label>
-            <input
+            <TextField 
+                label="Username"
+                type="text"
+                onChange={(e) => setUsername(e.target.value)}
+                value={username}
+                sx={{ width: 1, pb: 2 }}
+            />
+            <TextField 
+                label="Email"
                 type="text"
                 onChange={(e) => setEmail(e.target.value)}
                 value={email}
+                sx={{ width: 1, pb: 2 }}
             />
-            <label>Password:</label>
-            <input
+            <TextField
+                label="Password"
                 type="text"
+                onChange={(e) => updatePasswords(e)}
+                value={password} 
+                inputRef={passwordRef}
+                sx={{ width: 1, pb: 2 }}
                 style={hide ? {
                     clip:"rect(0 0 0 0)",
                     clippath:"inset(50%)",
@@ -46,12 +65,22 @@ const Signup = () => {
                 } : {
                     height:"auto"
                 }}
-                onChange={(e) => updatePasswords(e)}
-                value={password} 
-                ref={passwordRef}
+                InputProps={{
+                    endAdornment:
+                        <InputAdornment position="end">
+                            <IconButton
+                                onClick={(e) => setHide(!hide)}>
+                                {hide ? <Visibility/> : <VisibilityOff />}
+                            </IconButton>
+                        </InputAdornment>
+                }}
             />
-            <input
+            <TextField
+                label="Password"
                 type="text"
+                value={hiddenPassword} 
+                onFocus={setFocus}
+                sx={{ width: 1, pb: 2 }}
                 style={!hide ? {
                     clip:"rect(0 0 0 0)",
                     clippath:"inset(50%)",
@@ -62,23 +91,17 @@ const Signup = () => {
                 } : {
                     height:"auto"
                 }}
-                value={hiddenPassword} 
-                onFocus={setFocus}
+                InputProps={{
+                    endAdornment:
+                        <InputAdornment position="end">
+                            <IconButton
+                                onClick={(e) => setHide(!hide)}>
+                                {hide ? <Visibility/> : <VisibilityOff />}
+                            </IconButton>
+                        </InputAdornment>
+                }}
             />
-            <label>Hide:</label>
-            <input 
-                type="checkbox"
-                onChange={(e) => setHide(!hide)}
-                value={hide}
-                defaultChecked
-            />
-            <label>Username:</label>
-            <input
-                type="text"
-                onChange={(e) => setUsername(e.target.value)}
-                value={username}
-            />
-            <button disabled={isLoading}>Signup</button>
+            <Button variant='outlined' disabled={isLoading} sx={{ width: 1 }} type="submit">Signup</Button>
             {error && <div className="error">{error}</div>}
         </form>
     )
