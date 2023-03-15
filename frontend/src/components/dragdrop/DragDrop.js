@@ -2,35 +2,7 @@ import { useState, useRef } from 'react'
 
 import Results from './Results';
 
-import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace'
-import IconButton from '@mui/material/IconButton';
-
-const Midgame = ({deck, cards, callback}) => {
-    // gets a playing deck of length cards from the decks that the user selected previously
-    const getPlayingDeck = () => { 
-        let decksArr = deck["decks"]
-        let combinedDeck = []
-        let playingDeck = []
-        
-        for(let i = 0; i < decksArr.length; i++){ // combines the individual decks into one deck
-            for(let j = 0; j < decksArr[i]["contents"].length; j++){ 
-                combinedDeck.push(decksArr[i]["contents"][j])
-            }
-        }
-        
-        for(let i = combinedDeck.length - 1; i > 0; i--){ // shuffles the order of the combined deck
-            var j = Math.floor(Math.random() * (i + 1));   
-            var temp = combinedDeck[i];
-            combinedDeck[i] = combinedDeck[j];
-            combinedDeck[j] = temp;
-        }
-        for(let i = 0; i < cards; i++){ // gets the first cards number of cards and puts them into the playing deck
-            playingDeck.push(combinedDeck[i])
-        }
-        return playingDeck
-    }
-
-    const [playingDeck] = useState(() => getPlayingDeck()) 
+const DragDrop = ({deck, cards, filler, callback}) => {
 
     // creates an array of length cards where by default the index of a set of cards will have 0 but if a mistake has been made then will be set to 1
     const initializeIncorrectIndexes = () => {
@@ -45,17 +17,13 @@ const Midgame = ({deck, cards, callback}) => {
     const correctRef = useRef(0)
     const incorrectRef = useRef(0) 
 
-    const goBack = (playAgain) => {
-        callback(playAgain)
-    }
-
     const endGame = () => {
         let resultsObj = {
             score: Math.round((correctRef.current / (correctRef.current + incorrectRef.current)) * 100),
-            playingDeck: playingDeck,
+            playingDeck: deck,
             incorrectCards: incorrectIndexes.current
         }
-        setResultsComponent(<Results results={resultsObj} callback={goBack}/>)
+        setResultsComponent(<Results results={resultsObj} callback={callback}/>)
     }
 
     // adjust the properties of each relevant div upon correct drag and dorp
@@ -70,10 +38,10 @@ const Midgame = ({deck, cards, callback}) => {
         }
 
         // looks at each element/div inside the English div and updates it if it matches the card that was just dropped onto 
-        setEnglishBlock((prev) => 
+        setStaticBlock((prev) => 
             prev.map((div, i) => {
                 if(String(i) === String(index)){
-                    return <div key={index} id={"en" + index} style={{color: color}} >{playingDeck[index]["en"]}</div>
+                    return <div key={index} className ='staticDivs' id={"st" + index} style={{color: color}} >{deck[index]["en"]}</div>
                 }else{
                     return div
                 }
@@ -84,7 +52,13 @@ const Midgame = ({deck, cards, callback}) => {
         setDropBlock((prev) =>
             prev.map((div, i) => {
                 if(String(i) === String(index)){
-                    return <div key={index} className='dropDivs' id={"dr" + index} style={{color: color}} >{playingDeck[index]["ja"]}</div>
+                    let x = ''
+                    if(filler.append){
+                        x = filler.filler + deck[index]["ja"]
+                    }else{
+                        x = deck[index]["ja"]
+                    }
+                    return <div key={index} className='dropDivs' id={"dp" + index} style={{color: color}} >{x}</div>
                 }else{
                     return div
                 }
@@ -92,11 +66,11 @@ const Midgame = ({deck, cards, callback}) => {
         )
 
         // looks at each element/div inside the Japanese div and updates it if it is the div that was dragged
-        setJapaneseBlock((prev) => 
+        setDragBlock((prev) => 
             prev.map((div, i) => {
-                let jaIndex = japaneseBlock[i].props.id.substring(2) // need to get different index from above as Japanese block is in randomized order unlike the English and Drop Blocks
+                let jaIndex = dragBlock[i].props.id.substring(2) // need to get different index from above as Japanese block is in randomized order unlike the English and Drop Blocks
                 if(String(jaIndex) === String(index)){
-                    return <div key={index} className="japaneseDivs" id={"ja" + index} style={{color: color}}> {playingDeck[index]["ja"]}</div>
+                    return <div key={index} className="dragDivs" id={"dg" + index} style={{color: color}}> {deck[index]["ja"]}</div>
                 }else{
                     return div
                 }
@@ -112,11 +86,11 @@ const Midgame = ({deck, cards, callback}) => {
         incorrectIndexes.current = tempIncorrectIndexes
         
         // looks at each element/div inside the Japanese div and updates if it was the div that was dragged 
-        setJapaneseBlock((prev) => 
+        setDragBlock((prev) => 
             prev.map((div, i) => {
-                let jaIndex = japaneseBlock[i].props.id.substring(2) 
+                let jaIndex = dragBlock[i].props.id.substring(2) 
                 if(String(jaIndex) === String(index)){
-                    return <div key={index} className="japaneseDivs" id={"ja" + index} style={{color: "red"}} onDragStart = {(e) => onDragStart(e, index)} draggable> {playingDeck[index]["ja"]}</div>
+                    return <div key={index} className="dragDivs" id={"dg" + index} style={{color: "red"}} onDragStart = {(e) => onDragStart(e, index)} draggable> {deck[index]["ja"]}</div>
                 }else{
                     return div
                 }
@@ -144,16 +118,16 @@ const Midgame = ({deck, cards, callback}) => {
         }
     }
 
-    const initializeEnglish = () => {
-        return playingDeck.map((item, index) => <div key={index} id={"en" + index}> {item["en"]} </div>)
+    const initializeStatic = () => {
+        return deck.map((item, index) => <div key={index} className ='staticDivs' id={"st" + index}> {item["en"]} </div>)
     }
 
     const initializeDrop = () => {
-        return playingDeck.map((item, index) => <div key={index} className='dropDivs' id={"dr" + index} onDrop = {(e) => onDrop(e, index)} onDragOver = {(e) => onDragOver(e, index)} style={{outline: "0.01em solid black"}} >- - -</div>)
+        return deck.map((item, index) => <div key={index} className='dropDivs' id={"dp" + index} onDrop = {(e) => onDrop(e, index)} onDragOver = {(e) => onDragOver(e, index)} style={{outline: "0.01em solid black"}} > {filler.filler} </div>)
     }
 
-    const initializeJapanese = () => {
-        let ja = playingDeck.map((item, index) => <div key={index} className='japaneseDivs' id={"ja" + index} onDragStart = {(e) => onDragStart(e, index)} draggable> {item["ja"]} </div>)
+    const initializeDrag = () => {
+        let ja = deck.map((item, index) => <div key={index} className='dragDivs' id={"dg" + index} onDragStart = {(e) => onDragStart(e, index)} draggable> {item["ja"]} </div>)
         for(let i = ja.length - 1; i > 0; i--){ // shuffles the order of the japanese cards
             var j = Math.floor(Math.random() * (i + 1));   
             var temp = ja[i];
@@ -163,33 +137,30 @@ const Midgame = ({deck, cards, callback}) => {
         return ja
     }
 
-    const [englishBlock, setEnglishBlock] = useState(() => initializeEnglish()) 
+    const [staticBlock, setStaticBlock] = useState(() => initializeStatic()) 
     const [dropBlock, setDropBlock] = useState(() => initializeDrop()) 
-    const [japaneseBlock, setJapaneseBlock] = useState(() => initializeJapanese()) 
+    const [dragBlock, setDragBlock] = useState(() => initializeDrag()) 
     const [resultsComponent, setResultsComponent] = useState(null)
 
     return (
-        <div className="midGame">
-            <p>Drag the Japanese Word to the Drop Zone that matches the English Word!</p>
+        <div>
             <div className="gameContents">
-                <div className="english">
+                <div className="static">
                     <h2>English</h2>
-                    {englishBlock}
+                    {staticBlock}
                 </div>
-                <div className="dropzone">
+                <div className="drop">
                     <h2>Drop Zone</h2>
                     {dropBlock}
                 </div>
-                <div className="japanese">
+                <div className="drag">
                     <h2>Japanese</h2>
-                    {japaneseBlock}
+                    {dragBlock}
                 </div>
             </div>
             {resultsComponent}
-            <h4>Return to game settings</h4>
-            <IconButton variant="contained" onClick={() => goBack(false)}><KeyboardBackspaceIcon/></IconButton>
         </div>
     )
 }
 
-export default Midgame
+export default DragDrop

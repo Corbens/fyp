@@ -19,7 +19,7 @@ const Navbar = () => {
                 <nav>
                     {user && (
                         <div>
-                            <NavLink style={({ isActive }) => ({color: isActive ? '#5e89b5' : '#333'})} to="/blankGame">Drag & Drop</NavLink>
+                            <NavLink style={({ isActive }) => ({color: isActive ? '#5e89b5' : '#333'})} to="/dragdrop">Drag & Drop</NavLink>
                             <NavLink style={({ isActive }) => ({color: isActive ? '#5e89b5' : '#333'})} to="/placeholder">Flashcards</NavLink>
                             <NavLink style={({ isActive }) => ({color: isActive ? '#5e89b5' : '#333'})} to="/placeholder">Kanji</NavLink>
                             <NavLink style={({ isActive }) => ({color: isActive ? '#5e89b5' : '#333'})} to="/placeholder">Forums</NavLink>

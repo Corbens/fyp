@@ -1,29 +1,30 @@
 import { useState, useRef } from 'react'
+import { getDecks } from '../../../utilities/Verbs';
 
-import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 import Button from '@mui/material/Button';
 
-const VerbSettings = () => {
+const VerbSettings = ({ callback }) => {
 
-    const [onePlusDecks] = useState(false)
     const cardsRef = useRef(5)
+    const [selectedDeck, setSelectedDeck] = useState("Godan")
 
     const startGame = () => {
-
+        callback(getDecks(selectedDeck), cardsRef.current) 
     }
 
     return (
         <div className="verbSettings">
         <h3>Verb Settings</h3>
-        <FormGroup>
-            <FormControlLabel control={<Checkbox disabled/>} label="Deck 1" />
-            <FormControlLabel control={<Checkbox disabled/>} label="Deck 2" />
-            <FormControlLabel control={<Checkbox disabled/>} label="Deck 3" />
-        </FormGroup>
+            <RadioGroup defaultValue="Godan" name="radio-buttons-group" onChange={(e) => setSelectedDeck(e.target.value)}>
+                <FormControlLabel value="Godan" control={<Radio />} label="Godan Verbs" />
+                <FormControlLabel value="Ichidan" control={<Radio />} label="Ichidan Verbs" />
+                <FormControlLabel value="Irregular" control={<Radio />} label="Irregular Verbs" />
+            </RadioGroup>
             <Box sx={{ width: 300 }}>
                 <h4>Number of Cards</h4>
                 <Slider
@@ -33,18 +34,14 @@ const VerbSettings = () => {
                     marks={[
                         {value: 3, label: "3"},
                         {value: 4, label: "4"},
-                        {value: 5, label: "5"},
-                        {value: 6, label: "6"},
-                        {value: 7, label: "7"},
-                        {value: 8, label: "8"}]}
+                        {value: 5, label: "5"}]}
                     min={3}
-                    max={8}
+                    max={5}
                     onChange={(e, value) => cardsRef.current = value}
                 />
             </Box>
             <Button
                 variant = "outlined"
-                disabled = {!onePlusDecks}
                 onClick={startGame}>
                 Start Game
             </Button>

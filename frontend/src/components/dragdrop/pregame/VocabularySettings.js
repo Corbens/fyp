@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react'
-import axios from 'axios'
+import { getDecks } from '../../../utilities/Vocabulary';
 
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -55,13 +55,7 @@ const VocabularySettings = ({ callback }) => {
 
     // starts the game and passes relevant data to parent 
     const startGame = async () => {
-        axios.post("vocabulary/getDecks", { // first get the deck from the database
-            data: selectedDecks
-        }).then((response) => {
-            callback(response.data, cardsRef.current) // once have decks, run callback function to go back to parent component and pass this deck
-        }).catch((error) => {
-            console.log(error) 
-        })
+        callback(getDecks(selectedDecks), cardsRef.current) 
     }
 
     return (

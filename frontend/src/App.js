@@ -4,7 +4,7 @@ import { useAuthContext } from './hooks/useAuthContext'
 import Home from './pages/Home'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
-import BlankGame from './pages/BlankGame'
+import DragDrop from './pages/DragDrop'
 import Placeholder from './pages/Placeholder'
 import Navbar from './components/Navbar'
 
@@ -34,8 +34,8 @@ function App() {
               element={!user ? <Signup /> : <Navigate to="/" />}
             />
             <Route
-              path="/blankGame"
-              element={user ? <BlankGame /> : <Navigate to="/" />}
+              path="/dragdrop"
+              element={user ? <DragDrop /> : <Navigate to="/" />}
             />
             <Route
               path="/placeholder"
