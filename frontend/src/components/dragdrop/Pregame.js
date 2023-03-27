@@ -37,7 +37,7 @@ const Pregame = ({ callback }) => {
     return (
         <div className="contents">
             <h2>Game Instructions:</h2>
-            <subtitle1>This is a drag and drop style game where you are tasked with dragging matching cards together. A correct match will turn green, an incorrect match red and a match that you previously had incorrect but now have correct will be orange.</subtitle1>
+            <p>This is a drag and drop style game where you are tasked with dragging matching cards together. A correct match will turn green, an incorrect match red and a match that you previously had incorrect but now have correct will be orange.</p>
             <div className="settings">
                 <FormControl>
                     <FormLabel id="demo-row-radio-buttons-group-label">Select Your Game Type</FormLabel>

@@ -3,7 +3,22 @@ const bcrypt = require('bcrypt')
 
 const Schema = mongoose.Schema
 
-const userSchema = new Schema({
+const gameSchema = new Schema({
+    type: {
+        type: String,
+        required: true
+    },
+    dateTime: {
+        type: Date,
+        default: Date.now
+    },
+    score: {
+        type: Number,
+        required: true
+    }
+})
+
+const userSchema = new Schema({ 
     email: {
         type: String,
         required: true,
@@ -16,15 +31,15 @@ const userSchema = new Schema({
     username: {
         type: String,
         required: true
+    },
+    history: {
+        type: [gameSchema]
     }
+
 })
 
 // static signup method
 userSchema.statics.signup = async function(email, password, username) {
-
-    console.log(email)
-    console.log(password)
-    console.log(username)
 
     if(!email || !password || !username){ 
         throw Error('All fields must be filled in')
@@ -84,6 +99,19 @@ userSchema.statics.login = async function(email, password) {
     }
 
     return user
+}
+
+userSchema.statics.addGame = async function(email, type, score) {
+
+    const res = await this.updateOne({email: email}, {"$push": {"history": {"$each": [{type: type, score: score}], "$position": 0 }}})
+    return res
+
+}
+
+userSchema.statics.getGames = async function(email) {
+    const user = await this.findOne({ email })
+    return user.history
+    
 }
 
 module.exports = mongoose.model('User', userSchema)

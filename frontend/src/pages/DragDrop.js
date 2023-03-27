@@ -2,6 +2,7 @@ import { useState } from 'react'
 
 import Pregame from '../components/dragdrop/Pregame';
 import Midgame from '../components/dragdrop/Midgame';
+import './dragdrop.css'
 
 const BlankGame = () => {
 

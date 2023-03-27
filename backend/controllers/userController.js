@@ -39,4 +39,26 @@ const signupUser = async (req, res) => {
     }
 }
 
-module.exports = { loginUser, signupUser }
+const addHistory = async (req, res) => {
+    const {email, type, score} = req.body
+
+    try {
+        const game = await User.addGame(email, type, score)
+        res.status(200).json({"game": game})
+    } catch (error) {
+        res.status(400).json({error: error.message})
+    }
+}
+
+const getHistory = async (req, res) => {
+    const { email } = req.body
+
+    try { 
+        const history = await User.getGames(email)
+        res.status(200).json({"history": history})
+    } catch (error) {
+        res.status(400).json({error: error.message})
+    }
+}
+
+module.exports = { loginUser, signupUser, addHistory, getHistory }

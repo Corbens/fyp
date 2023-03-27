@@ -1,8 +1,11 @@
 import { useState, useRef } from 'react'
 
+import { useAuthContext } from '../../hooks/useAuthContext'
 import Results from './Results';
+import axios from 'axios'
 
 const DragDrop = ({deck, cards, filler, callback}) => {
+    const { user } = useAuthContext()
 
     // creates an array of length cards where by default the index of a set of cards will have 0 but if a mistake has been made then will be set to 1
     const initializeIncorrectIndexes = () => {
@@ -24,6 +27,13 @@ const DragDrop = ({deck, cards, filler, callback}) => {
             incorrectCards: incorrectIndexes.current
         }
         setResultsComponent(<Results results={resultsObj} callback={callback}/>)
+        axios.post("user/addhistory", { 
+            email: user.email,
+            type: "Drag & Drop",
+            score: Math.round((correctRef.current / (correctRef.current + incorrectRef.current)) * 100)
+        }).then((response) => {
+        }).catch((error) => {
+        })
     }
 
     // adjust the properties of each relevant div upon correct drag and dorp

@@ -1,0 +1,21 @@
+body {
+    background: #efede5;
+}
+
+header {
+    background: #b2d7c8;
+    border-bottom: medium solid #2d564e;
+}
+
+h2 {
+    color: #2d564e;
+}
+
+form.signup, form.login {
+    max-width: 400px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #b2d7c8;
+    border-radius: 5px;
+    border:medium solid #2d564e;
+  }

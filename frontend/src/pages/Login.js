@@ -8,6 +8,8 @@ import InputAdornment from "@mui/material/InputAdornment";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Button from '@mui/material/Button';
 
+import './login.css';
+
 const Login = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -32,7 +34,7 @@ const Login = () => {
 
     return (
         <form className="login" onSubmit={handleSubmit}>
-            <h3>Login</h3>
+            <h2>Login</h2>
             <TextField
                 label="Email"
                 type="text"
@@ -93,7 +95,7 @@ const Login = () => {
                         </InputAdornment>
                 }}
             />
-            <Button variant='outlined' disabled={isLoading} sx={{ width: 1 }} type="submit">Login</Button>
+            <Button variant='outlined' disabled={isLoading} sx={{ width: 1, color: '#2d564e', borderColor: '#2d564e'}} type="submit" color="primary">Login</Button>
             {error && <div className="error">{error}</div>}
         </form>
     )

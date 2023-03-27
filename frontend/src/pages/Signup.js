@@ -8,6 +8,8 @@ import InputAdornment from "@mui/material/InputAdornment";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Button from '@mui/material/Button';
 
+import './login.css';
+
 const Signup = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -33,7 +35,7 @@ const Signup = () => {
 
     return (
         <form className="signup" onSubmit={handleSubmit}>
-            <h3>Signup</h3>
+            <h2>Signup</h2>
             <TextField 
                 label="Username"
                 type="text"

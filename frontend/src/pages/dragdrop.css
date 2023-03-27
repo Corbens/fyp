@@ -1,0 +1,18 @@
+.settings {
+    display: 'flex';
+    margin: 40px auto;
+    padding: 20px;
+    background: #b2d7c8;
+    border-radius: 5px;
+    border:medium solid #2d564e;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.displayResults {
+    background: #b2d7c8;
+    border-radius: 5px;
+    border:medium solid #2d564e;
+    max-width: 400px;
+    margin: 40px auto;
+}
