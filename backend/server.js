@@ -4,6 +4,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 mongoose.set('strictQuery', false);
 const userRoutes = require('./routes/userRoutes')
+const flashcardsRoutes = require('./routes/flashcardsRoutes')
 
 //express app 
 const app = express()
@@ -31,6 +32,7 @@ app.get('/', (req, res) => {
     res.json({msg: "Welcome to the app"})
 })
 app.use('/api/user', userRoutes)
+app.use('/api/flashcards', flashcardsRoutes)
 
 //mongoose
 mongoose.connect(process.env.MONGO_URI).then(() => {

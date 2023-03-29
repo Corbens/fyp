@@ -1,3 +1,15 @@
+body {
+    background: #efede5;
+}
+
+header {
+    background: #b2d7c8;
+}
+
+h2 {
+    color: #2d564e;
+}
+
 .settings {
     display: 'flex';
     margin: 40px auto;

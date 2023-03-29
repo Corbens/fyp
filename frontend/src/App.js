@@ -5,6 +5,7 @@ import Home from './pages/Home'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
 import DragDrop from './pages/DragDrop'
+import Flashcards from './pages/Flashcards'
 import Placeholder from './pages/Placeholder'
 import Navbar from './components/Navbar'
 
@@ -36,6 +37,10 @@ function App() {
             <Route
               path="/dragdrop"
               element={user ? <DragDrop /> : <Navigate to="/" />}
+            />
+            <Route
+              path="/flashcards"
+              element={user ? <Flashcards /> : <Navigate to="/" />}
             />
             <Route
               path="/placeholder"

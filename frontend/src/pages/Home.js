@@ -9,9 +9,6 @@ const Home = () => {
             <Today/>
             <Maps/>
             <HistoryBar/>
-
-            
-
         </div>
     )
 }
