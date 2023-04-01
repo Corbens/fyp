@@ -1,6 +1,5 @@
 import { useAuthContext } from '../hooks/useAuthContext'
-import { getSpecialDay } from '../utilities/AnniversaryDates';
-//import { getDate } from '../utilities/HandleDate';
+import { getSpecialDay } from '../utilities/AnniversaryDates'
 
 const Today = () => {
     const { user } = useAuthContext()
@@ -23,6 +22,7 @@ const Today = () => {
             <h2>Welcome</h2>
             <div className="todayContents">
             <p>こんにちは {user.username}! </p> 
+                { (specialDay.ja === "") ? <p>Today there is no special day!</p> :  
                 <div className="specialDay">
                     <p> Today's date is {date.getMonth()}月{date.getDate()}日 which is  
                     <ruby>
@@ -30,6 +30,7 @@ const Today = () => {
                     </ruby> 
                     in Japan. It means {specialDay.en}. <a href="https://ja.wikipedia.org/wiki/日本の記念日一覧">Find more here.</a></p>
                 </div>
+            }
             </div>
         </div>
     )

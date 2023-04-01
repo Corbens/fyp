@@ -1,4 +1,6 @@
 export const getDate = (rawDate, year) => {
+    rawDate = new Date(rawDate)
+    rawDate = rawDate.toISOString()
     const date = rawDate.split("T")[0].split("-")
     let jaDate = ""
     if(year){

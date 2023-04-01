@@ -9,8 +9,8 @@ const gameSchema = new Schema({
         required: true
     },
     dateTime: {
-        type: Date,
-        default: Date.now
+        type: String,
+        default: new Date().toISOString()
     },
     score: {
         type: Number,

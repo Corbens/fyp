@@ -14,7 +14,7 @@ const Maps = () => {
 
     return(
         <div className='maps'>
-            <h2>Explore The World With Japanese Names</h2>
+            <h2>Explore The World In Japanese!</h2>
             <div className='mapsContents'>
                 <iframe
                     title='mapFrame'

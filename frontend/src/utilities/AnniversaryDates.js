@@ -7,9 +7,9 @@ const dates = [
         {ja: "さくらの日", fu: "", en: "Cherry Blossom Day"},
         {ja: "三つ葉の日", fu: "", en: "Mitsuba Day"},
         {ja: "マリモの日", fu: "", en: "Marimo Day"},
-        {ja: "No Day!", fu: "", en: "No Day!"},
+        {ja: "", fu: "", en: ""},
         {ja: "オーケストラの日", fu: "", en: "Orchestra Day"},
-    ], // mar
+    ], // mar // add check to welcome/today component so that not just if .ja is empty but object as a whole, so no errors occur. 
     [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}], // apr
     [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}], // may
     [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}], // jun
