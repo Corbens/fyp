@@ -1,6 +1,9 @@
 import { useState, useRef } from 'react'
 
 import { useAuthContext } from '../../hooks/useAuthContext'
+import Button from '@mui/material/Button';
+import Modal from '@mui/material/Modal';
+
 import Results from './Results';
 import axios from 'axios'
 
@@ -32,6 +35,7 @@ const DragDrop = ({deck, cards, filler, callback}) => {
             type: "Drag & Drop",
             score: Math.round((correctRef.current / (correctRef.current + incorrectRef.current)) * 100)
         }).then((response) => {
+            setResultsOpen(true)
         }).catch((error) => {
         })
     }
@@ -152,6 +156,8 @@ const DragDrop = ({deck, cards, filler, callback}) => {
     const [dragBlock, setDragBlock] = useState(() => initializeDrag()) 
     const [resultsComponent, setResultsComponent] = useState(null)
 
+    const [resultsOpen, setResultsOpen] = useState(false)
+
     return (
         <div>
             <div className="gameContents">
@@ -168,7 +174,13 @@ const DragDrop = ({deck, cards, filler, callback}) => {
                     {dragBlock}
                 </div>
             </div>
-            {resultsComponent}
+            {resultsComponent &&
+                <div>
+                    <Modal open={resultsOpen} onClose={() => setResultsOpen(false)} style={{display:'flex', alignItems:'center', justifyContent:'center'}}>{resultsComponent}</Modal>
+                    <Button variant="outlined" onClick={() => callback(true)}>Play Again</Button>
+                    <Button variant="outlined" onClick={() => setResultsOpen(true)}>View Results</Button>
+                </div>
+            }
         </div>
     )
 }

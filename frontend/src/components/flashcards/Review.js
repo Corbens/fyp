@@ -7,10 +7,9 @@ import Grid from '@mui/material/Grid'
 import Button from '@mui/material/Button'
 import Stack from '@mui/material/Stack';
 
-const Review = ( {callback} ) => {
+const Review = ({ callback }) => {
 
     const reviewSchedule = [1,1,3,5,10,21,60,180]
-
     const { user } = useAuthContext()
     const [failed, setFailed] = useState(false)
     const [reviewDeck, setReviewDeck] = useState(null)
@@ -18,7 +17,6 @@ const Review = ( {callback} ) => {
     const [revealed, setRevealed] = useState(false)
     const [numCorrect, setNumCorrect] = useState(0)
     const [finished, setFinished] = useState(false)
-
     const [deckTitles, setDeckTitles] = useState(null)
 
     const getReviewDeck = () => {
@@ -43,8 +41,8 @@ const Review = ( {callback} ) => {
                                 let reviewCard = {
                                     deck: flashcardDeck.title,
                                     num: Number(card),
-                                    front: flashcardDeck.contents[card].en,
-                                    back: flashcardDeck.contents[card].ja,
+                                    front: flashcardDeck.contents[card].ja,
+                                    back: flashcardDeck.contents[card].en,
                                     nextReview: null,
                                     level: srsDeck.srs[card].level
                                 }
@@ -70,11 +68,13 @@ const Review = ( {callback} ) => {
             setFailed(true)
         })
     }
+
     useEffect(() => {
         if(!reviewDeck){
             getReviewDeck()
         }
     })
+
     const handleCorrect = () => {
         if(reviewDeck[reviewNum].level !== 7){
             reviewDeck[reviewNum].level = reviewDeck[reviewNum].level + 1
@@ -90,8 +90,8 @@ const Review = ( {callback} ) => {
         }
         setReviewNum(reviewNum+1)
         setRevealed(false)
-
     }
+
     const handleIncorrect = () => {
         if(reviewDeck[reviewNum].level !== 0){
             reviewDeck[reviewNum].level = reviewDeck[reviewNum].level - 1
@@ -106,20 +106,21 @@ const Review = ( {callback} ) => {
         }
         setReviewNum(reviewNum+1)
         setRevealed(false)
-
     }
+
     const handleFinish = () => {
         updateSrs()
         setFinished(true)
     }
+
     const handleExit = () => {
         if(!finished){
             updateSrs()
         }
         callback("Menu", null)
     }
-    const updateSrs = () => {
 
+    const updateSrs = () => {
         let updateDeck = []
         for(let title in deckTitles){
             let thisDeck = []
@@ -131,18 +132,24 @@ const Review = ( {callback} ) => {
             thisDeck.sort((a, b) => a.num - b.num)
             updateDeck.push(thisDeck)
         }
-        
+
         axios.post("srs/updatesrs", { 
             email: user.email,
             srs: updateDeck
         }).then((response) => {
-            // maybe say somewhere about successful update.
+            let score = !finished ? Math.round((numCorrect / reviewNum) * 100) : Math.round((numCorrect / (reviewNum + 1)) * 100)
+            if(isNaN(score)){
+                score = 0
+            }
+            axios.post("user/addhistory", { 
+                email: user.email,
+                type: "SRS Reviews",
+                score: score
+            }).then((response) => {
+            }).catch((error) => {
+            })
         }).catch((error) => {
-            console.log(error)
-            // maybe display error somewhere
         })
-        //after this, make the reviewMenu significantly neater and clearer. For example the date formatting.
-        //once this is done, can also add any extra explanations in different places to make user experience clearer. 
     }
 
 
@@ -161,7 +168,7 @@ const Review = ( {callback} ) => {
                         </Grid>
                         <Grid item xs={9}>
                             <div className="flashcard">
-                                <h4>{!revealed ? "FRONT" : "BACK"}</h4>
+                                <h4>{!revealed ? "JAPANESE" : "ENGLISH"}</h4>
                                 <h1>{!revealed ? reviewDeck[reviewNum].front : reviewDeck[reviewNum].back}</h1>
                                 {!finished ? 
                                     !revealed ? 

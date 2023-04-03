@@ -20,15 +20,13 @@ const Results = ({results, callback}) => {
     const iconRef = useRef(getIcon())
 
     return (
-        <div className="endGame">
-            <div className="displayResults">
-                <h2>Results</h2>
-                <Tooltip title={iconRef.current[1]}>
-                    <p>{iconRef.current[0]}</p>
-                </Tooltip>
-                <p>Score: {results.score}</p>
-                <p>You got {results.incorrectCards.filter(i => i === 0).length} / {results.playingDeck.length} cards correct!</p> 
-            </div>
+        <div className="displayResults">
+            <h2>Results</h2>
+            <Tooltip title={iconRef.current[1]}>
+                <h1>{iconRef.current[0]}</h1>
+            </Tooltip>
+            <p>Score: {results.score}</p>
+            <p>You got {results.incorrectCards.filter(i => i === 0).length} / {results.playingDeck.length} cards correct!</p> 
             <Button variant="outlined" onClick={() => callback(true)}>Play Again</Button>
         </div>
     )

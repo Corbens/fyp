@@ -61,6 +61,7 @@ const VocabularySettings = ({ callback }) => {
     return (
         <div className="vocabSettings">
             <h3>Vocabulary Settings</h3>
+            <p>This vocabulary game mode involves matching Japanese words to English words. Choose what decks you wish to test your knowledge on and how many cards to be tested on! </p>
             <FormGroup>
                 <FormControlLabel control={<Checkbox defaultChecked onChange={handleChangeCountries}/>} label="Countries" />
                 <FormControlLabel control={<Checkbox onChange={handleChangeFood} />} label="Food" />

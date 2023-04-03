@@ -129,4 +129,34 @@ srsSchema.statics.updateSrs = async function(email, newSrs){
 
 }
 
+srsSchema.statics.resetSrs = async function(email, values){
+    if(!email){
+        throw Error('Need User Email to Reset')
+    }
+    if(!values){
+        throw Error('Need Reset Array')
+    }
+
+    if(values.length !== 4){ // maybe instead of four have it the deck (object above) .length so it is more adaptable and less hard-coded.
+        throw Error('Incorrect Number of Values')
+    }
+
+    const srs = await this.findOne({ email })
+    if(!srs) {
+        throw Error('No SRS found matching email')
+    }
+
+    for(deck in srs.decks){
+        if(values[deck]){
+            let enabled = srs.decks[deck].enabled
+            srs.decks[deck] = decks[deck]
+            srs.decks[deck].enabled = enabled
+        }
+    }
+    await srs.save()
+
+    return ("Successfully updated")
+
+}
+
 module.exports = mongoose.model('Srs', srsSchema)

@@ -1,5 +1,10 @@
+import { useState, useEffect } from 'react'
+import axios from 'axios'
+import { Link } from 'react-router-dom'
+
 import { useAuthContext } from '../hooks/useAuthContext'
 import { getSpecialDay } from '../utilities/AnniversaryDates'
+import { getDate } from '../utilities/HandleDate'
 
 const Today = () => {
     const { user } = useAuthContext()
@@ -17,6 +22,63 @@ const Today = () => {
     // have a current date object which you update by the timezone shift
     // get the date of this time object
 
+
+    const [srsDecks, setSrsDecks] = useState(null)
+    const [reviewMessage, setReviewMessage] = useState("0 reviews atm")
+    const [reviewsAvailable, setReviewsAvailable] = useState(false)
+    useEffect(() => {
+        if(!srsDecks){
+            getSrsDecks()
+        }
+    })
+    const getSrsDecks = () => {
+        axios.post("srs/getsrs", { 
+            email: user.email,
+        }).then((response) => {
+            setSrsDecks(response.data.srs)
+            updateReviewMessage(response.data.srs)
+        }).catch((error) => {
+        })
+    }
+    const updateReviewMessage = (srs) => {
+        let count = 0
+        let anyEnabled = false
+        let soonestDate = new Date("2038-01-01") // one of the latest dates possible in unix just for comparison (rather than using null where can't compare)
+        let nowDate = new Date()
+        nowDate.setHours(23)
+        nowDate.setMinutes(59)
+        for(let deck in srs.decks){
+            if(srs.decks[deck].enabled){
+                anyEnabled = true
+                for(let card in srs.decks[deck].srs){
+                    let thisDate = new Date(srs.decks[deck].srs[card].date)
+                    if(srs.decks[deck].srs[card].date === null || thisDate < nowDate){ 
+                        count = count + 1
+                    }
+                    if(count === 0){
+                        if(thisDate < soonestDate){
+                            soonestDate = thisDate
+                        }
+                    }
+                }
+            }
+        }
+        if(count === 0){
+            setReviewsAvailable(false)
+            if(anyEnabled){
+                setReviewMessage("0 cards to review. Next reviews due on " + getDate(soonestDate, true))
+            }else{
+
+                setReviewMessage("No SRS Decks Enabled")
+            }
+        }else{
+            setReviewsAvailable(true)
+            setReviewMessage("You have " + count + " cards to review!")
+        }
+    }
+
+
+
     return(
         <div className="today">
             <h2>Welcome</h2>
@@ -30,6 +92,11 @@ const Today = () => {
                     </ruby> 
                     in Japan. It means {specialDay.en}. <a href="https://ja.wikipedia.org/wiki/日本の記念日一覧">Find more here.</a></p>
                 </div>
+            }
+            {/* Consider making it go straight to reviews page, bypassing flashcards */}
+            <p>{reviewMessage}</p>
+            { (reviewsAvailable) && 
+                <Link to={window.location.href + "flashcards"}>Go to Review</Link>
             }
             </div>
         </div>

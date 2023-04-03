@@ -1,4 +1,5 @@
 const User = require('../models/userModel')
+const Srs = require('../models/srsModel')
 const jwt = require('jsonwebtoken')
 
 // status codes: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
@@ -30,6 +31,7 @@ const signupUser = async (req, res) => {
 
     try {
         const user = await User.signup(email, password, username)
+        await Srs.createSrs(email)
 
         const token = createToken(user._id)
         

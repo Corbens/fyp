@@ -21,7 +21,7 @@ const Flashcards = () => {
     } else if (mode === "Practice"){ 
         focusedComponent = <Practice callback={switchMode} deck={deck}/> 
     } else { // mode === "Review"
-        focusedComponent = <Review callback={switchMode}/> // don't need to pass a deck, can get review elements as know the user. 
+        focusedComponent = <Review callback={switchMode}/> 
     }
 
     return (

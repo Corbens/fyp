@@ -44,4 +44,15 @@ const updateSrs = async (req, res) => {
     }
 }
 
-module.exports = { createSrs, getSrs, toggleSrs, updateSrs }
+const resetSrs = async (req, res) => {
+    const { email, values } = req.body
+
+    try {
+        const result = await Srs.resetSrs(email, values)
+        res.status(200).json({result})
+    } catch (error) {
+        res.status(400).json({error: error.message})
+    }
+}
+
+module.exports = { createSrs, getSrs, toggleSrs, updateSrs, resetSrs }

@@ -7,8 +7,10 @@ import Visibility from "@mui/icons-material/Visibility";
 import InputAdornment from "@mui/material/InputAdornment";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Button from '@mui/material/Button';
+import Tooltip from '@mui/material/Tooltip';
 
 import './login.css';
+import { getStreetview } from '../utilities/Streetview';
 
 const Signup = () => {
     const [email, setEmail] = useState('')
@@ -33,79 +35,89 @@ const Signup = () => {
         passwordRef.current.focus()
     }
 
+    const [streetviewObj] = useState(getStreetview())
+
+    
+
     return (
-        <form className="signup" onSubmit={handleSubmit}>
-            <h2>Signup</h2>
-            <TextField 
-                label="Username"
-                type="text"
-                onChange={(e) => setUsername(e.target.value)}
-                value={username}
-                sx={{ width: 1, pb: 2 }}
-            />
-            <TextField 
-                label="Email"
-                type="text"
-                onChange={(e) => setEmail(e.target.value)}
-                value={email}
-                sx={{ width: 1, pb: 2 }}
-            />
-            <TextField
-                label="Password"
-                type="text"
-                onChange={(e) => updatePasswords(e)}
-                value={password} 
-                inputRef={passwordRef}
-                sx={{ width: 1, pb: 2 }}
-                style={hide ? {
-                    clip:"rect(0 0 0 0)",
-                    clippath:"inset(50%)",
-                    height:"1px",
-                    overflow:"hidden",
-                    position:"absolute",
-                    width:"1px"
-                } : {
-                    height:"auto"
-                }}
-                InputProps={{
-                    endAdornment:
-                        <InputAdornment position="end">
-                            <IconButton
-                                onClick={(e) => setHide(!hide)}>
-                                {hide ? <Visibility/> : <VisibilityOff />}
-                            </IconButton>
-                        </InputAdornment>
-                }}
-            />
-            <TextField
-                label="Password"
-                type="text"
-                value={hiddenPassword} 
-                onFocus={setFocus}
-                sx={{ width: 1, pb: 2 }}
-                style={!hide ? {
-                    clip:"rect(0 0 0 0)",
-                    clippath:"inset(50%)",
-                    height:"1px",
-                    overflow:"hidden",
-                    position:"absolute",
-                    width:"1px"
-                } : {
-                    height:"auto"
-                }}
-                InputProps={{
-                    endAdornment:
-                        <InputAdornment position="end">
-                            <IconButton
-                                onClick={(e) => setHide(!hide)}>
-                                {hide ? <Visibility/> : <VisibilityOff />}
-                            </IconButton>
-                        </InputAdornment>
-                }}
-            />
-            <Button variant='outlined' disabled={isLoading} sx={{ width: 1 }} type="submit">Signup</Button>
-            {error && <div className="error">{error}</div>}
-        </form>
+        <div className='signupContents'>
+            <div className='streetview'>
+                <iframe title="LandmarkStreetview" src={streetviewObj.url} width="100%" height="100%" style={{"border" :0}} allowfullscreen="true" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <form className="signup" onSubmit={handleSubmit}>
+                <h2>Signup</h2>
+                <TextField 
+                    label="Username"
+                    type="text"
+                    onChange={(e) => setUsername(e.target.value)}
+                    value={username}
+                    sx={{ width: 1, pb: 2 }}
+                />
+                <TextField 
+                    label="Email"
+                    type="text"
+                    onChange={(e) => setEmail(e.target.value)}
+                    value={email}
+                    sx={{ width: 1, pb: 2 }}
+                />
+                <TextField
+                    label="Password"
+                    type="text"
+                    onChange={(e) => updatePasswords(e)}
+                    value={password} 
+                    inputRef={passwordRef}
+                    sx={{ width: 1, pb: 2 }}
+                    style={hide ? {
+                        clip:"rect(0 0 0 0)",
+                        clippath:"inset(50%)",
+                        height:"1px",
+                        overflow:"hidden",
+                        position:"absolute",
+                        width:"1px"
+                    } : {
+                        height:"auto"
+                    }}
+                    InputProps={{
+                        endAdornment:
+                            <InputAdornment position="end">
+                                <IconButton
+                                    onClick={(e) => setHide(!hide)}>
+                                    {hide ? <Visibility/> : <VisibilityOff />}
+                                </IconButton>
+                            </InputAdornment>
+                    }}
+                />
+                <TextField
+                    label="Password"
+                    type="text"
+                    value={hiddenPassword} 
+                    onFocus={setFocus}
+                    sx={{ width: 1, pb: 2 }}
+                    style={!hide ? {
+                        clip:"rect(0 0 0 0)",
+                        clippath:"inset(50%)",
+                        height:"1px",
+                        overflow:"hidden",
+                        position:"absolute",
+                        width:"1px"
+                    } : {
+                        height:"auto"
+                    }}
+                    InputProps={{
+                        endAdornment:
+                            <InputAdornment position="end">
+                                <IconButton
+                                    onClick={(e) => setHide(!hide)}>
+                                    {hide ? <Visibility/> : <VisibilityOff />}
+                                </IconButton>
+                            </InputAdornment>
+                    }}
+                />
+                <Button variant='outlined' disabled={isLoading} sx={{ width: 1}} type="submit">Signup</Button>
+                <Tooltip title={streetviewObj.info}><Button sx={{ width: 1, mt: 2 }}>Where Am I?</Button></Tooltip>
+                {error && <div className="error">{error}</div>}
+            </form>
+        </div>
     )
 }
 

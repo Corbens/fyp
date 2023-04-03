@@ -24,7 +24,7 @@ function App() {
           <Routes>
             <Route
               path="/"
-              element={user ? <Home /> : <Navigate to="/login" />}
+              element={user ? <div className="pagesIn"><Home /></div> : <Navigate to="/login" />}
             />
             <Route
               path="/login"
@@ -36,15 +36,15 @@ function App() {
             />
             <Route
               path="/dragdrop"
-              element={user ? <DragDrop /> : <Navigate to="/" />}
+              element={user ? <div className="pagesIn"><DragDrop /></div> : <Navigate to="/" />}
             />
             <Route
               path="/flashcards"
-              element={user ? <Flashcards /> : <Navigate to="/" />}
+              element={user ? <div className="pagesIn"><Flashcards /></div> : <Navigate to="/" />}
             />
             <Route
               path="/placeholder"
-              element={user ? <Placeholder /> : <Navigate to="/" />}
+              element={user ? <div className="pagesIn"><Placeholder /></div> : <Navigate to="/" />}
             />
           </Routes>
         </div>

@@ -20,6 +20,7 @@ const VerbSettings = ({ callback }) => {
     return (
         <div className="verbSettings">
         <h3>Verb Settings</h3>
+        <p>This game mode is about matching the correct verb conjugation to the English version of the verb. Choose from one of the three categories of verbs and test your conjugation skills! </p>
             <RadioGroup defaultValue="Godan" name="radio-buttons-group" onChange={(e) => setSelectedDeck(e.target.value)}>
                 <FormControlLabel value="Godan" control={<Radio />} label="Godan Verbs" />
                 <FormControlLabel value="Ichidan" control={<Radio />} label="Ichidan Verbs" />
