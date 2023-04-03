@@ -14,21 +14,22 @@ import ListItemText from '@mui/material/ListItemText';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 
-import { getFlashcardDeck, getFlashcardList } from '../../utilities/Vocabulary';
+import { getFlashcardDeck, getFlashcardList } from '../../utilities/Flashcards';
 
 const PracticeMenu = ({ callback }) => {
 
     const { user } = useAuthContext()
     const [premadeValue, setPremadeValue] = useState(null)
+
     const [customValue, setCustomValue] = useState(null)
     const [customList, setCustomList] = useState(null)
     const [errorMsg, setErrorMsg] = useState("")
     const [title, setTitle] = useState("")
     const [frontCard, setFrontCard] = useState("")
     const [backCard, setBackCard] = useState("")
-
     const [customDecks, setCustomDecks] = useState(null)
     const [inUseCustomDeck, setInUseCustomDeck] = useState({title: "", contents: []})
+
     useEffect(() => {
         if(!customDecks){
             getCustomDecks()
@@ -90,10 +91,10 @@ const PracticeMenu = ({ callback }) => {
     }
 
     const practicePremade = () => {
-        callback("Practice", getFlashcardDeck(premadeValue.pos))
+        callback("PracticePremade", getFlashcardDeck(premadeValue.pos))
     }
     const practiceCustom = () => {
-        callback("Practice", customDecks[customValue.pos])
+        callback("PracticeCustom", customDecks[customValue.pos])
     }
 
     const addCard = () => {
@@ -156,8 +157,8 @@ const PracticeMenu = ({ callback }) => {
     return(
         <div className='practiceMenu'>
             <h2>Practice Mode</h2>
-            <p>Practice mode allows you to test your knowledge with complete freedom. Choose what flashcard deck to practice and test yourself at your own pace. Choose from your own custom made decks
-                where you can add your own cards and pre-made decks. Some pre-made decks contain multi-sided flashcards so you can practice more than just the direct English and Japanese meanings but other information such as the readings!
+            <p>
+                Practice mode allows you to test your knowledge with complete freedom. Choose what flashcard deck to practice and test yourself at your own pace. Choose from your own custom made decks where you can add your own cards and pre-made decks. Some pre-made decks contain multi-sided flashcards so you can practice more than just the direct English and Japanese meanings but other information such as the readings!
             </p>
             <div className='practiceMenuContents'>
                 <Box sx={{ flexGrow: 1 }}>

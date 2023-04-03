@@ -9,7 +9,7 @@ import LoopIcon from '@mui/icons-material/Loop';
 import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 
-const Practice = ({ callback, deck }) => {
+const PracticeCustom = ({ callback, deck }) => {
 
     const [cards, setCards] = useState(deck)
     const [cardNum, setCardNum] = useState(0)
@@ -57,17 +57,17 @@ const Practice = ({ callback, deck }) => {
                 </Grid>
                 <Grid item xs={9}>
                     <div className="flashcard">
-                        <h4>{front ? "FRONT" : "BACK"}</h4>
+                        <h2>{front ? "FRONT" : "BACK"}</h2>
                         <h1>{front ? cards.contents[cardNum].en : cards.contents[cardNum].ja}</h1>
                         <Stack direction='row' justifyContent='center' spacing={2} sx={{width: '100 %'}}> 
                             <Tooltip title="Previous Card">
-                                <IconButton variant="contained" onClick={() => changeCard(false)}><ArrowLeftIcon/></IconButton>
+                                <IconButton variant="contained" onClick={() => changeCard(false)}><ArrowLeftIcon sx={{ fontSize: "80px" }}/></IconButton>
                             </Tooltip>
                             <Tooltip title="Flip Card">
-                                <IconButton variant="contained" onClick={() => setFront(!front)}><LoopIcon/></IconButton>
+                                <IconButton variant="contained" onClick={() => setFront(!front)}><LoopIcon sx={{ fontSize: "80px" }}/></IconButton>
                             </Tooltip>
                             <Tooltip title="Next Card">
-                                <IconButton variant="contained" onClick={() => changeCard(true)}><ArrowRightIcon/></IconButton>
+                                <IconButton variant="contained" onClick={() => changeCard(true)}><ArrowRightIcon sx={{ fontSize: "80px" }}/></IconButton>
                             </Tooltip>
                         </Stack>
                     </div>
@@ -84,4 +84,4 @@ const Practice = ({ callback, deck }) => {
     )
 }
 
-export default Practice
+export default PracticeCustom

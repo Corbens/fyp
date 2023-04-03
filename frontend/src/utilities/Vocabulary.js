@@ -2,7 +2,7 @@ const countries = {
     num: "0",
     title: "Countries",
     contents: [
-        { en: "Japan", ja: "日本" },
+        { en: "Japan", ja: "日本"},
         { en: "China", ja: "中国"},
         { en: "Korea", ja: "韓国"},
         { en: "Britain", ja: "英国"},
@@ -17,7 +17,7 @@ const food = {
     num: "1",
     title: "Food",
     contents: [
-        { en: "Plum", ja: "梅" },
+        { en: "Plum", ja: "梅"},
         { en: "Strawberry", ja: "苺"},
         { en: "Salt", ja: "塩"},
         { en: "Tonkatsu", ja: "とんかつ"},
@@ -31,7 +31,7 @@ const numbers = {
     num: "2",
     title: "Numbers",
     contents: [
-        { en: "One", ja: "一" },
+        { en: "One", ja: "一"},
         { en: "Two", ja: "二"},
         { en: "Three", ja: "三"},
         { en: "Four", ja: "四"},
@@ -60,6 +60,7 @@ export const getDecks = (selectedDecks) => {
 const kana = {
     num: "3",
     title: "Kana",
+    maxSides: 3,
     contents: [
         { en: "あ", ja: "ア"},
         { en: "い", ja: "イ"},
@@ -118,7 +119,7 @@ export const getFlashcardDeck = (selectedDeck) => {
 
 export const getFlashcardList = () => {
     const flashcardInfo = []
-    for(let deck in flashcardDecks){
+    for(let deck in flashcardDecks){ 
         flashcardInfo.push({label: flashcardDecks[deck].title, pos: flashcardDecks[deck].num})
     }
     return flashcardInfo
