@@ -6,11 +6,11 @@ import Button from '@mui/material/Button';
 const Results = ({results, callback}) => {
 
     const getIcon = () => {
-        if(results.score > 75){
+        if(results.score >= 80){
             return ["💮", "This white flower can be used to signify celebration, praise or success on a job well done!"] 
-        }else if(results.score > 50){
+        }else if(results.score >= 60){
             return ["🈴️", "This emoji features the kanji symbolizing a passing grade or passing an exam!"]
-        }else if(results.score > 25){
+        }else if(results.score >= 40){
             return ["🉐️", "This emoji is used regarding a gain or sometimes a loss. In this case it symbolizes the opportunity to work hard and improve!"]
         }else{
             return ["❌", "Fail!"] 

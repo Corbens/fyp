@@ -6,6 +6,7 @@ import Login from './pages/Login'
 import Signup from './pages/Signup'
 import DragDrop from './pages/DragDrop'
 import Flashcards from './pages/Flashcards'
+import Kanji from './pages/Kanji'
 import Placeholder from './pages/Placeholder'
 import Navbar from './components/Navbar'
 
@@ -41,6 +42,10 @@ function App() {
             <Route
               path="/flashcards"
               element={user ? <div className="pagesIn"><Flashcards /></div> : <Navigate to="/" />}
+            />
+            <Route
+              path="/kanji"
+              element={user ? <div className="pagesIn"><Kanji /></div> : <Navigate to="/" />}
             />
             <Route
               path="/placeholder"
