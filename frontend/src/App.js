@@ -4,11 +4,14 @@ import { useAuthContext } from './hooks/useAuthContext'
 import Home from './pages/Home'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
+import Lessons from './pages/Lessons'
 import DragDrop from './pages/DragDrop'
 import Flashcards from './pages/Flashcards'
 import Kanji from './pages/Kanji'
-import Placeholder from './pages/Placeholder'
+import Forums from './pages/Forums'
 import Navbar from './components/Navbar'
+
+import LessonHiragana from './pages/LessonHiragana'
 
 import axios from "axios";
 
@@ -36,6 +39,14 @@ function App() {
               element={!user ? <Signup /> : <Navigate to="/" />}
             />
             <Route
+              path="/lessons"
+              element={user ? <div className="pagesIn"><Lessons /></div> : <Navigate to="/" />}>
+            </Route>
+            <Route
+                path="/lessons/hiragana"
+                element={user ? <div className="pagesIn"><LessonHiragana /></div> : <Navigate to="/" />}
+              />
+            <Route
               path="/dragdrop"
               element={user ? <div className="pagesIn"><DragDrop /></div> : <Navigate to="/" />}
             />
@@ -48,8 +59,8 @@ function App() {
               element={user ? <div className="pagesIn"><Kanji /></div> : <Navigate to="/" />}
             />
             <Route
-              path="/placeholder"
-              element={user ? <div className="pagesIn"><Placeholder /></div> : <Navigate to="/" />}
+              path="/forums"
+              element={user ? <div className="pagesIn"><Forums /></div> : <Navigate to="/" />}
             />
           </Routes>
         </div>

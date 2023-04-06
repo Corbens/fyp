@@ -48,10 +48,11 @@ const Navbar = () => {
                 <nav>
                     {user && ( 
                         <div>
+                            <NavLink style={({ isActive }) => ({color: isActive ? '#efede5' : '#2d564e'})} to="/lessons">Lessons</NavLink>
                             <NavLink style={({ isActive }) => ({color: isActive ? '#efede5' : '#2d564e'})} to="/dragdrop">Drag & Drop</NavLink>
                             <NavLink style={({ isActive }) => ({color: isActive ? '#efede5' : '#2d564e'})} to="/flashcards">Flashcards</NavLink>
                             <NavLink style={({ isActive }) => ({color: isActive ? '#efede5' : '#2d564e'})} to="/kanji">Kanji</NavLink>
-                            <NavLink style={({ isActive }) => ({color: isActive ? '#efede5' : '#2d564e'})} to="/placeholder">Forums</NavLink>
+                            <NavLink style={({ isActive }) => ({color: isActive ? '#efede5' : '#2d564e'})} to="/forums">Forums</NavLink>
                             <span> | {user.username} </span>
                             <IconButton variant="contained" onClick={expandMenu} ref={spanRef}><ExpandCircleDownIcon/></IconButton>
                             <Menu

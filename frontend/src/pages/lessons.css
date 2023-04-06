@@ -1,0 +1,29 @@
+.lessonsList {
+    background: #b2d7c8; 
+    padding: 20px;
+    border-radius: 5px;
+    border:medium solid #2d564e;
+    min-width: 250px;
+    justify-content: center;
+    text-align: center;  
+}
+
+.lessonSlide {
+    background: #b2d7c8; 
+    padding: 20px;
+    border-radius: 5px;
+    border:medium solid #2d564e;
+    min-width: 250px;
+    justify-content: center;
+    text-align: center;  
+}
+
+.lessonEntry { 
+    margin: 40px auto;
+    padding: 20px;
+    background: #F4CFDF;
+    border-radius: 5px;
+    border: medium solid #efede5;
+    justify-content: space-evenly;
+    align-items: center;
+}
