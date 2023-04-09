@@ -1,6 +1,7 @@
 import Today from '../components/Today'
 import Maps from '../components/Maps'
 import HistoryBar from '../components/HistoryBar'
+import Leaderboard from '../components/Leaderboard'
 import './home.css'
 
 const Home = () => {
@@ -9,6 +10,7 @@ const Home = () => {
             <Today/>
             <Maps/>
             <HistoryBar/>
+            <Leaderboard />
         </div>
     )
 }

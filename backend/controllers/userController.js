@@ -63,4 +63,13 @@ const getHistory = async (req, res) => {
     }
 }
 
-module.exports = { loginUser, signupUser, addHistory, getHistory }
+const getLeaderboard = async (req, res) => {
+    try { 
+        const leaderboard = await User.getLeaderboard()
+        res.status(200).json({"leaderboard": leaderboard})
+    } catch (error) {
+        res.status(400).json({error: error.message})
+    }
+}
+
+module.exports = { loginUser, signupUser, addHistory, getHistory, getLeaderboard }

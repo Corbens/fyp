@@ -34,6 +34,10 @@ const userSchema = new Schema({
     },
     history: {
         type: [gameSchema]
+    },
+    experience: {
+        type: Number,
+        default: 0
     }
 
 })
@@ -102,8 +106,7 @@ userSchema.statics.login = async function(email, password) {
 }
 
 userSchema.statics.addGame = async function(email, type, score) {
-
-    const res = await this.updateOne({email: email}, {"$push": {"history": {"$each": [{type: type, score: score}], "$position": 0 }}})
+    const res = await this.updateOne({email: email}, {"$push": {"history": {"$each": [{type: type, score: score}], "$position": 0 }}, "$inc": { "experience": score }})
     return res
 
 }
@@ -112,6 +115,15 @@ userSchema.statics.getGames = async function(email) {
     const user = await this.findOne({ email })
     return user.history
     
+}
+
+userSchema.statics.getLeaderboard = async function() {
+    let leaderboard = []
+    for await (const user of this.find()) {
+        leaderboard.push({ username: user.email, experience: user.experience })
+    }
+    leaderboard.sort((a, b) => b.experience - a.experience)
+    return leaderboard
 }
 
 module.exports = mongoose.model('User', userSchema)

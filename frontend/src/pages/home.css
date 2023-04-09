@@ -42,6 +42,12 @@ h2 {
     align-items: center;
 }
 
+.leaderboardTable {
+    display: flex;
+    background: #b2d7c8;
+    border-radius: 5px;
+    border:medium solid #2d564e;
+}
 
 /* https://duo.alexpate.uk/ 
 https://designwizard.com/blog/design-trends/colour-combination/ 

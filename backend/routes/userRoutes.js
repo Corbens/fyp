@@ -1,7 +1,7 @@
 const express = require('express')
 
 // controller functions
-const { loginUser, signupUser, addHistory, getHistory } = require('../controllers/userController')
+const { loginUser, signupUser, addHistory, getHistory, getLeaderboard } = require('../controllers/userController')
 
 const router = express.Router()
 
@@ -16,5 +16,8 @@ router.post('/addhistory', addHistory)
 
 // get history route
 router.post('/gethistory', getHistory)
+
+// get leaderboard route
+router.get('/getleaderboard', getLeaderboard)
 
 module.exports = router
