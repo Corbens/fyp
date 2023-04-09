@@ -1,5 +1,5 @@
-import PracticeMenu from './PracticeMenu'
 import ReviewMenu from './ReviewMenu'
+import PracticeMenu from './PracticeMenu'
 
 const Menu = ({ callback }) => {
     return(

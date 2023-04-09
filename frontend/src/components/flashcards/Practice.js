@@ -8,7 +8,7 @@ import IconButton from '@mui/material/IconButton';
 import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 
-const PracticePremade = ({ callback, deck }) => {
+const Practice = ({ callback, deck }) => {
 
     const [displaySide, setDisplaySide] = useState(0)
     const [displaySideObj, setDisplaySideObj] = useState("one")
@@ -29,7 +29,6 @@ const PracticePremade = ({ callback, deck }) => {
                 setCardNum(cardNum-1)
             }
         }
-
     }
 
     const shuffleCards = () => {
@@ -120,4 +119,4 @@ const PracticePremade = ({ callback, deck }) => {
     )
 }
 
-export default PracticePremade
+export default Practice

@@ -2,8 +2,7 @@ import { useState } from 'react'
 
 import './flashcards.css'
 import Menu from '../components/flashcards/Menu'
-import PracticeCustom from '../components/flashcards/PracticeCustom'
-import PracticePremade from '../components/flashcards/PracticePremade'
+import Practice from '../components/flashcards/Practice'
 import Review from '../components/flashcards/Review'
 
 const Flashcards = () => {
@@ -19,10 +18,8 @@ const Flashcards = () => {
     let focusedComponent
     if (mode === "Menu") {
         focusedComponent = <Menu callback={switchMode}/>
-    } else if (mode === "PracticeCustom"){ 
-        focusedComponent = <PracticeCustom callback={switchMode} deck={deck}/> 
-    } else if (mode === "PracticePremade"){
-        focusedComponent = <PracticePremade callback={switchMode} deck={deck}/> 
+    } else if (mode === "Practice"){ 
+        focusedComponent = <Practice callback={switchMode} deck={deck}/> 
     } else { // mode === "Review"
         focusedComponent = <Review callback={switchMode}/> 
     }

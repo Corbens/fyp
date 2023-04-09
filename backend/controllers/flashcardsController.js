@@ -1,10 +1,10 @@
 const Flashcards = require('../models/flashcardsModel')
 
 const createDeck = async (req, res) => {
-    const {email, title, contents} = req.body
+    const {email, title, maxSides, sideNames, contents} = req.body
 
     try {
-        const deck = await Flashcards.createDeck(email, title, contents)
+        const deck = await Flashcards.createDeck(email, title, maxSides, sideNames, contents)
         res.status(200).json({deck})
     } catch (error) {
         res.status(400).json({error: error.message})

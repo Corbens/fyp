@@ -11,6 +11,14 @@ const flashcardsSchema = new Schema({
         type: String,
         required: true
     },
+    maxSides: {
+        type: Number,
+        required: true
+    },
+    sideNames: {
+        type: Array,
+        required: true
+    },
     contents: {
         type: Array,
         required: true
@@ -18,13 +26,19 @@ const flashcardsSchema = new Schema({
 
 })
 
-flashcardsSchema.statics.createDeck = async function(email, title, contents) {
+flashcardsSchema.statics.createDeck = async function(email, title, maxSides, sideNames, contents) {
 
     if(!email){
         throw Error('Verification Error: Try logging out and back in')
     }
     if(!title){ 
         throw Error('Deck must have a name')
+    }
+    if(!maxSides){
+        throw Error('Deck must have number of sides')
+    }
+    if(!sideNames){
+        throw Error('Deck must have side names')
     }
 
     const exists = await this.findOne({ email: email, title: title })
@@ -36,7 +50,7 @@ flashcardsSchema.statics.createDeck = async function(email, title, contents) {
         throw Error('Deck must have at least one card')
     }
 
-    const flashcards = await this.create({ email, title, contents })
+    const flashcards = await this.create({ email, title, maxSides, sideNames, contents })
     return flashcards
 }
 
