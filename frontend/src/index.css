@@ -75,51 +75,6 @@ form.signup, form.login {
   border-radius: 4px;
 }
 
-.midGame {
-  text-align: center;
-}
-
-.gameContents {
-  font-size: 40px;
-  display: flex;
-}
-
-.static {
-  flex: 1;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-bottom: 50px;
-  text-align:center;
-}
-
-.drop {
-  flex: 1;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-bottom: 50px;
-  text-align:center;
-}
-
-.drag {
-  flex: 1;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-bottom: 50px;
-  text-align:center;
-}
-
-.dragDivs {
-  font-family: 'Rampart One';
-}
-
-.dropDivs {
-  font-family: 'Rampart One';
-}
-
-.staticDivs {
-  font-family: 'Rampart One';
-}
-
 .settings {
   display: 'flex';
   margin: 40px auto;

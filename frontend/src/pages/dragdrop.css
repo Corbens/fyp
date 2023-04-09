@@ -38,3 +38,33 @@ h2 {
 .displayResults h2 {
     font-size: 50px;
 }
+
+.midGame {
+  text-align: center;
+}
+
+.gameContents {
+    font-size: 40px;
+    display: flex;
+    background: #b2d7c8; 
+    padding: 0px 20px 40px 20px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border:medium solid #2d564e;
+    min-width: 250px;
+    justify-content: center;
+    text-align: center;  
+}
+
+.dragDivs {
+    font-family: 'Rampart One';
+}
+  
+.dropDivs {
+    font-family: 'Rampart One';
+}
+  
+.staticDivs {
+    font-family: 'Rampart One';
+}
