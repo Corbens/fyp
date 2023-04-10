@@ -13,8 +13,6 @@ import Button from '@mui/material/Button';
 
 import { getHiragana } from '../utilities/Lessons'
 
-
-
 const LessonHiragana = () => {
     const navigate = useNavigate()
 
@@ -35,8 +33,6 @@ const LessonHiragana = () => {
     } else { // type === "Test"
         focusedComponent = <Test slide={pages[page]}/> 
     } 
-
-
 
     return(
         <div>

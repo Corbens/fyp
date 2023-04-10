@@ -27,32 +27,30 @@ const Navbar = () => {
     }
 
     const [home, setHome] = useState(true)
-    const getColour = (active) => { //this function is required as navlink only highlights plain text, not a jsx (e.g. h1) element inside of navlink.
+    const getColour = (active) => { //this function is required as navlink usually only highlights plain text, not a jsx (e.g. h1) element inside of navlink.
         if(active){
             setHome(true)
             return '#efede5'
         }else{
             setHome(false)
-            return '#2d564e'
+            return 'black'
         }
     }
-    //https://stackoverflow.com/questions/65356812/blazor-navlink-style-stops-working-when-included-as-component
-    //similar issue, could try this way if can make it neater and easier to understand. 
     
     return(
         <header>
             <div className="container">
                 <NavLink style={({ isActive }) => ({color: isActive ? getColour(true) : getColour(false)})} exact to="/">
-                    <h1 style={{color: home ? '#efede5' : '#2d564e'}}>Learn Japanese</h1> 
+                    <h1 style={{color: home ? '#efede5' : 'black'}}>Learn Japanese</h1> 
                 </NavLink>
                 <nav>
                     {user && ( 
                         <div>
-                            <NavLink style={({ isActive }) => ({color: isActive ? '#efede5' : '#2d564e'})} to="/lessons">Lessons</NavLink>
-                            <NavLink style={({ isActive }) => ({color: isActive ? '#efede5' : '#2d564e'})} to="/dragdrop">Drag & Drop</NavLink>
-                            <NavLink style={({ isActive }) => ({color: isActive ? '#efede5' : '#2d564e'})} to="/flashcards">Flashcards</NavLink>
-                            <NavLink style={({ isActive }) => ({color: isActive ? '#efede5' : '#2d564e'})} to="/kanji">Kanji</NavLink>
-                            <NavLink style={({ isActive }) => ({color: isActive ? '#efede5' : '#2d564e'})} to="/forums">Forums</NavLink>
+                            <NavLink style={({ isActive }) => ({color: isActive ? '#efede5' : 'black'})} to="/lessons">Lessons</NavLink>
+                            <NavLink style={({ isActive }) => ({color: isActive ? '#efede5' : 'black'})} to="/dragdrop">Drag & Drop</NavLink>
+                            <NavLink style={({ isActive }) => ({color: isActive ? '#efede5' : 'black'})} to="/flashcards">Flashcards</NavLink>
+                            <NavLink style={({ isActive }) => ({color: isActive ? '#efede5' : 'black'})} to="/kanji">Kanji</NavLink>
+                            <NavLink style={({ isActive }) => ({color: isActive ? '#efede5' : 'black'})} to="/forums">Forums</NavLink>
                             <span> | {user.username} </span>
                             <IconButton variant="contained" onClick={expandMenu} ref={spanRef}><ExpandCircleDownIcon/></IconButton>
                             <Menu
@@ -67,8 +65,8 @@ const Navbar = () => {
                     )}
                     {!user && (
                         <div>
-                            <NavLink style={({ isActive }) =>({color: isActive ? '#efede5' : '#2d564e'})} to="/login">Login</NavLink>
-                            <NavLink style={({ isActive }) => ({color: isActive ? '#efede5' : '#2d564e'})} to="/signup">Signup</NavLink>
+                            <NavLink style={({ isActive }) =>({color: isActive ? '#efede5' : 'black'})} to="/login">Login</NavLink>
+                            <NavLink style={({ isActive }) => ({color: isActive ? '#efede5' : 'black'})} to="/signup">Signup</NavLink>
                         </div>
                     )}
                 </nav>

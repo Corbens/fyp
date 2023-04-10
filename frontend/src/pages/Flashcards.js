@@ -1,17 +1,14 @@
 import { useState } from 'react'
 
-import './flashcards.css'
 import Menu from '../components/flashcards/Menu'
 import Practice from '../components/flashcards/Practice'
 import Review from '../components/flashcards/Review'
 
 import { useSearchParams } from 'react-router-dom'
 
-
 const Flashcards = () => {
 
     const [queryParams] = useSearchParams()
-
     const getState = () => {
         const q = queryParams.get('review')
         if(q !== null){
@@ -23,10 +20,6 @@ const Flashcards = () => {
 
     const [mode, setMode] = useState(getState())
     const [deck, setDeck] = useState(null)
-
-
-
-
     const switchMode = (newMode, newDeck) => {
         setMode(newMode)
         setDeck(newDeck)
@@ -42,7 +35,7 @@ const Flashcards = () => {
     }
 
     return (
-        <div className="flashcards">
+        <div>
             {focusedComponent}
         </div>
     )

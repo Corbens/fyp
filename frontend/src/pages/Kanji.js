@@ -10,7 +10,6 @@ import Game from "../components/kanji/Game"
 import { getKanji } from '../utilities/Kanji'
 import { useAuthContext } from '../hooks/useAuthContext'
 
-import './kanji.css'
 
 const Kanji = () => {
 
@@ -79,17 +78,21 @@ const Kanji = () => {
         }
     }
 
-
     return(
         <div className="KanjiPage">
             { active ? 
                 <Game key={currentKanji} theKanji={kanji[currentKanji]} kanjiNum={currentKanji} callback={callback}/>
                 :
                 <div className="preKanji">
-                    <h1>Kanji Composition Game</h1>
-                    <h2>In this game, you are tasked with selecting which components are used to make up the given Kanji. There are 5 Kanji for you to work through. The Kanji is displayed in English, but you have a set of hints to help you, one of which shows you the Kanji. Work through this game to help aid your Kanji comprehension skills, helping you figure out the slight differences between Kanji that can look all too indistinguishable to untrained eyes!</h2>
-                    <Button variant="outlined" onClick={() => startGame()}>{!played ? "Start Game" : "Play Again"}</Button>
-                    { played && <Button variant="outlined" onClick={() => handleResultsOpen()}>Show Results</Button>}
+                    <div className="preKanjiTitle">
+                        <h1>Kanji Composition Game</h1>
+                    </div>
+                    <div className="preKanjiContents">
+                        <h2>In this game, you are tasked with selecting which components are used to make up the given Kanji. There are 5 Kanji for you to work through. The Kanji is displayed in English, but you have a set of hints to help you, one of which shows you the Kanji. Work through this game to help aid your Kanji comprehension skills, helping you figure out the slight differences between Kanji that can look all too indistinguishable to untrained eyes!</h2>
+                        <Button variant="outlined" onClick={() => startGame()}>{!played ? "Start Game" : "Play Again"}</Button>
+                        { played && <Button variant="outlined" onClick={() => handleResultsOpen()}>Show Results</Button>}
+                    </div>
+
                     <Modal open={showResults} onClose={handleResultsClose} style={{display:'flex', alignItems:'center', justifyContent:'center'}}>
                         <div className="resultsModal">
                             <Stack spacing={1}> 
@@ -100,7 +103,6 @@ const Kanji = () => {
                                 <h2>Score - {(results.filter(Boolean).length / 5)*100}</h2>
                                 {results.map((value, index) => (
                                     <Stack direction="row" spacing = {1} alignItems="center" justifyContent="center" >
-                                        <h2>{kanji[index].kanji} ({kanji[index].english})</h2>
                                         { value ?               
                                             <Tooltip title="This circle is used similarly to a tick in western countries indicating something that is correct. However, a tick in Japan can often be used to indicate that something is incorrect!">
                                                 <h1>⭕</h1>
@@ -110,6 +112,7 @@ const Kanji = () => {
                                                 <h1>❌</h1>
                                             </Tooltip>
                                         }
+                                        <h2>{kanji[index].kanji} ({kanji[index].english})</h2>
                                     </Stack>
                                 ))}
                                 <br/>

@@ -103,7 +103,7 @@ const Game = ({ theKanji, kanjiNum, callback }) => {
                     <Grid item xs={9}>
                         <Stack direction="column" spacing={1} justifyContent="center">
                             <p>Given the English translation of a Kanji, select only the components necessary to create the given Kanji. A component is indicated as selected if it is in blue. If you are stuck, use the hints below!</p>
-                            <h1>{kanji.english} {showKanji && kanji.kanji}</h1>
+                            <h1>Kanji: {kanji.english} {showKanji && kanji.kanji}</h1>
                         </Stack>
                     </Grid>
                     <Grid item xs={3} alignItems="center" justifyContent="center">
@@ -122,7 +122,7 @@ const Game = ({ theKanji, kanjiNum, callback }) => {
                                         {incorrectShown && (selectedComponents[index] && !neededComponents[index]) ? 
                                             <h1 style={{'color': 'red'}}>{value.char}</h1>
                                             :
-                                            <h1 style={{'color':` ${selectedComponents[index] ? 'blue' : '#2d564e'}`}}>{value.char}</h1>
+                                            <h1 style={{'color':` ${selectedComponents[index] ? 'blue' : 'black'}`}}>{value.char}</h1>
                                         }
                                     </div>
                                 </Grid>

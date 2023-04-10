@@ -24,7 +24,7 @@ const Today = () => {
 
 
     const [srsDecks, setSrsDecks] = useState(null)
-    const [reviewMessage, setReviewMessage] = useState("No Reviews Currently Available.")
+    const [reviewMessage, setReviewMessage] = useState("0 Cards To Review.")
     const [reviewsAvailable, setReviewsAvailable] = useState(false)
     useEffect(() => {
         if(!srsDecks){
@@ -80,15 +80,17 @@ const Today = () => {
 
 
     return(
-        <div className="today">
-            <h2>Welcome</h2>
-            <div className="todayContents">
+        <div className="homeComponent">
+            <div className="homeTitle">
+                <h2>Welcome</h2>
+            </div>
+            <div className="homeContents">
             <p>こんにちは {user.username}! </p> 
                 { (specialDay.ja === "") ? <p>Today there is no special day!</p> :  
                 <div className="specialDay">
-                    <p> Today's date is {date.getMonth()}月{date.getDate()}日 which is {specialDay.ja} in Japan. It means {specialDay.en}. <a href="https://ja.wikipedia.org/wiki/日本の記念日一覧">Find more here.</a></p>
+                    <p> Today's date is {date.getMonth()}月{date.getDate()}日 which is {specialDay.ja} in Japan. It means {specialDay.en}. <a href="https://ja.wikipedia.org/wiki/日本の記念日一覧">Find out about more Special Days here.</a></p>
                 </div>}
-                <p>{reviewMessage} {(reviewsAvailable) && <Link to={window.location.href + "flashcards?review"}>Go to Review</Link>} </p>
+                <p>{reviewMessage} {(reviewsAvailable) && <Link to={window.location.href + "flashcards?review"}>Go to Reviews.</Link>} </p>
             </div>
         </div>
     )

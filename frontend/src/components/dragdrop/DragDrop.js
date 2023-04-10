@@ -1,14 +1,16 @@
 import { useState, useRef } from 'react'
-
-import { useAuthContext } from '../../hooks/useAuthContext'
-import Button from '@mui/material/Button';
-import Modal from '@mui/material/Modal';
-import Grid from '@mui/material/Grid';
-
-import Results from './Results';
 import axios from 'axios'
 
-const DragDrop = ({deck, cards, filler, callback}) => {
+import Button from '@mui/material/Button'
+import Modal from '@mui/material/Modal'
+import Grid from '@mui/material/Grid'
+import Stack from '@mui/material/Stack'
+
+import { useAuthContext } from '../../hooks/useAuthContext'
+import Results from './Results'
+
+
+const DragDrop = ({deck, cards, filler, callback, instructions}) => {
     const { user } = useAuthContext()
 
     const initializeIncorrectIndexes = () => {
@@ -154,11 +156,16 @@ const DragDrop = ({deck, cards, filler, callback}) => {
     const [resultsComponent, setResultsComponent] = useState(null)
     const [resultsOpen, setResultsOpen] = useState(false)
 
-
+    console.log(instructions)
 
     return (
         <div>
-            <div className="gameContents">
+            <div className="gameDiv">
+                <div className="gameInstructions">
+                    <h2>Game Instructions:</h2>
+                    <p>{instructions}</p>
+                </div>
+                <div className="gameContents">
                 <Grid container>
                     <Grid container>
                         <Grid item xs={4}>
@@ -170,6 +177,7 @@ const DragDrop = ({deck, cards, filler, callback}) => {
                         <Grid item xs={4}>
                             <h2>Japanese</h2>
                         </Grid>
+                        <Grid item xs={12}><br/></Grid>
                     </Grid>
                     {staticBlock.map((value, index) => (
                     <Grid container>
@@ -185,12 +193,15 @@ const DragDrop = ({deck, cards, filler, callback}) => {
                     </Grid>
                     ))}
                 </Grid>
+                </div>
             </div>
             {resultsComponent &&
                 <div>
                     <Modal open={resultsOpen} onClose={() => setResultsOpen(false)} style={{display:'flex', alignItems:'center', justifyContent:'center'}}>{resultsComponent}</Modal>
-                    <Button variant="outlined" onClick={() => callback(true)}>Play Again</Button>
-                    <Button variant="outlined" onClick={() => setResultsOpen(true)}>View Results</Button>
+                    <Stack direction="row" spacing={1} justifyContent="center">
+                        <Button variant="outlined" onClick={() => callback(true)}>Play Again</Button>
+                        <Button variant="outlined" onClick={() => setResultsOpen(true)}>View Results</Button>
+                    </Stack>
                 </div>
             }
         </div>

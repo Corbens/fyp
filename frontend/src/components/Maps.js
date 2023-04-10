@@ -16,9 +16,11 @@ const Maps = () => {
     }, []);
 
     return(
-        <div className='maps'>
-            <h2>Explore The World In Japanese!</h2>
-            <div className='mapsContents'>
+        <div className='homeComponent'>
+            <div className='homeTitle'>
+                <h2>Explore The World In Japanese!</h2>
+            </div>
+            <div className='homeContents'>
                 <Stack justifyContent='center' spacing={2} sx={{width: '100%'}}> 
                     <iframe
                         title='JapaneseMap'

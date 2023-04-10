@@ -6,15 +6,16 @@ import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 
-import './lessons.css'
-
 const Lessons = () => {
     const navigate = useNavigate()
 
     return(
-        <div>
-            <h2>Lessons</h2>
-            <p>Click on a lesson to begin!</p>
+        <div className="preLessonsDiv">
+            <div className="preLessonsTitle">
+                <h2>Lessons</h2>
+                <p>Click on a lesson to begin!</p>
+            </div>
+
             <div className='lessonsList'>
                     <Table sx={{ minWidth: 650 }} aria-label="simple table">
                         <TableHead>

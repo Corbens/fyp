@@ -159,55 +159,56 @@ const ReviewMenu = ({ callback }) => {
 
 
     return(
-        <div className='reviewMenu'>
-            <h2>Review Mode</h2>
-            <p>Review mode makes use of a Spaced Repetition Schedule (SRS) to show you flashcards at spaced intervals with the goal of testing you just as you are likely to forget.
-                Getting cards correct increases the interval between the next showing of that card, and getting cards incorrect decreases the interval between the next showing of that card. 
-            </p>
-            <div className='reviewMenuContents'>
-                <Stack spacing={2} justifyContent='center' sx={{width: '50%'}} >
-                    <p>{reviewMessage}</p>
-                    <Button variant="outlined" onClick={startReviews} disabled={!enableReview}>Review</Button> 
-                    <Button variant="outlined" onClick={handleEditOpen}>Edit SRS Enabled Decks</Button>
-                    <Button variant="outlined" onClick={handleResetOpen}>Reset A Deck's Progress</Button>
-                </Stack>
-                <Modal open={editOpen} onClose={handleEditClose} style={{display:'flex', alignItems:'center', justifyContent:'center'}}>
-                    <div className="modalMenu">
-                        <h2>SRS Enabled Decks</h2>
-                        <Stack spacing={1}> 
-                            {(!srsDecks) ? <h2>Loading Decks...</h2> : 
-                                <FormGroup>
-                                {srsDecks.decks.map((deck, index) => (
-                                    <FormControlLabel control={<Checkbox checked={srsEnabled[index]} onChange={() => updateEnabled(index)} />} label={srsTitles[index]} />
-                                ))}
-                                </FormGroup>
-                            }
-                            <p>Disabling a deck pauses your reviews until you enable them again. Your progress is saved (Warning: doing this effects the way SRS works, read more here)</p>
-                            <Button variant="outlined" onClick={updateSrs}>Update Settings</Button>
-                            <Button variant="outlined" onClick={handleEditClose}>Close Settings</Button> 
-                        </Stack>
-                    </div>
-                </Modal>
-
-                <Modal open={resetOpen} onClose={handleResetClose} style={{display:'flex', alignItems:'center', justifyContent:'center'}}>
-                    <div className="modalMenu">
-                        <h2>SRS Decks</h2>
-                        <h4>WARNING: Resetting a deck's progress is a permanent change and cannot be reversed!</h4>
-                        <Stack spacing={1}> 
-                            {(!srsDecks) ? <h2>Loading Decks...</h2> : 
-                                <FormGroup>
-                                {srsDecks.decks.map((deck, index) => (
-                                    <FormControlLabel control={<Checkbox onChange={() => updateReset(index)} />} label={srsTitles[index]} />
-                                ))}
-                                </FormGroup>
-                            }
-                            <Button variant="outlined" onClick={resetSrs}>Reset Selected Decks</Button>
-                            <Button variant="outlined" onClick={handleResetClose}>Cancel</Button> 
-                        </Stack>
-                    </div>
-                </Modal>
-
+        <div>
+            <div className='menuDiv'>
+                <div className='menuInstructions'>
+                    <h2>Review Mode</h2>
+                    <p>Review mode makes use of a Spaced Repetition Schedule (SRS) to show you flashcards at spaced intervals with the goal of testing you just as you are likely to forget.Getting cards correct increases the interval between the next showing of that card, and getting cards incorrect decreases the interval between the next showing of that card. </p>
+                </div>
+                <div className='menuContents'>
+                    <Stack spacing={2} justifyContent='center' sx={{width: '50%'}} >
+                        <p>{reviewMessage}</p>
+                        <Button variant="outlined" onClick={startReviews} disabled={!enableReview}>Review</Button> 
+                        <Button variant="outlined" onClick={handleEditOpen}>Edit SRS Enabled Decks</Button>
+                        <Button variant="outlined" onClick={handleResetOpen}>Reset A Deck's Progress</Button>
+                    </Stack>
+                </div>
             </div>
+            <Modal open={editOpen} onClose={handleEditClose} style={{display:'flex', alignItems:'center', justifyContent:'center'}}>
+                <div className="modalMenu">
+                    <h2>SRS Enabled Decks</h2>
+                    <Stack spacing={1}> 
+                        {(!srsDecks) ? <h2>Loading Decks...</h2> : 
+                            <FormGroup>
+                            {srsDecks.decks.map((deck, index) => (
+                                <FormControlLabel control={<Checkbox checked={srsEnabled[index]} onChange={() => updateEnabled(index)} />} label={srsTitles[index]} />
+                            ))}
+                            </FormGroup>
+                        }
+                        <p>Disabling a deck pauses your reviews until you enable them again. Your progress is saved (Warning: doing this effects the way SRS works, read more here)</p>
+                        <Button variant="outlined" onClick={updateSrs}>Update Settings</Button>
+                        <Button variant="outlined" onClick={handleEditClose}>Close Settings</Button> 
+                    </Stack>
+                </div>
+            </Modal>
+
+            <Modal open={resetOpen} onClose={handleResetClose} style={{display:'flex', alignItems:'center', justifyContent:'center'}}>
+                <div className="modalMenu">
+                    <h2>SRS Decks</h2>
+                    <h4>WARNING: Resetting a deck's progress is a permanent change and cannot be reversed!</h4>
+                    <Stack spacing={1}> 
+                        {(!srsDecks) ? <h2>Loading Decks...</h2> : 
+                            <FormGroup>
+                            {srsDecks.decks.map((deck, index) => (
+                                <FormControlLabel control={<Checkbox onChange={() => updateReset(index)} />} label={srsTitles[index]} />
+                            ))}
+                            </FormGroup>
+                        }
+                        <Button variant="outlined" onClick={resetSrs}>Reset Selected Decks</Button>
+                        <Button variant="outlined" onClick={handleResetClose}>Cancel</Button> 
+                    </Stack>
+                </div>
+            </Modal>
         </div>
     )
 }

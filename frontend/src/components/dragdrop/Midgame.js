@@ -2,9 +2,8 @@ import { useState } from 'react'
 
 import DragDrop from './DragDrop'
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace'
-import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
-import IconButton from '@mui/material/IconButton';
-import Tooltip from '@mui/material/Tooltip';
+import IconButton from '@mui/material/IconButton'
+import Tooltip from '@mui/material/Tooltip'
 
 const Midgame = ({deck, cards, type, callback}) => {
 
@@ -68,14 +67,14 @@ const Midgame = ({deck, cards, type, callback}) => {
     const [helpMessage] = useState(() => getHelpMessage())
 
     return (
-        <div className="midGame">
-            <DragDrop deck={playingDeck} cards={cards} filler={filler} callback={callback}/>
+        <div className="midgameDiv">
+            <DragDrop deck={playingDeck} cards={cards} filler={filler} callback={callback} instructions={helpMessage}/>
             <Tooltip title="Go Back">
                 <IconButton variant="contained" onClick={() => callback(false)}><KeyboardBackspaceIcon/></IconButton>
             </Tooltip>
-            <Tooltip title={helpMessage}>
+            {/* <Tooltip title={helpMessage}>
                 <IconButton><HelpOutlineIcon/></IconButton>
-            </Tooltip>
+            </Tooltip> */}
         </div>
     )
 }

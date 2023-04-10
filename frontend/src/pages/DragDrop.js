@@ -2,7 +2,6 @@ import { useState } from 'react'
 
 import Pregame from '../components/dragdrop/Pregame';
 import Midgame from '../components/dragdrop/Midgame';
-import './dragdrop.css'
 
 const BlankGame = () => {
 
@@ -38,7 +37,7 @@ const BlankGame = () => {
     } 
 
     return (
-        <div className="blankGame">
+        <div>
             {focusedComponent}
         </div> 
     )

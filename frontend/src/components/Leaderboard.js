@@ -10,7 +10,7 @@ import TableRow from '@mui/material/TableRow';
 
 const Leaderboard = () => {
 
-    const { user } = useAuthContext() // highlight the logged in user. // perhaps add email to getleaderboard objects as technically users could share username, this way we know which is which
+    const { user } = useAuthContext() 
 
     const [data, setData] = useState(null)
 
@@ -28,9 +28,11 @@ const Leaderboard = () => {
     return(
         <div>
             {data &&
-            <div className="leaderboard">
-                <h2>Leaderboard</h2>
-                <div className='leaderboardTable'>
+            <div className="homeComponent">
+                <div className="homeTitle">
+                    <h2>Leaderboard</h2>
+                </div>
+                <div className='homeContents'>
                     <Table sx={{ minWidth: 650 }} aria-label="simple table">
                         <TableHead>
                             <TableRow>

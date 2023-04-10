@@ -1,53 +1,38 @@
 @import url('https://fonts.googleapis.com/css2?family=Rampart+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
 
+/* Global Styling Start */
 body {
-  background: #f1f1f1;
+  background: #ffe2f0;
   margin: 0;
-  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Noto Sans JP', 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 header {
-  background: #fff;
+  background: #b9a4ff;
+  border-bottom: medium solid black;
 }
 
-header .container {
-  max-width: 1800px;
-  margin: 0 auto;
-  padding: 10px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+h1, h2, h3, h4 {
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
 
-header a {
-  color: #333; 
-  text-decoration: none;
+.pages {
+  height: 100%;
 }
-
-/* .pages{
-  /* max-width: 1400px; 
-  padding: 20px;
-  margin: 0 auto;
-}  */
 
 .pagesIn{
   max-width: 1400px;
-  padding: 20px;
-  margin: 0 auto;
-}
-
-nav {
-  display: flex;
-  align-items: center;
-}
-
-nav a {
-  margin-left: 10px;
+  /* border-left: thin solid black;
+  border-right: thin solid black;
+  border-top: thin solid black; */
+  padding: 0px;
+  margin: 50px auto;
 }
 
 label, input {
@@ -60,45 +45,508 @@ input {
   margin-bottom: 15px;
 }
 
-
 .error {
   margin-top: 20px;
   color: #a04949;
   text-align: center;
 }
+/* Global Styling End */
 
-form.signup, form.login {
-  max-width: 400px;
-  margin: 40px auto;
-  padding: 20px;
-  background: #fff;
-  border-radius: 4px;
+
+
+/* Navbar & Header Styling Start */
+header .container {
+  max-width: 1800px;
+  margin: 0 auto;
+  padding: 30px 20px 30px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.settings {
-  display: 'flex';
-  margin: 40px auto;
-  padding: 20px;
-  background: #fff;
-  border-radius: 4px;
-  justify-content: space-evenly;
+header a {
+  color: black; 
+  text-decoration: none;
+}
+
+nav {
+  display: flex;
   align-items: center;
 }
 
-.contents {
-  justify-content: center;
+nav a {
+  margin-left: 10px;
+}
+/* Navbar & Header Styling End */
+
+
+
+/* Login and Sign Up Pages Styling Start */
+.loginDiv {
+  position: relative;
+  min-height: 500px;
+  height: calc(100vh - 110px);
+  width: auto;
+  overflow:
+  hidden;
 }
 
-.historyContents {
+form.login {
+  max-width: 400px;
+  background: #e8c5ff;
+  padding: 0px 0px 0px 0px;
+  margin: 12vh auto;
+  border:medium solid black;
+  border-radius: 15px;
+  opacity: 0.92;
+}
+
+.formTitle {
+  background: #b9a4ff;
+  padding: 10px 10px 10px 10px; 
+  border-bottom: medium solid black;
+  border-radius: 12px 12px 0px 0px; 
+}
+
+.formContents {
+  background: #e8c5ff;
+  padding: 10px;
+  margin: 0px;
+  border-radius: 0px 0px 12px 12px;
+}
+
+.streetview {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+/* Login and Sign Up Pages Styling End */
+
+
+
+/* Home Page Styling Start */
+.homeComponent {
+  background: #e8c5ff;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 20px 0px;
+  border: medium solid black;
+  border-radius: 15px;
+}
+
+.homeTitle {
+  background: #b9a4ff;
+  padding: 10px 10px 10px 10px; 
+  border-bottom: medium solid black;
+  border-radius: 12px 12px 0px 0px;
+}
+
+.homeContents {
+  background: #e8c5ff;
+  padding: 10px;
+  margin: 0px;
+  border-radius: 0px 0px 12px 12px;
+}
+
+.historyCards {
   display: flex;
-  background: #fff;
 }
 
 .historyCard {
   margin: 40px auto;
   padding: 20px;
-  background: #5e89b5;
-  border-radius: 4px;
+  background: #b9a4ff;
+  border-radius: 15px;
+  border: 2px solid black; 
   justify-content: space-evenly;
   align-items: center;
 }
+/* Home Page Styling End */
+
+
+
+/* Drag and Drop Styling Start */
+.instructionsDiv {
+  background: #e8c5ff;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 20px 0px;
+  border: medium solid black;
+  border-radius: 15px;
+}
+
+.instructionsTitle {
+  background: #b9a4ff;
+  padding: 10px 10px 10px 10px; 
+  border-bottom: medium solid black;
+  border-radius: 12px 12px 0px 0px;
+}
+
+.instructionsContents {
+  background: #e8c5ff;
+  padding: 10px;
+  margin: 0px;
+  border-radius: 0px 0px 12px 12px;
+}
+
+.settingsDiv {
+  background: #e8c5ff;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 20px 0px;
+  border: medium solid black;
+  border-radius: 15px;
+}
+
+.settingsTitle {
+  background: #b9a4ff;
+  padding: 10px 10px 10px 10px; 
+  border-bottom: medium solid black;
+  border-radius: 12px 12px 0px 0px;
+}
+
+.settingsContents {
+  display: 'flex';
+  background: #e8c5ff;
+  padding: 20px 20px 20px 20px;
+  margin: 0px;
+  border-radius: 0px 0px 12px 12px;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.midgameDiv {
+  text-align: center;
+}
+
+.gameDiv {
+  background: #e8c5ff;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 20px 0px;
+  border: medium solid black;
+  border-radius: 15px;
+}
+
+.gameInstructions {
+  background: #b9a4ff;
+  padding: 10px 10px 10px 10px; 
+  border-bottom: medium solid black;
+  border-radius: 12px 12px 0px 0px;
+}
+
+.gameContents {
+  font-size: 40px;
+  display: flex;
+  background: #e8c5ff;
+  padding: 20px 20px 20px 20px;
+  margin: 0px;
+  border-radius: 0px 0px 12px 12px;
+  min-width: 250px;
+  justify-content: center;
+  text-align: center;  
+}
+
+.gameContents h2 {
+  font-family: 'Poppins'
+}
+
+.displayResults {
+  background: #e8c5ff;
+  border-radius: 15px;
+  border:medium solid black;
+  max-width: 400px;
+  padding: 20px;
+  margin: 40px 40px;
+  text-align: center;
+}
+
+.displayResults h1 {
+  font-size: 60px;
+}
+
+.displayResults h2 {
+  font-size: 50px;
+}
+
+.dragDivs {
+  font-family: 'Rampart One';
+}
+
+.dropDivs {
+  font-family: 'Rampart One';
+}
+
+.staticDivs {
+  font-family: 'Rampart One';
+}
+/* Drag and Drop Styling End */
+
+
+
+/* Flashcards Styling Start */
+.menuDiv {
+  background: #e8c5ff;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 20px 0px;
+  border: medium solid black;
+  border-radius: 15px;
+}
+
+.menuInstructions {
+  background: #b9a4ff;
+  padding: 10px 10px 10px 10px; 
+  border-bottom: medium solid black;
+  border-radius: 12px 12px 0px 0px;
+}
+
+.menuContents {
+  background: #e8c5ff;
+  padding: 10px;
+  margin: 0px;
+  border-radius: 0px 0px 12px 12px;
+}
+
+.menuButtons {
+  display: grid;
+}
+
+.modalMenu {
+  background: #e8c5ff;
+  border-radius: 15px;
+  border:medium solid black;
+  padding: 20px;
+  min-width: 250px;
+  justify-content: center;
+  text-align: center;
+}
+
+.flashcard {
+  background: #e8c5ff; 
+  padding: 20px;
+  border-radius: 5px;
+  border:medium solid black;
+  min-width: 250px;
+  justify-content: center;
+  text-align: center;  
+}
+
+.flashcard h1 {
+  font-size: 60px
+}
+/* Flashcards Styling End */
+
+
+
+/* Kanji Styling Start */
+.preKanji {
+  background: #e8c5ff; 
+  padding: 0px 0px 20px 0px;
+  margin: 0px 0px 20px 0px;
+  border:medium solid black;
+  border-radius: 15px;
+  min-width: 250px;
+  justify-content: center;
+  text-align: center;  
+}
+
+.preKanjiTitle {
+  background: #b9a4ff;
+  padding: 10px 10px 10px 10px; 
+  border-bottom: medium solid black;
+  border-radius: 12px 12px 0px 0px;
+}
+
+.preKanjiContents {
+  background: #e8c5ff;
+  padding: 10px;
+  margin: 0px;
+  border-radius: 0px 0px 12px 12px;
+}
+
+.kanjiContents {
+  background: #e8c5ff; 
+  padding: 10px 10px 20px 10px;
+  margin: 0px 0px 20px 0px;
+  border:medium solid black;
+  border-radius: 15px;
+  min-width: 250px;
+  justify-content: center;
+  text-align: center;  
+}
+
+.components {
+  background: #e8c5ff; 
+  padding: 0px;
+  border-radius: 5px;
+  border:medium solid black;
+  min-width: 250px;
+  justify-content: center;
+  text-align: center;  
+}
+
+.kanjiComponent {
+  border: thin solid black;
+}
+
+.kanjiComponent h1 {
+  font-size: 50px;
+}
+
+.targetKanji {
+  justify-content: center;
+  text-align: center;
+}
+
+.targetKanji p {
+  font-size: 20px;
+}
+
+.targetKanji h1 {
+  font-size: 40px;
+}
+
+.targetKanji h2 {
+  font-size: 30px;
+}
+
+.hints {
+  text-align: center;
+  padding: 10px
+}
+
+.hints h1 {
+  justify-content: center;
+}
+
+.endSection {
+  text-align: center;
+}
+
+.informationModal {
+  background: #e8c5ff; 
+  padding: 20px;
+  border-radius: 5px;
+  border:medium solid black;
+  min-width: 250px;
+  justify-content: center;
+  text-align: center;  
+}
+
+.informationModal h4 {
+  font-size: 40px;
+}
+
+.resultsModal {
+  background: #e8c5ff; 
+  padding: 20px;
+  border-radius: 5px;
+  border:medium solid black;
+  min-width: 250px;
+  justify-content: center;
+  text-align: center;  
+}
+
+.resultsModal h1 {
+  font-size: 30px;
+}
+
+.resultsModal h3 {
+  font-size: 50px;
+}
+/* Kanji Styling End */
+
+/* .homeComponent {
+  background: #e8c5ff;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 20px 0px;
+  border: medium solid black;
+  border-radius: 15px;
+}
+
+.homeTitle {
+  background: #b9a4ff;
+  padding: 10px 10px 10px 10px; 
+  border-bottom: medium solid black;
+  border-radius: 12px 12px 0px 0px;
+}
+
+.homeContents {
+  background: #e8c5ff;
+  padding: 10px;
+  margin: 0px;
+  border-radius: 0px 0px 12px 12px;
+} */
+
+
+/* Lessons Styling Start */
+.preLessonsDiv {
+  background: #e8c5ff;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 20px 0px;
+  border: medium solid black;
+  border-radius: 15px;
+}
+
+.preLessonsTitle {
+  background: #b9a4ff;
+  padding: 10px 10px 10px 10px; 
+  border-bottom: medium solid black;
+  border-radius: 12px 12px 0px 0px;
+}
+
+.lessonsList {
+  background: #e8c5ff;
+  padding: 10px;
+  margin: 0px;
+  border-radius: 0px 0px 12px 12px;
+  min-width: 250px;
+  justify-content: center;
+  text-align: center;  
+}
+
+.lessonSlide {
+  /* background: #e8c5ff; 
+  padding: 20px;
+  border-radius: 5px;
+  border:medium solid black;
+  min-width: 250px; */
+  justify-content: center;
+  text-align: center;  
+}
+
+.lessonEntry { 
+  margin: 40px auto;
+  padding: 20px;
+  background: #b9a4ff;
+  border-radius: 15px;
+  /* border: thin solid black; */
+  justify-content: center;
+  text-align: center;  
+}
+
+.slideDiv {
+  background: #e8c5ff;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 20px 0px;
+  border: medium solid black;
+  border-radius: 15px;
+}
+
+.slideTitle {
+  background: #b9a4ff;
+  padding: 10px 10px 10px 10px; 
+  border-bottom: medium solid black;
+  border-radius: 12px 12px 0px 0px;
+}
+
+.slideContents {
+  background: #e8c5ff;
+  padding: 10px;
+  margin: 0px;
+  border-radius: 0px 0px 12px 12px;
+}
+/* Lessons Styling End */
+
+
+
+/* Colours: Dark Purple #b9a4ff, Light Purple #e8c5ff, Pink #ffe2f0, White and Black. */
+/* Order: Top, Right, Bottom, Left. */

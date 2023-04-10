@@ -29,9 +29,11 @@ const HistoryBar = () => {
     });
 
     return(
-        <div className="history">
-            <h2>Recent Game History</h2>
-            <div className="historyContents">
+        <div className="homeComponent">
+            <div className="homeTitle">
+                <h2>Recent Game History</h2>
+            </div>
+            <div className="homeContents historyCards">
             {component}
             </div>
         </div>

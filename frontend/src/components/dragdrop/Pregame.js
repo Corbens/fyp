@@ -35,12 +35,22 @@ const Pregame = ({ callback }) => {
     }
 
     return (
-        <div className="contents">
-            <h2>Game Instructions:</h2>
-            <p>This is a drag and drop style game where you are tasked with dragging matching cards together. A correct match will turn green, an incorrect match red and a match that you previously had incorrect but now have correct will be orange.</p>
-            <div className="settings">
+        <div>
+            <div className="instructionsDiv">
+                <div className="instructionsTitle">
+                    <h2>Game Instructions:</h2>
+                </div>
+                <div className="instructionsContents">
+                    <p>This is a drag and drop style game where you are tasked with dragging matching cards together. A correct match will turn green, an incorrect match red and a match that you previously had incorrect but now have correct will be orange.</p>
+                </div>
+            </div>
+            <div className="settingsDiv">
+                <div className="settingsTitle">
+                    <h2>Select Your Game Settings</h2>
+                </div>
+                <div className="settingsContents">
                 <FormControl>
-                    <FormLabel id="demo-row-radio-buttons-group-label">Select Your Game Type</FormLabel>
+                    <FormLabel id="demo-row-radio-buttons-group-label">Game Type</FormLabel>
                     <RadioGroup 
                         row 
                         aria-labelledby="demo-row-radio-buttons-group-label"
@@ -55,6 +65,7 @@ const Pregame = ({ callback }) => {
                     </RadioGroup>
                 </FormControl>
                 {settingComponent}
+                </div>
             </div>
         </div>
         
