@@ -5,10 +5,27 @@ import Menu from '../components/flashcards/Menu'
 import Practice from '../components/flashcards/Practice'
 import Review from '../components/flashcards/Review'
 
+import { useSearchParams } from 'react-router-dom'
+
+
 const Flashcards = () => {
 
-    const [mode, setMode] = useState("Menu")
+    const [queryParams] = useSearchParams()
+
+    const getState = () => {
+        const q = queryParams.get('review')
+        if(q !== null){
+            return "Review"
+        }else{
+            return "Menu"
+        }
+    }
+
+    const [mode, setMode] = useState(getState())
     const [deck, setDeck] = useState(null)
+
+
+
 
     const switchMode = (newMode, newDeck) => {
         setMode(newMode)

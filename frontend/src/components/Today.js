@@ -24,7 +24,7 @@ const Today = () => {
 
 
     const [srsDecks, setSrsDecks] = useState(null)
-    const [reviewMessage, setReviewMessage] = useState("0 reviews atm")
+    const [reviewMessage, setReviewMessage] = useState("No Reviews Currently Available.")
     const [reviewsAvailable, setReviewsAvailable] = useState(false)
     useEffect(() => {
         if(!srsDecks){
@@ -86,22 +86,12 @@ const Today = () => {
             <p>こんにちは {user.username}! </p> 
                 { (specialDay.ja === "") ? <p>Today there is no special day!</p> :  
                 <div className="specialDay">
-                    <p> Today's date is {date.getMonth()}月{date.getDate()}日 which is  
-                    <ruby>
-                         {specialDay.ja} <rt> {specialDay.fu} </rt>
-                    </ruby> 
-                    in Japan. It means {specialDay.en}. <a href="https://ja.wikipedia.org/wiki/日本の記念日一覧">Find more here.</a></p>
-                </div>
-            }
-            {/* Consider making it go straight to reviews page, bypassing flashcards */}
-            <p>{reviewMessage}</p>
-            { (reviewsAvailable) && 
-                <Link to={window.location.href + "flashcards"}>Go to Review</Link>
-            }
+                    <p> Today's date is {date.getMonth()}月{date.getDate()}日 which is {specialDay.ja} in Japan. It means {specialDay.en}. <a href="https://ja.wikipedia.org/wiki/日本の記念日一覧">Find more here.</a></p>
+                </div>}
+                <p>{reviewMessage} {(reviewsAvailable) && <Link to={window.location.href + "flashcards?review"}>Go to Review</Link>} </p>
             </div>
         </div>
     )
-
 }
 
 export default Today

@@ -26,10 +26,11 @@ const Leaderboard = () => {
 
 
     return(
-        <div className="leaderboard">
-            <h2>Leaderboard</h2>
-            <div className='leaderboardTable'>
-                {data &&
+        <div>
+            {data &&
+            <div className="leaderboard">
+                <h2>Leaderboard</h2>
+                <div className='leaderboardTable'>
                     <Table sx={{ minWidth: 650 }} aria-label="simple table">
                         <TableHead>
                             <TableRow>
@@ -40,19 +41,17 @@ const Leaderboard = () => {
                         </TableHead>
                         <TableBody>
                         {data.map((value, index) => (
-                            <TableRow
-                            key={index}
-                            sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                            >
-                            <TableCell align="left">{index+1}</TableCell>
-                            <TableCell align="left">{value.username}</TableCell>
-                            <TableCell align="left">{value.experience}</TableCell>
+                            <TableRow key={index}>
+                                <TableCell align="left">{index+1}</TableCell>
+                                <TableCell align="left">{(user.email === value.email) ? "* " +  value.username + " (" + value.email + ")" : value.username + " (" + value.email + ")" }</TableCell>
+                                <TableCell align="left">{value.experience}</TableCell>
                             </TableRow>
                         ))}
                         </TableBody>
                     </Table>
-                }
+                </div>
             </div>
+            }
         </div>
     )
 }

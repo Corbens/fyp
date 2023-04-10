@@ -120,7 +120,7 @@ userSchema.statics.getGames = async function(email) {
 userSchema.statics.getLeaderboard = async function() {
     let leaderboard = []
     for await (const user of this.find()) {
-        leaderboard.push({ username: user.email, experience: user.experience })
+        leaderboard.push({ email: user.email, username: user.username, experience: user.experience })
     }
     leaderboard.sort((a, b) => b.experience - a.experience)
     return leaderboard
