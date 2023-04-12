@@ -4,6 +4,9 @@ import Stack from '@mui/material/Stack';
 
 const Maps = () => {
 
+    // look into embedding outside of an iframe
+    //https://developers.google.com/maps/documentation/javascript/adding-a-google-map#maps_add_map-html
+
     //const [mapUrl, setMapUrl] = useState("https://www.google.com/maps/embed/v1/view?key=" + process.env.REACT_APP_GOOGLE_MAPS_KEY + "&center=35.6587301,139.7457922&zoom=13&language=ja") //tokyo
     const [mapUrl, setMapUrl] = useState("https://www.google.com/maps/embed/v1/view?key=" + process.env.REACT_APP_GOOGLE_MAPS_KEY + "&center=52.8447467,-0.6154744&zoom=6&language=ja") //uk
     

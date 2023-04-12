@@ -1,20 +1,22 @@
+import HiraganaTable from "../components/HiraganaTable"
+
 const hiragana = {
     title: "Lesson 1: Hiragana",
     pages: [
         {
             title: "What is Hiragana?",
             type: "Information", 
-            content: "Hiragana is one of three scripts used to write in Japanese. The other two are Katakana and Kanji. Hiragana is a phonetic script meaning you can always determine how the characters are pronounced just by looking at them. " // maybe have not as a string but as an array?
+            content: [<p>Hiragana is one of three scripts used to write in Japanese. The other two are Katakana and Kanji. Hiragana is a phonetic script meaning you can always determine how the characters are pronounced just by looking at them.</p>]
         },
         {
             title: "Learn Some Hiragana",
             type: "Information",
-            content: "Here is a list of some hiragana to learn. Here is how they are pronounced."
+            content: [<p>Here is a table containing a list of Hiragana kana. They are pronounced my matching the bold row entry with the bold column entry. Some fields are empty and these are kana which are no longer used in modern Japanese.</p>, <HiraganaTable/>]
         },
         {
             title: "Dakuten and Handakuten",
             type: "Information",
-            content: "Dakuten and Handakuten are diacritics used above certain kana to indicate a change in the pronunciation. They look like ゛and ゜and appear at the top right of the kana. For example, か (ka) becomes が (ga). は (ha) becomes ば (ba) or ぱ (pa)."
+            content: [<p>Dakuten and Handakuten are diacritics used above certain kana to indicate a change in the pronunciation. They look like ゛and ゜and appear at the top right of the kana. For example, か (ka) becomes が (ga). は (ha) becomes ば (ba) or ぱ (pa).</p>]
         },
         {
             title: "Testing Your Knowledge",
@@ -77,7 +79,7 @@ const hiragana = {
         {
             title: "Conclusion",
             type: "Information",
-            content: "This was an introduction into hiragana. Hopefully you now understand what Hiragana is, and can begin to read some characters. To practice and learn more, try out the Hiragana deck on our flashcard page."
+            content: [<p>This was an introduction into hiragana. Hopefully you now understand what Hiragana is, and can begin to read some characters. To practice and learn more, try out the Hiragana deck on our flashcard page.</p>]
         }
     ]
 }

@@ -18,6 +18,7 @@ const Review = ({ callback }) => {
     const [numCorrect, setNumCorrect] = useState(0)
     const [finished, setFinished] = useState(false)
     const [deckTitles, setDeckTitles] = useState(null)
+    const [needSave, setNeedSave] = useState(false)
 
     const getReviewDeck = () => {
         axios.post("srs/getsrs", { 
@@ -76,6 +77,9 @@ const Review = ({ callback }) => {
     })
 
     const handleCorrect = () => {
+        if(!needSave){
+            setNeedSave(true)
+        }
         if(reviewDeck[reviewNum].level !== 7){
             reviewDeck[reviewNum].level = reviewDeck[reviewNum].level + 1
         }
@@ -93,6 +97,9 @@ const Review = ({ callback }) => {
     }
 
     const handleIncorrect = () => {
+        if(!needSave){
+            setNeedSave(true)
+        }
         if(reviewDeck[reviewNum].level !== 0){
             reviewDeck[reviewNum].level = reviewDeck[reviewNum].level - 1
         }
@@ -114,7 +121,7 @@ const Review = ({ callback }) => {
     }
 
     const handleExit = () => {
-        if(!finished){
+        if(!finished && needSave){
             updateSrs()
         }
         callback("Menu", null)

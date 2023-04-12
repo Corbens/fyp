@@ -17,24 +17,29 @@ const Lessons = () => {
             </div>
 
             <div className='lessonsList'>
-                    <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                    <Table>
                         <TableHead>
-                            <TableRow>
-                                <TableCell>Lesson Number</TableCell>
-                                <TableCell>Lesson Name</TableCell>
-                                <TableCell>Completed?</TableCell>
+                            <TableRow sx={{ 'th' : { background: "#b9a4ff", borderBottom: "thin solid black" }, 'h4' : { marginTop: 0, marginBottom: 0} }}>
+                                <TableCell><h4>Lesson Number</h4></TableCell>
+                                <TableCell><h4>Lesson Name</h4></TableCell>
+                                <TableCell><h4>Completed?</h4></TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            <TableRow
-                            className='lessonEntry'
-                            onClick={() => navigate("hiragana")}
-                            key="hiragana"
-                            sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                            >
-                            <TableCell>1</TableCell>
-                            <TableCell>Hiragana</TableCell>
-                            <TableCell></TableCell>
+                            <TableRow className='lessonEntry' onClick={() => navigate("hiragana")} key="hiragana" sx={{ '&:last-child td': { border: 0 }, 'td': {borderBottom: "thin solid black"} }}>
+                                <TableCell>1</TableCell>
+                                <TableCell>Hiragana</TableCell>
+                                <TableCell></TableCell>
+                            </TableRow>
+                            <TableRow className='lessonEntry' sx={{ '&:last-child td': { border: 0 }, 'td': {borderBottom: "thin solid black"} }}>
+                                <TableCell>2</TableCell>
+                                <TableCell>Katakana</TableCell>
+                                <TableCell></TableCell>
+                            </TableRow>
+                            <TableRow className='lessonEntry' sx={{ '&:last-child td': { border: 0 }, 'td': {borderBottom: "thin solid black"} }}>
+                                <TableCell>3</TableCell>
+                                <TableCell>Kanji</TableCell>
+                                <TableCell></TableCell>
                             </TableRow>
                         </TableBody>
                     </Table>

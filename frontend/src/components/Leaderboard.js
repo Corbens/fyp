@@ -33,17 +33,17 @@ const Leaderboard = () => {
                     <h2>Leaderboard</h2>
                 </div>
                 <div className='homeContents'>
-                    <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                    <Table>
                         <TableHead>
-                            <TableRow>
-                                <TableCell>Rank</TableCell>
-                                <TableCell>User</TableCell>
-                                <TableCell>Experience Points</TableCell>
+                            <TableRow sx={{ 'th': {borderBottom: "thin solid black"} }}>
+                                <TableCell><h3>Rank</h3></TableCell>
+                                <TableCell><h3>User</h3></TableCell>
+                                <TableCell><h3>Experience Points</h3></TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
                         {data.map((value, index) => (
-                            <TableRow key={index}>
+                            <TableRow key={index} sx={{ '&:last-child td': { border: 0 }, 'td': {borderBottom: "thin solid black"} }}>
                                 <TableCell align="left">{index+1}</TableCell>
                                 <TableCell align="left">{(user.email === value.email) ? "* " +  value.username + " (" + value.email + ")" : value.username + " (" + value.email + ")" }</TableCell>
                                 <TableCell align="left">{value.experience}</TableCell>

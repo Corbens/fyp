@@ -1,3 +1,5 @@
+//import HiraganaTable from '../HiraganaTable'
+
 const Information = ({ slide }) => {
 
     return(
@@ -6,7 +8,11 @@ const Information = ({ slide }) => {
                 <h2>{slide.title}</h2>
             </div>
             <div className="slideContents">
-                <p>{slide.content}</p>
+                {slide.content.map((value, index) => (
+                    <div>
+                        {slide.content[index]}
+                    </div>
+                ))}
             </div>
         </div>
     )
