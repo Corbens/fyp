@@ -1,13 +1,13 @@
 import { useState, useRef } from 'react'
-import { NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom"
 import { useLogout } from '../hooks/useLogout'
 import { useAuthContext } from '../hooks/useAuthContext'
 
-import LogoutIcon from '@mui/icons-material/Logout';
-import ExpandCircleDownIcon from '@mui/icons-material/ExpandCircleDown';
-import IconButton from '@mui/material/IconButton';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
+import LogoutIcon from '@mui/icons-material/Logout'
+import ExpandCircleDownIcon from '@mui/icons-material/ExpandCircleDown'
+import IconButton from '@mui/material/IconButton'
+import Menu from '@mui/material/Menu'
+import MenuItem from '@mui/material/MenuItem'
 
 const Navbar = () => {
     const { logout } = useLogout()
@@ -27,7 +27,7 @@ const Navbar = () => {
     }
 
     const [home, setHome] = useState(true)
-    const getColour = (active) => { //this function is required as navlink usually only highlights plain text, not a jsx (e.g. h1) element inside of navlink.
+    const getColour = (active) => { //this function is required as navLink usually only highlights plain text, not a jsx (e.g. h1) element inside of navLink.
         if(active){
             setHome(true)
             return '#efede5'

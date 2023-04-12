@@ -8,9 +8,9 @@ import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box'
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
-const HiraganaTable = () => {
+const KanaTable = ({ katakana }) => {
 
-    const rows = [
+    const rows = !katakana ? [
         ["∅", "あ", "い", "う", "え", "お"],
         ["k", "か", "き", "く", "け", "こ"],
         ["s", "さ", "し", "す", "せ", "そ"],
@@ -21,29 +21,41 @@ const HiraganaTable = () => {
         ["y", "や", "", "ゆ", "", "よ"],
         ["r", "ら", "り", "る", "れ", "ろ"],
         ["w", "わ", "", "", "", "を"],
-    ]
+    ] :
+    [
+        ["∅", "ア", "イ", "ウ", "エ", "オ"],
+        ["k", "カ", "キ", "ク", "ケ", "コ"],
+        ["s", "サ", "シ", "ス", "セ", "ソ"],
+        ["t", "タ", "チ", "ツ", "テ", "ト"],
+        ["n", "ナ", "ニ", "ヌ", "ネ", "ノ"],
+        ["h", "ハ", "ヒ", "フ", "ヘ", "ホ"],
+        ["m", "マ", "ミ", "ム", "メ", "モ"],
+        ["y", "ヤ", "", "ユ", "", "ヨ"],
+        ["r", "ラ", "リ", "ル", "レ", "ロ"],
+        ["w", "ワ", "", "", "", "ヲ"],
+    ] 
 
     const theme = createTheme({
         palette: {
             background: { paper: "#b9a4ff"},
         }
-    });
+    })
       
     return(
-        <div className="hiraganaTable">
+        <div className="kanaTable">
             <Box display="flex" justifyContent="center" alignItems="center">
                 <ThemeProvider theme={theme}>
                     <TableContainer component={Paper} sx={{ width: 600 }}>
                         <Table size="small" sx={{ 'h4': {fontSize: 16} }}>
                             <TableHead>
-                            <TableRow sx={{ 'th': {borderBottom: "thin solid black", borderRight: "thin solid black"}, 'th:last-of-type': {borderRight: 0} }}>
-                                <TableCell></TableCell>
-                                <TableCell align="center"><h4>a</h4></TableCell>
-                                <TableCell align="center"><h4>i</h4></TableCell>
-                                <TableCell align="center"><h4>u</h4></TableCell>
-                                <TableCell align="center"><h4>e</h4></TableCell>
-                                <TableCell align="center"><h4>o</h4></TableCell>
-                            </TableRow>
+                                <TableRow sx={{ 'th': {borderBottom: "thin solid black", borderRight: "thin solid black"}, 'th:last-of-type': {borderRight: 0} }}>
+                                    <TableCell></TableCell>
+                                    <TableCell align="center"><h4>a</h4></TableCell>
+                                    <TableCell align="center"><h4>i</h4></TableCell>
+                                    <TableCell align="center"><h4>u</h4></TableCell>
+                                    <TableCell align="center"><h4>e</h4></TableCell>
+                                    <TableCell align="center"><h4>o</h4></TableCell>
+                                </TableRow>
                             </TableHead>
                             <TableBody>
                             {rows.map((row, index) => (
@@ -65,4 +77,4 @@ const HiraganaTable = () => {
     )
 }
 
-export default HiraganaTable
+export default KanaTable

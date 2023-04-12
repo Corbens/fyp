@@ -1,7 +1,7 @@
-import { useAuthContext } from '../hooks/useAuthContext'
+import { useAuthContext } from '../../hooks/useAuthContext'
 import { useState, useEffect, useRef } from 'react'
 import axios from 'axios'
-import { getDate } from '../utilities/HandleDate';
+import { getDate } from '../../utilities/HandleDate';
 
 const HistoryBar = () => {
     const { user } = useAuthContext()

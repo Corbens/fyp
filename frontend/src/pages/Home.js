@@ -1,7 +1,7 @@
-import Today from '../components/Today'
-import Maps from '../components/Maps'
-import HistoryBar from '../components/HistoryBar'
-import Leaderboard from '../components/Leaderboard'
+import Today from '../components/home/Today'
+import Maps from '../components/home/Maps'
+import HistoryBar from '../components/home/HistoryBar'
+import Leaderboard from '../components/home/Leaderboard'
 
 const Home = () => {
     return (

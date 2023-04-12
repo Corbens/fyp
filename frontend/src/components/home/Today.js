@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 
-import { useAuthContext } from '../hooks/useAuthContext'
-import { getSpecialDay } from '../utilities/AnniversaryDates'
-import { getDate } from '../utilities/HandleDate'
+import { useAuthContext } from '../../hooks/useAuthContext'
+import { getSpecialDay } from '../../utilities/AnniversaryDates'
+import { getDate } from '../../utilities/HandleDate'
 
 const Today = () => {
     const { user } = useAuthContext()

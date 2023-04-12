@@ -28,9 +28,6 @@ h1, h2, h3, h4 {
 
 .pagesIn{
   max-width: 1400px;
-  /* border-left: thin solid black;
-  border-right: thin solid black;
-  border-top: thin solid black; */
   padding: 0px;
   margin: 50px auto;
 }
@@ -520,6 +517,26 @@ form.login {
 
 
 
+/* Extra Styling Start */
+.fab {
+  position: fixed;
+  right: 15px;
+  bottom: 15px;
+}
+
+.extraDiv {
+  max-width: 1000px;
+  max-height: 80vh;
+  padding: 10px 0px 0px 0px;
+  margin: 150px auto;
+  background: #e8c5ff;
+  border: medium solid black;
+  border-radius: 15px;
+  justify-content: center;
+  text-align: center;  
+}
+
+/* Extra Styling End */
 
 
 

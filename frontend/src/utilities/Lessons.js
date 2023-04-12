@@ -1,4 +1,4 @@
-import HiraganaTable from "../components/HiraganaTable"
+import KanaTable from "../components/extra/KanaTable"
 
 const hiragana = {
     title: "Lesson 1: Hiragana",
@@ -11,7 +11,7 @@ const hiragana = {
         {
             title: "Learn Some Hiragana",
             type: "Information",
-            content: [<p>Here is a table containing a list of Hiragana kana. They are pronounced my matching the bold row entry with the bold column entry. Some fields are empty and these are kana which are no longer used in modern Japanese.</p>, <HiraganaTable/>]
+            content: [<p>Here is a table containing a list of Hiragana kana. They are pronounced my matching the bold row entry with the bold column entry. Some fields are empty and these are kana which are no longer used in modern Japanese.</p>, <KanaTable katakana={false}/>]
         },
         {
             title: "Dakuten and Handakuten",
