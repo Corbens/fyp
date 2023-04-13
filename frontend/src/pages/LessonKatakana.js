@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import axios from 'axios'
 
 import Grid from '@mui/material/Grid'
 import Stack from '@mui/material/Stack'
@@ -12,15 +11,12 @@ import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import Button from '@mui/material/Button';
 
-import { getHiragana } from '../utilities/Lessons'
-import { useAuthContext } from '../hooks/useAuthContext'
+import { getKatakana } from '../utilities/Lessons'
 
-const LessonHiragana = () => {
+const LessonKatakana = () => {
     const navigate = useNavigate()
-    const { user } = useAuthContext()
 
-    const [lessonStatus, setLessonStatus] = useState(false) //get initial from props, therefore change from link method to component method. 
-    const [pages] = useState(getHiragana().pages)
+    const [pages] = useState(getKatakana().pages)
     const [page, setPage] = useState(0)
 
     const changePage = (forward) => {
@@ -29,16 +25,6 @@ const LessonHiragana = () => {
         }else{
             setPage(page-1)
         }
-    }
-
-    // instantly change on click.
-    const changeLessonStatus = () => {
-        axios.post("user/updatelessonstatus", { 
-            email: user.email,
-            lesson: 0 //this will change depending on props. will be given an index to determine what lesson and a function to get the lesson's data.  also pass what lessonStatus is in props.
-        }).then((response) => {
-        })
-        setLessonStatus(!lessonStatus)
     }
 
     let focusedComponent
@@ -50,7 +36,7 @@ const LessonHiragana = () => {
 
     return(
         <div>
-            <h2>{getHiragana().title}</h2>
+            <h2>{getKatakana().title}</h2>
             <br/>
             <div className="lessonContent">
                 <Grid container spacing={2}>
@@ -76,16 +62,12 @@ const LessonHiragana = () => {
                 </Grid>
             </div>
             <br/>
-            <Stack direction="column" spacing={2} alignItems="center" justifyContent="center">
+            <Stack direction="column" spacing={0} alignItems="center" justifyContent="center">
                 <h4>Slide {page+1} of {pages.length}</h4>
-                    <Stack direction="row" spacing={2}>
-                        <h4>{lessonStatus ? "Status: Complete" : "Status: Incomplete"}</h4>
-                        <Button variant='outlined' onClick={changeLessonStatus}>Change Status</Button>
-                    </Stack>
                 <Button variant='outlined' onClick={()=>navigate("/lessons")}>Go Back To All Lessons</Button>
             </Stack>
         </div>
     )
 }
 
-export default LessonHiragana
+export default LessonKatakana

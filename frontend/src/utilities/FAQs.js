@@ -18,6 +18,10 @@ const general = [{
         question: <h4>How is XP earned?</h4>,
         answer: <p>XP is earned through completing activities such as Drag & Drop Games, Kanji Games or Flashcard Reviews.</p>
     },
+    {
+        question: <h4>What does this emoji mean with my results?</h4>,
+        answer: <p>Hovering over an emoji will often give you a brief description of what it means.</p>
+    },
 ]
 
 const home = [{
@@ -32,6 +36,10 @@ const lessons = [{
     },
     {
         question: <h4>How are lessons structured?</h4>,
+        answer: <p>Lessons are structured through a series of 'slides'. You can navigate through these at your own pace reading through the material. Some slides may have an interactive element where you can test your understanding.</p>
+    },
+    {
+        question: <h4>What do the </h4>,
         answer: <p>Lessons are structured through a series of 'slides'. You can navigate through these at your own pace reading through the material. Some slides may have an interactive element where you can test your understanding.</p>
     },
 ]

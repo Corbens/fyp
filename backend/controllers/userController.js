@@ -72,4 +72,25 @@ const getLeaderboard = async (req, res) => {
     }
 }
 
-module.exports = { loginUser, signupUser, addHistory, getHistory, getLeaderboard }
+const getLessonStatus = async (req, res) => {
+    const { email } = req.body
+    try {
+        const lessonStatus = await User.getLessonStatus(email)
+        res.status(200).json({"lessonStatus": lessonStatus})
+    } catch (error) {
+        res.status(400).json({error: error.message})
+    }
+}
+
+const updateLessonStatus = async (req, res) => {
+    const { email, lesson } = req.body
+
+    try {
+        const result = await User.updateLessonStatus(email, lesson)
+        res.status(200).json({result})
+    } catch (error) {
+        res.status(400).json({error: error.message})
+    }
+}
+
+module.exports = { loginUser, signupUser, addHistory, getHistory, getLeaderboard, getLessonStatus, updateLessonStatus }

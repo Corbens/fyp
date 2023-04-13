@@ -12,7 +12,6 @@ import Home from './pages/Home'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
 import Lessons from './pages/Lessons'
-import LessonHiragana from './pages/LessonHiragana'
 import DragDrop from './pages/DragDrop'
 import Flashcards from './pages/Flashcards'
 import Kanji from './pages/Kanji'
@@ -59,12 +58,8 @@ function App() {
               />
               <Route
                 path="/lessons"
-                element={user ? <div className="pagesIn"><Lessons /></div> : <Navigate to="/" />}>
-              </Route>
-              <Route
-                  path="/lessons/hiragana"
-                  element={user ? <div className="pagesIn"><LessonHiragana /></div> : <Navigate to="/" />}
-                />
+                element={user ? <div className="pagesIn"><Lessons /></div> : <Navigate to="/" />}
+              />
               <Route
                 path="/dragdrop"
                 element={user ? <div className="pagesIn"><DragDrop /></div> : <Navigate to="/" />}
@@ -94,4 +89,4 @@ function App() {
   );
 }
 
-export default App;
+export default App

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+
 import { getFlashcardDeck } from '../../utilities/Vocabulary'
 import { useAuthContext } from '../../hooks/useAuthContext'
 
@@ -193,7 +194,7 @@ const Review = ({ callback }) => {
                         <Grid item xs={3}></Grid>
                         <Grid item xs={9} justifyContent='right'>
                             <Stack direction='row' justifyContent='center' spacing={2} sx={{width: '100 %'}}>
-                                <Button variant='outlined' onClick={() => handleExit()}>Go Back To Menu</Button>
+                                <Button variant='outlined' onClick={() => handleExit()}>Go Back To Menu and Save Progress</Button>
                             </Stack>
                         </Grid>
                     </Grid> 

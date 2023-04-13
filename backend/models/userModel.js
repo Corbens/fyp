@@ -38,6 +38,10 @@ const userSchema = new Schema({
     experience: {
         type: Number,
         default: 0
+    },
+    lessons: {
+        type: Array,
+        default: [false, false, false]
     }
 
 })
@@ -124,6 +128,20 @@ userSchema.statics.getLeaderboard = async function() {
     }
     leaderboard.sort((a, b) => b.experience - a.experience)
     return leaderboard
+}
+
+userSchema.statics.getLessonStatus = async function(email) {
+    const user = await this.findOne({ email })
+    return user.lessons
+}
+
+userSchema.statics.updateLessonStatus = async function(email, lesson) {
+    const user = await this.findOne({ email })
+    
+    user.lessons[Number(lesson)] = !user.lessons[Number(lesson)]
+    await user.save()
+
+    return ("Successfully updated")
 }
 
 module.exports = mongoose.model('User', userSchema)

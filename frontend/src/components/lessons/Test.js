@@ -13,7 +13,7 @@ const Test = ({ slide }) => {
         if(correct){
             setTestAnswer(
                 <Stack direction="row" spacing={1} alignItems="center" justifyContent="center">
-                    <h2>Correct!</h2>
+                    <h2>⭕ Correct!</h2>
                     {(testNum+1 < slide.content.length) &&
                     <Button variant="outlined" onClick={nextQuestion}>Next Question</Button>}
                 </Stack>
@@ -21,7 +21,7 @@ const Test = ({ slide }) => {
         }else{
             setTestAnswer(
                 <Stack direction="row" spacing={1} alignItems="center" justifyContent="center">
-                    <h2>Incorrect!</h2>
+                    <h2>❌ Incorrect!</h2>
                     {(testNum+1 < slide.content.length) &&
                     <Button variant="outlined" onClick={nextQuestion}>Next Question</Button>}
                 </Stack>

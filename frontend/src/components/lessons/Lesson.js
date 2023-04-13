@@ -1,26 +1,23 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
 import Grid from '@mui/material/Grid'
 import Stack from '@mui/material/Stack'
-import Information from '../components/lessons/Information'
-import Test from '../components/lessons/Test'
+import Information from './Information'
+import Test from './Test'
 import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@mui/material/IconButton';
 import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import Button from '@mui/material/Button';
 
-import { getHiragana } from '../utilities/Lessons'
-import { useAuthContext } from '../hooks/useAuthContext'
+import { useAuthContext } from '../../hooks/useAuthContext'
 
-const LessonHiragana = () => {
-    const navigate = useNavigate()
+const Lesson = ({ callback, status, content, num }) => {
     const { user } = useAuthContext()
 
-    const [lessonStatus, setLessonStatus] = useState(false) //get initial from props, therefore change from link method to component method. 
-    const [pages] = useState(getHiragana().pages)
+    const [lessonStatus, setLessonStatus] = useState(status) //get initial from props, therefore change from link method to component method. 
+    const [pages] = useState(content.pages)
     const [page, setPage] = useState(0)
 
     const changePage = (forward) => {
@@ -35,7 +32,7 @@ const LessonHiragana = () => {
     const changeLessonStatus = () => {
         axios.post("user/updatelessonstatus", { 
             email: user.email,
-            lesson: 0 //this will change depending on props. will be given an index to determine what lesson and a function to get the lesson's data.  also pass what lessonStatus is in props.
+            lesson: num //this will change depending on props. will be given an index to determine what lesson and a function to get the lesson's data.  also pass what lessonStatus is in props.
         }).then((response) => {
         })
         setLessonStatus(!lessonStatus)
@@ -50,7 +47,7 @@ const LessonHiragana = () => {
 
     return(
         <div>
-            <h2>{getHiragana().title}</h2>
+            <h2>{content.title}</h2>
             <br/>
             <div className="lessonContent">
                 <Grid container spacing={2}>
@@ -82,10 +79,10 @@ const LessonHiragana = () => {
                         <h4>{lessonStatus ? "Status: Complete" : "Status: Incomplete"}</h4>
                         <Button variant='outlined' onClick={changeLessonStatus}>Change Status</Button>
                     </Stack>
-                <Button variant='outlined' onClick={()=>navigate("/lessons")}>Go Back To All Lessons</Button>
+                <Button variant='outlined' onClick={callback}>Go Back To All Lessons</Button>
             </Stack>
         </div>
     )
 }
 
-export default LessonHiragana
+export default Lesson

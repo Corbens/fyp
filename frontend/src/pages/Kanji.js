@@ -102,7 +102,7 @@ const Kanji = () => {
                                 </Tooltip>
                                 <h2>Score - {(results.filter(Boolean).length / 5)*100}</h2>
                                 {results.map((value, index) => (
-                                    <Stack direction="row" spacing = {1} alignItems="center" justifyContent="center" >
+                                    <Stack key="index" direction="row" spacing = {1} alignItems="center" justifyContent="center" >
                                         { value ?               
                                             <Tooltip title="This circle is used similarly to a tick in western countries indicating something that is correct. However, a tick in Japan can often be used to indicate that something is incorrect!">
                                                 <h1>⭕</h1>
