@@ -1,7 +1,7 @@
 const express = require('express')
 
 // controller functions
-const { loginUser, signupUser, addHistory, getHistory, getLeaderboard, getLessonStatus, updateLessonStatus } = require('../controllers/userController')
+const { loginUser, signupUser, addHistory, getHistory, getLeaderboard, getLessonStatus, updateLessonStatus, getRuby, toggleRuby } = require('../controllers/userController')
 
 const router = express.Router()
 
@@ -25,5 +25,11 @@ router.post('/getlessonstatus', getLessonStatus)
 
 // update lessonStatus route
 router.post('/updatelessonstatus', updateLessonStatus)
+
+// get ruby route
+router.post('/getruby', getRuby)
+
+// toggle ruby route
+router.post('/toggleruby', toggleRuby)
 
 module.exports = router

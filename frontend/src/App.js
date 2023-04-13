@@ -15,7 +15,6 @@ import Lessons from './pages/Lessons'
 import DragDrop from './pages/DragDrop'
 import Flashcards from './pages/Flashcards'
 import Kanji from './pages/Kanji'
-import Forums from './pages/Forums'
 import Navbar from './components/Navbar'
 import Extra from './components/extra/Extra'
 
@@ -71,10 +70,6 @@ function App() {
               <Route
                 path="/kanji"
                 element={user ? <div className="pagesIn"><Kanji /></div> : <Navigate to="/" />}
-              />
-              <Route
-                path="/forums"
-                element={user ? <div className="pagesIn"><Forums /></div> : <Navigate to="/" />}
               />
             </Routes>
           </div>

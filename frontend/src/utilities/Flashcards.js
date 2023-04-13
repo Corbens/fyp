@@ -4,6 +4,9 @@ const hiragana = {
     title: "Hiragana to English",
     maxSides: 2,
     sideNames: ["Hiragana", "English"],
+    ruby: [
+        
+    ],
     contents: [
         { one: "あ", two: "a"},
         { one: "い", two: "i"},
@@ -225,15 +228,15 @@ const countries = {
     maxSides: 3,
     sideNames: ["English", "Japanese", "Reading"],
     contents: [
-        { one: "Japan", two: "日本", three: "にほん"},
-        { one: "China", two: "中国", three: "ちゅうごく"},
-        { one: "Korea", two: "韓国", three: "かんこく"},
-        { one: "Britain", two: "英国", three: "えいこく"},
-        { one: "France", two: "フランス", three: "ふらんす"},
-        { one: "Spain", two: "スペイン", three: "すぺいん"},
-        { one: "America", two: "アメリカ", three: "あめりか"},
-        { one: "Canada", two: "カナダ", three: "かなだ"},
-        { one: "Italy", two: "イタリア", three: "いたりあ"}
+        { one: "Japan", two: "日本", three: { raw: ["に", "ほ", "ん"], ruby: ["ni", "ho", "n"]}},
+        { one: "China", two: "中国", three: { raw: ["ちゅう", "ご", "く"], ruby: ["chuu", "go", "ku"]}},
+        { one: "Korea", two: "韓国", three: { raw: ["か", "ん", "こ", "く"], ruby: ["ka", "n", "ko", "ku"]}},
+        { one: "Britain", two: "英国", three: { raw: ["え", "い", "こ", "く"], ruby: ["e", "i", "ko", "ku"]}},
+        { one: "France", two: "フランス", three: { raw: ["ふ", "ら", "ん", "す"], ruby: ["fu", "ra", "n", "su"]}},
+        { one: "Spain", two: "スペイン", three: { raw: ["す", "ぺ", "い", "ん"], ruby: ["su", "pe", "i", "n"]}},
+        { one: "America", two: "アメリカ", three: { raw: ["あ", "め", "り", "か"], ruby: ["a", "me", "ri", "ka"]}},
+        { one: "Canada", two: "カナダ", three: { raw: ["か", "な", "だ"], ruby: ["ka", "na", "da"]}},
+        { one: "Italy", two: "イタリア", three: { raw: ["い", "た", "り", "あ"], ruby: ["i", "ta", "ri", "a"]}}
     ]
 }
 
@@ -243,14 +246,14 @@ const food = {
     maxSides: 3,
     sideNames: ["English", "Japanese", "Reading"],
     contents: [
-        { one: "Plum", two: "梅", three: "うめ"},
-        { one: "Strawberry", two: "苺", three: "いちご"},
-        { one: "Salt", two: "塩", three: "しお"},
-        { one: "Tonkatsu", two: "とんかつ", three: "とんかつ"},
-        { one: "Yakiniku", two: "焼肉", three: "やきにく"},
-        { one: "Egg", two: "玉子", three: "たまご"},
-        { one: "Beef", two: "牛肉", three: " ぎゅうにく "},
-        { one: "Fish", two: "魚", three: "さかな"}
+        { one: "Plum", two: "梅", three: { raw: ["う", "め"], ruby: ["u", "me"]}},
+        { one: "Strawberry", two: "苺", three: { raw: ["い", "ち", "ご"], ruby: ["i", "chi", "go"]}},
+        { one: "Salt", two: "塩", three: { raw: ["し", "お"], ruby: ["shi", "o"]}},
+        { one: "Tonkatsu", two: "とんかつ", three: { raw: ["と", "ん", "か", "つ"], ruby: ["to", "n", "ka", "tsu"]}},
+        { one: "Yakiniku", two: "焼肉", three: { raw: ["や", "き", "に", "く"], ruby: ["ya", "ki", "ni", "ku"]}},
+        { one: "Egg", two: "玉子", three: { raw: ["た", "ま", "ご"], ruby: ["ta", "ma", "go"]}},
+        { one: "Beef", two: "牛肉", three: { raw: ["ぎゅう", "に", "く"], ruby: ["gyuu", "ni", "ku"]}},
+        { one: "Fish", two: "魚", three: { raw: ["さ", "か", "な"], ruby: ["sa", "ka", "na"]}}
     ]
 }
 const numbers = {
@@ -259,16 +262,19 @@ const numbers = {
     maxSides: 4,
     sideNames: ["English", "Japanese", "Reading", "Numeral"],
     contents: [
-        { one: "One", two: "一", three: "いち", four: "1"},
-        { one: "Two", two: "二", three: "に", four: "2"},
-        { one: "Three", two: "三", three: "さん", four: "3"},
-        { one: "Four", two: "四", three: "し", four: "4"},
-        { one: "Five", two: "五", three: "ご", four: "5"},
-        { one: "Six", two: "六", three: "ろく", four: "6"},
-        { one: "Seven", two: "七", three: "しち", four: "7"},
-        { one: "Eight", two: "八", three: "はち", four: "8"},
-        { one: "Nine", two: "九", three: "きゅう", four: "9"},
-        { one: "Ten", two: "十", three: "じゅう", four: "10"}
+        { one: "One", two: "一", three: { raw: ["い", "ち"], ruby: ["i", "chi"]}, four: "1"},
+        { one: "Two", two: "二", three: { raw: ["に"], ruby: ["ni"]}, four: "2"},
+        { one: "Three", two: "三", three: { raw: ["さ", "ん"], ruby: ["sa", "n"]}, four: "3"},
+        { one: "Four", two: "四", three: { raw: ["し"], ruby: ["shi"]}, four: "4"},
+        { one: "Five", two: "五", three: { raw: ["ご"], ruby: ["go"]}, four: "5"},
+        { one: "Six", two: "六", three: { raw: ["ろ", "く"], ruby: ["ro", "ku"]}, four: "6"},
+        { one: "Seven", two: "七", three: { raw: ["し", "ち"], ruby: ["shi", "chi"]}, four: "7"},
+        { one: "Eight", two: "八", three: { raw: ["は", "ち"], ruby: ["ha", "chi"]}, four: "8"},
+        { one: "Nine", two: "九", three: { raw: ["きゅう"], ruby: ["kyuu"]}, four: "9"},
+        { one: "Ten", two: "十", three: { raw: ["じゅう"], ruby: ["juu"]}, four: "10"},
+        { one: "One Hundred", two: "百", three: { raw: ["ひゃ", "く"], ruby: ["hya", "ku"]}, four: "100"},
+        { one: "One Thousand", two: "千", three: { raw: ["せ", "ん"], ruby: ["se", "n"]}, four: "1,000"},
+        { one: "Ten Thousand", two: "万", three: { raw: ["ま", "ん"], ruby: ["ma", "n"]}, four: "10,000"},
     ]
 }
 
@@ -283,7 +289,6 @@ export const getFlashcardDeck = (selectedDeck) => {
 export const getFlashcardList = () => {
     const flashcardInfo = []
     for(let deck in flashcardDecks){ 
-        //let deckSides = sidesKey[flashcardDecks[deck].maxSides - 2]
         flashcardInfo.push({label: flashcardDecks[deck].title + " " + sidesKey[flashcardDecks[deck].maxSides - 2], pos: flashcardDecks[deck].num})
     }
     return flashcardInfo

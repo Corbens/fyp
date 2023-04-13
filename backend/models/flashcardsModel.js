@@ -77,7 +77,7 @@ flashcardsSchema.statics.editDeck = async function(email, title, contents) {
     if(contents.length === 0){
         throw Error('Deck must have at least one card')
     }
-    let deck = await this.updateOne({ email: email, title: title }, { contents: contents });
+    let deck = await this.updateOne({ email: email, title: title }, { contents: contents })
     return deck
 
 }

@@ -2,14 +2,17 @@ import { useState } from 'react'
 
 import Grid from '@mui/material/Grid'
 import Button from '@mui/material/Button'
-import Stack from '@mui/material/Stack';
-import Tooltip from '@mui/material/Tooltip';
-import IconButton from '@mui/material/IconButton';
-import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
-import ArrowRightIcon from '@mui/icons-material/ArrowRight';
+import Stack from '@mui/material/Stack'
+import Tooltip from '@mui/material/Tooltip'
+import IconButton from '@mui/material/IconButton'
+import ArrowLeftIcon from '@mui/icons-material/ArrowLeft'
+import ArrowRightIcon from '@mui/icons-material/ArrowRight'
+
+import { useAuthContext } from '../../hooks/useAuthContext'
 
 const Practice = ({ callback, deck }) => {
-
+    const { user } = useAuthContext()
+    
     const [displaySide, setDisplaySide] = useState(0)
     const [displaySideObj, setDisplaySideObj] = useState("one")
     const [cards, setCards] = useState(deck)
@@ -85,8 +88,31 @@ const Practice = ({ callback, deck }) => {
                     <div className="flashcard">
                         <Grid container spacing={2}>
                             <Grid item xs={9}>
+
                                 <h2>{deck.sideNames[displaySide]}</h2>
-                                <h1>{cards.contents[cardNum][displaySideObj]}</h1>
+                                    {(cards.contents[cardNum][displaySideObj].ruby) ?
+                                        ((user.ruby) ? <div>
+                                            <h1>
+                                                {cards.contents[cardNum][displaySideObj].raw.map((value, index) => (
+
+                                                    <ruby>
+                                                    {value} <rt> {cards.contents[cardNum][displaySideObj].ruby[index]} </rt>
+                                                    </ruby> 
+
+                                                ))}
+                                            </h1>
+                                        </div>
+                                        :
+                                        <div>
+                                            <h1>{cards.contents[cardNum][displaySideObj].raw}</h1>
+                                        </div>
+                                        )
+                                    :
+                                    <div>
+                                         <h1>{cards.contents[cardNum][displaySideObj]}</h1>
+                                    </div>
+                                    }                   
+    
                                 <Stack direction='row' justifyContent='center' spacing={0} sx={{width: '100 %'}}> 
                                     <Tooltip title="Previous Card">
                                         <IconButton variant="contained" onClick={() => changeCard(false)}><ArrowLeftIcon sx={{ fontSize: "80px" }}/></IconButton>

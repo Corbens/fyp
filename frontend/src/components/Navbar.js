@@ -50,7 +50,6 @@ const Navbar = () => {
                             <NavLink style={({ isActive }) => ({color: isActive ? '#efede5' : 'black'})} to="/dragdrop">Drag & Drop</NavLink>
                             <NavLink style={({ isActive }) => ({color: isActive ? '#efede5' : 'black'})} to="/flashcards">Flashcards</NavLink>
                             <NavLink style={({ isActive }) => ({color: isActive ? '#efede5' : 'black'})} to="/kanji">Kanji</NavLink>
-                            <NavLink style={({ isActive }) => ({color: isActive ? '#efede5' : 'black'})} to="/forums">Forums</NavLink>
                             <span> | {user.username} </span>
                             <IconButton variant="contained" onClick={expandMenu} ref={spanRef}><ExpandCircleDownIcon/></IconButton>
                             <Menu

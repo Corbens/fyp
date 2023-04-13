@@ -42,6 +42,10 @@ const userSchema = new Schema({
     lessons: {
         type: Array,
         default: [false, false, false]
+    },
+    ruby: {
+        type: Boolean,
+        default: true
     }
 
 })
@@ -139,6 +143,20 @@ userSchema.statics.updateLessonStatus = async function(email, lesson) {
     const user = await this.findOne({ email })
     
     user.lessons[Number(lesson)] = !user.lessons[Number(lesson)]
+    await user.save()
+
+    return ("Successfully updated")
+}
+
+userSchema.statics.getRuby = async function(email) {
+    const user = await this.findOne({ email })
+    return user.ruby
+
+}
+
+userSchema.statics.toggleRuby = async function(email) {
+    const user = await this.findOne({ email })
+    user.ruby = !user.ruby
     await user.save()
 
     return ("Successfully updated")

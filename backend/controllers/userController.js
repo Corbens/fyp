@@ -16,10 +16,11 @@ const loginUser = async (req, res) => {
     try {
         const user = await User.login(email, password)
         const username = user.username
+        const ruby = user.ruby
 
         const token = createToken(user._id)
         
-        res.status(200).json({email, token, username})
+        res.status(200).json({email, token, username, ruby})
     } catch (error) {
         res.status(400).json({error: error.message})
     }
@@ -32,10 +33,11 @@ const signupUser = async (req, res) => {
     try {
         const user = await User.signup(email, password, username)
         await Srs.createSrs(email)
+        const ruby = false
 
         const token = createToken(user._id)
         
-        res.status(201).json({email, token, username})
+        res.status(201).json({email, token, username, ruby})
     } catch (error) {
         res.status(400).json({error: error.message})
     }
@@ -93,4 +95,26 @@ const updateLessonStatus = async (req, res) => {
     }
 }
 
-module.exports = { loginUser, signupUser, addHistory, getHistory, getLeaderboard, getLessonStatus, updateLessonStatus }
+const getRuby = async (req, res) => {
+    const { email } = req.body
+
+    try {
+        const ruby = await User.getRuby(email)
+        res.status(200).json({"ruby": ruby})
+    } catch (error) {
+        res.status(400).json({error: error.message})
+    }
+}
+
+const toggleRuby = async(req, res) => {
+    const { email } = req.body
+
+    try {
+        const result = await User.toggleRuby(email)
+        res.status(200).json({result})
+    } catch (error) {
+        res.status(400).json({error: error.message})
+    }
+}
+
+module.exports = { loginUser, signupUser, addHistory, getHistory, getLeaderboard, getLessonStatus, updateLessonStatus, getRuby, toggleRuby }
