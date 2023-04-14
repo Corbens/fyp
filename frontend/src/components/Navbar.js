@@ -1,13 +1,14 @@
 import { useState, useRef } from 'react'
 import { NavLink } from "react-router-dom"
-import { useLogout } from '../hooks/useLogout'
-import { useAuthContext } from '../hooks/useAuthContext'
 
 import LogoutIcon from '@mui/icons-material/Logout'
 import ExpandCircleDownIcon from '@mui/icons-material/ExpandCircleDown'
 import IconButton from '@mui/material/IconButton'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
+
+import { useLogout } from '../hooks/useLogout'
+import { useAuthContext } from '../hooks/useAuthContext'
 
 const Navbar = () => {
     const { logout } = useLogout()
@@ -41,7 +42,10 @@ const Navbar = () => {
         <header>
             <div className="container">
                 <NavLink style={({ isActive }) => ({color: isActive ? getColour(true) : getColour(false)})} exact to="/">
-                    <h1 style={{color: home ? '#efede5' : 'black'}}>Learn Japanese</h1> 
+                    <div className="title">
+                    <h1 class="stroke-shadow">コーベンの日本語</h1>
+                    <h4 style={{color: home ? '#efede5' : 'black'}}>Learn Japanese</h4> 
+                    </div>
                 </NavLink>
                 <nav>
                     {user && ( 

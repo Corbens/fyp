@@ -1,15 +1,15 @@
 import { useState, useRef } from 'react'
 import { useSignup } from '../hooks/useSignup'
 
-import TextField from '@mui/material/TextField';
-import IconButton from "@mui/material/IconButton";
-import Visibility from "@mui/icons-material/Visibility";
-import InputAdornment from "@mui/material/InputAdornment";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
+import TextField from '@mui/material/TextField'
+import IconButton from "@mui/material/IconButton"
+import Visibility from "@mui/icons-material/Visibility"
+import InputAdornment from "@mui/material/InputAdornment"
+import VisibilityOff from "@mui/icons-material/VisibilityOff"
+import Button from '@mui/material/Button'
+import Tooltip from '@mui/material/Tooltip'
 
-import { getStreetview } from '../utilities/Streetview';
+import { getStreetview } from '../utilities/Streetview'
 
 const Signup = () => {
     const [email, setEmail] = useState('')
@@ -36,7 +36,6 @@ const Signup = () => {
 
     const [streetviewObj] = useState(getStreetview())
 
-    
 
     return (
         <div className='loginDiv'>

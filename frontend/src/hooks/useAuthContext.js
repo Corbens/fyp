@@ -1,10 +1,11 @@
-import { AuthContext } from '../context/AuthContext'
 import { useContext } from 'react'
 
-export const useAuthContext = () => { // used to determine if there is a user logged in or not. returns the result as context
+import { AuthContext } from '../context/AuthContext'
+
+export const useAuthContext = () => { // hook to retrieve the user object stored in local storage by the context
     const context = useContext(AuthContext)
 
-    if (!context) { // checks that the context is being used in the correct place
+    if (!context) { // checks that user was retrieved (has to be within authContextProvider)
         throw Error('useAuthContext must be used inside an AuthContextProvider')
     }
 

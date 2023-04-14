@@ -1,10 +1,9 @@
 import { useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 
 import Menu from '../components/flashcards/Menu'
 import Practice from '../components/flashcards/Practice'
 import Review from '../components/flashcards/Review'
-
-import { useSearchParams } from 'react-router-dom'
 
 const Flashcards = () => {
 

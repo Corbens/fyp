@@ -226,7 +226,7 @@ const countries = {
     num: "4",
     title: "Countries",
     maxSides: 3,
-    sideNames: ["English", "Japanese", "Reading"],
+    sideNames: ["English", "Japanese", "Pronunciation"],
     contents: [
         { one: "Japan", two: "日本", three: { raw: ["に", "ほ", "ん"], ruby: ["ni", "ho", "n"]}},
         { one: "China", two: "中国", three: { raw: ["ちゅう", "ご", "く"], ruby: ["chuu", "go", "ku"]}},
@@ -244,7 +244,7 @@ const food = {
     num: "5",
     title: "Food",
     maxSides: 3,
-    sideNames: ["English", "Japanese", "Reading"],
+    sideNames: ["English", "Japanese", "Pronunciation"],
     contents: [
         { one: "Plum", two: "梅", three: { raw: ["う", "め"], ruby: ["u", "me"]}},
         { one: "Strawberry", two: "苺", three: { raw: ["い", "ち", "ご"], ruby: ["i", "chi", "go"]}},
@@ -260,7 +260,7 @@ const numbers = {
     num: "6",
     title: "Numbers",
     maxSides: 4,
-    sideNames: ["English", "Japanese", "Reading", "Numeral"],
+    sideNames: ["English", "Japanese", "Pronunciation", "Numeral"],
     contents: [
         { one: "One", two: "一", three: { raw: ["い", "ち"], ruby: ["i", "chi"]}, four: "1"},
         { one: "Two", two: "二", three: { raw: ["に"], ruby: ["ni"]}, four: "2"},

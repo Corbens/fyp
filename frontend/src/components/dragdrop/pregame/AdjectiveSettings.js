@@ -1,11 +1,11 @@
 import { useState, useRef } from 'react'
 
-import FormGroup from '@mui/material/FormGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Box from '@mui/material/Box';
-import Slider from '@mui/material/Slider';
-import Button from '@mui/material/Button';
+import FormGroup from '@mui/material/FormGroup'
+import FormControlLabel from '@mui/material/FormControlLabel'
+import Checkbox from '@mui/material/Checkbox'
+import Box from '@mui/material/Box'
+import Slider from '@mui/material/Slider'
+import Button from '@mui/material/Button'
 
 const AdjectiveSettings = () => {
 
@@ -18,16 +18,15 @@ const AdjectiveSettings = () => {
 
     return (
         <div className="adjectiveSettings">
-        <h3>Adjective Settings</h3>
-        <FormGroup>
-            <FormControlLabel control={<Checkbox disabled/>} label="Deck 1" />
-            <FormControlLabel control={<Checkbox disabled/>} label="Deck 2" />
-            <FormControlLabel control={<Checkbox disabled/>} label="Deck 3" />
-        </FormGroup>
+            <h3>Adjective Settings</h3>
+            <FormGroup sx={{display: "inline"}}>
+                <FormControlLabel control={<Checkbox disabled/>} label="Deck 1" />
+                <FormControlLabel control={<Checkbox disabled/>} label="Deck 2" />
+                <FormControlLabel control={<Checkbox disabled/>} label="Deck 3" />
+            </FormGroup>
             <Box sx={{ width: 300 }}>
                 <h4>Number of Cards</h4>
                 <Slider
-                    aria-label="Cards"
                     defaultValue={5}
                     step={null}
                     marks={[

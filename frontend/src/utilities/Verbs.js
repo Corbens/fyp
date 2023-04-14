@@ -79,6 +79,3 @@ export const getDecks = (selectedDeck) => {
         return irregularVerbs
     }
 }
-//https://blog.lingodeer.com/japanese-verb-conjugation-guide/#Japanese_verb_groups_Ru-Verbs_V2
-//https://www.tofugu.com/japanese-grammar/verb-conjugation-groups/
-//look up genki conjugation sections

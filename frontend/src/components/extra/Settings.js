@@ -6,8 +6,6 @@ import Checkbox from '@mui/material/Checkbox'
 
 import { useAuthContext } from '../../hooks/useAuthContext'
 
-
-
 const Settings = () => {
     const { user } = useAuthContext()
 
@@ -32,7 +30,8 @@ const Settings = () => {
     return(
         <div>
             <h1>Settings</h1>
-            <FormControlLabel control={<Checkbox checked={ruby} onChange={() => handleToggleRuby()}/>} label="Enable Furigana/Ruby Where Supported" />
+            <FormControlLabel control={<Checkbox checked={ruby} onChange={() => handleToggleRuby()}/>} label="Enable Ruby (Furigana) Where Supported" />
+            <br/>
         </div>
     )
 }

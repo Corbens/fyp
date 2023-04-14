@@ -14,7 +14,6 @@ import { useAuthContext } from '../hooks/useAuthContext'
 const Kanji = () => {
 
     const { user } = useAuthContext()
-    // Consider when things don't need to be state, useRef might work fine too. Should check this throughout all your code
     const [active, setActive] = useState(false)
     const [kanji, setKanji] = useState(getKanji())
     const [currentKanji, setCurrentKanji] = useState(0)
@@ -42,13 +41,12 @@ const Kanji = () => {
             }).then((response) => {
             }).catch((error) => {
             })
-            // maybe have a button to go to the lessons page if you are struggling with kanji. can also learn elsewhere?
         }
     }
 
     const startGame = () => {
         let kanjiSet = getKanji()
-        for(let i = kanjiSet.length -1; i > 0; i--){ // shuffle the kanji. once have more than 5 kanji make sure to setKanji to only the first 5 kanji (after shuffling).
+        for(let i = kanjiSet.length -1; i > 0; i--){ 
             let j = Math.floor(Math.random() * (i + 1))
             var temp = kanjiSet[i]
             kanjiSet[i] = kanjiSet[j]
@@ -88,7 +86,8 @@ const Kanji = () => {
                         <h1>Kanji Composition Game</h1>
                     </div>
                     <div className="preKanjiContents">
-                        <h2>In this game, you are tasked with selecting which components are used to make up the given Kanji. There are 5 Kanji for you to work through. The Kanji is displayed in English, but you have a set of hints to help you, one of which shows you the Kanji. Work through this game to help aid your Kanji comprehension skills, helping you figure out the slight differences between Kanji that can look all too indistinguishable to untrained eyes!</h2>
+                        <p>In this game, you are tasked with selecting which components are used to make up the given Kanji. There are 5 Kanji for you to work through and you will be given the English translation. To aid you there will be a set of hints you can use.</p>
+                        <p>Working through this game will help improve your Kanji comprehension skills, as you begin to distinguish between the slight visual differences between Kanji.</p>
                         <Button variant="outlined" onClick={() => startGame()}>{!played ? "Start Game" : "Play Again"}</Button>
                         { played && <Button variant="outlined" onClick={() => handleResultsOpen()}>Show Results</Button>}
                     </div>

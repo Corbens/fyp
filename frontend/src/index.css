@@ -66,6 +66,15 @@ header a {
   text-decoration: none;
 }
 
+header h1, h4 {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+header .title {
+  text-align: center;
+}
+
 nav {
   display: flex;
   align-items: center;
@@ -359,9 +368,15 @@ form.login {
   border-radius: 0px 0px 12px 12px;
 }
 
+.preKanjiContents p {
+  font-size: 30px;
+  margin-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 .kanjiContents {
   background: #e8c5ff; 
-  padding: 10px 10px 20px 10px;
   margin: 0px 0px 20px 0px;
   border:medium solid black;
   border-radius: 15px;
@@ -388,9 +403,18 @@ form.login {
   font-size: 50px;
 }
 
+.kanjiGame {
+  padding: 5px 10px 20px 20px;
+}
+
 .targetKanji {
   justify-content: center;
   text-align: center;
+  background: #b9a4ff;
+  padding: 10px 10px 10px 10px; 
+  border-bottom: medium solid black;
+  border-radius: 12px 12px 0px 0px;
+
 }
 
 .targetKanji p {
@@ -537,9 +561,18 @@ form.login {
 }
 
 /* Extra Styling End */
+
+
+
 rt {
   font-size: 20px;
 }
+
+.stroke-shadow {
+  color: #fef3c7;
+  text-shadow: -2px 0 #111827, 0 -2px #111827, 2px 0 #111827, 0 2px #111827, 2px 2px #111827, -2px -2px #111827, -2px 2px #111827, 2px -2px #111827, 6px 6px #db2777;
+}
+
 
 
 /* Colours: Dark Purple #b9a4ff, Light Purple #e8c5ff, Pink #ffe2f0, White and Black. */

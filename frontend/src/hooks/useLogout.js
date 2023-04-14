@@ -5,7 +5,7 @@ export const useLogout = () => {
 
     const logout = () => {
         localStorage.removeItem('user')
-        dispatch({type: 'LOGOUT'}) // returns the user (should now be null as logging out)
+        dispatch({type: 'LOGOUT'}) // removes the user object from local storage 
     }
 
     return {logout}

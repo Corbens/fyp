@@ -1,15 +1,15 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
+import Button from '@mui/material/Button'
+import Stack from '@mui/material/Stack'
+import Modal from '@mui/material/Modal'
+import FormGroup from '@mui/material/FormGroup'
+import FormControlLabel from '@mui/material/FormControlLabel'
+import Checkbox from '@mui/material/Checkbox'
+
 import { useAuthContext } from '../../hooks/useAuthContext'
 import { getDate } from '../../utilities/HandleDate'
-
-import Button from '@mui/material/Button'
-import Stack from '@mui/material/Stack';
-import Modal from '@mui/material/Modal';
-import FormGroup from '@mui/material/FormGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 
 const ReviewMenu = ({ callback }) => {
 
@@ -128,7 +128,7 @@ const ReviewMenu = ({ callback }) => {
     const handleResetClose = () => {
         setResetOpen(false)
     }
-    const [reset, setReset] = useState([false, false, false, false]) // maybe make dynamic, so depending on how many SRS decks, have that many false. (rather than hard coding amount) 
+    const [reset, setReset] = useState([false, false, false, false])
     const updateReset = (index) => {
         setReset((prev) => 
             prev.map((val, i) => {
@@ -145,18 +145,13 @@ const ReviewMenu = ({ callback }) => {
             email: user.email,
             values: reset
         }).then((response) => {
-            setReset([false, false, false, false]) // maybe make dynamic, so depending on how many SRS decks, have that many false. (rather than hard coding amount)
+            setReset([false, false, false, false]) 
             getSrsDecks()
             handleResetClose()
-            // also need to get srs decks so new updates are received and everything is rendered
-
         }).catch((error) => {
-            // display error somewhere
         })
 
     }
-
-
 
     return(
         <div>
@@ -165,19 +160,20 @@ const ReviewMenu = ({ callback }) => {
                     <h2>Review Mode</h2>
                     <p>Review mode makes use of a Spaced Repetition Schedule (SRS) to show you flashcards at spaced intervals with the goal of testing you just as you are likely to forget.Getting cards correct increases the interval between the next showing of that card, and getting cards incorrect decreases the interval between the next showing of that card. </p>
                 </div>
-                <div className='menuContents'>
-                    <Stack spacing={2} justifyContent='center' sx={{width: '50%'}} >
+                <div className='menuContents' align="center">
+                    <Stack spacing={2} sx={{ width: '400px' }}>
                         <p>{reviewMessage}</p>
                         <Button variant="outlined" onClick={startReviews} disabled={!enableReview}>Review</Button> 
                         <Button variant="outlined" onClick={handleEditOpen}>Edit SRS Enabled Decks</Button>
                         <Button variant="outlined" onClick={handleResetOpen}>Reset A Deck's Progress</Button>
+                        <br/>
                     </Stack>
                 </div>
             </div>
             <Modal open={editOpen} onClose={handleEditClose} style={{display:'flex', alignItems:'center', justifyContent:'center'}}>
                 <div className="modalMenu">
                     <h2>SRS Enabled Decks</h2>
-                    <Stack spacing={1}> 
+                    <Stack spacing={1} alignItems="center"> 
                         {(!srsDecks) ? <h2>Loading Decks...</h2> : 
                             <FormGroup>
                             {srsDecks.decks.map((deck, index) => (
@@ -185,7 +181,7 @@ const ReviewMenu = ({ callback }) => {
                             ))}
                             </FormGroup>
                         }
-                        <p>Disabling a deck pauses your reviews until you enable them again. Your progress is saved (Warning: doing this effects the way SRS works, read more here)</p>
+                        <p>Disabling a deck pauses your reviews until you enable them again</p>
                         <Button variant="outlined" onClick={updateSrs}>Update Settings</Button>
                         <Button variant="outlined" onClick={handleEditClose}>Close Settings</Button> 
                     </Stack>
@@ -195,8 +191,7 @@ const ReviewMenu = ({ callback }) => {
             <Modal open={resetOpen} onClose={handleResetClose} style={{display:'flex', alignItems:'center', justifyContent:'center'}}>
                 <div className="modalMenu">
                     <h2>SRS Decks</h2>
-                    <h4>WARNING: Resetting a deck's progress is a permanent change and cannot be reversed!</h4>
-                    <Stack spacing={1}> 
+                    <Stack spacing={1} alignItems="center"> 
                         {(!srsDecks) ? <h2>Loading Decks...</h2> : 
                             <FormGroup>
                             {srsDecks.decks.map((deck, index) => (
@@ -204,6 +199,7 @@ const ReviewMenu = ({ callback }) => {
                             ))}
                             </FormGroup>
                         }
+                        <h4>WARNING: Resetting a deck's progress is a permanent change and cannot be reversed!</h4>
                         <Button variant="outlined" onClick={resetSrs}>Reset Selected Decks</Button>
                         <Button variant="outlined" onClick={handleResetClose}>Cancel</Button> 
                     </Stack>

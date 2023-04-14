@@ -1,6 +1,7 @@
 import { useState } from 'react'
-import { useAuthContext } from './useAuthContext'
 import axios from 'axios'
+
+import { useAuthContext } from './useAuthContext'
 
 export const useLogin = () => {
 
@@ -12,13 +13,13 @@ export const useLogin = () => {
         setIsLoading(true)
         setError(null)
 
-        axios.post("user/login", { // sends login post request to the backend
+        axios.post("user/login", { 
             email: email,
             password: password
         }).then((response) => {
             console.log(response.data)
             localStorage.setItem('user', JSON.stringify(response.data))
-            dispatch({type: 'LOGIN', payload: response.data}) // updates the auth context, should now have a non-null user as we are logging in
+            dispatch({type: 'LOGIN', payload: response.data}) // saves the user object to local storage
             setIsLoading(false)
         }).catch((error) => {
             setIsLoading(false)

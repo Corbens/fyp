@@ -1,5 +1,3 @@
-//import HiraganaTable from '../HiraganaTable'
-
 const Information = ({ slide }) => {
 
     return(

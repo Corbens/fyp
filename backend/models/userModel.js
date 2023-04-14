@@ -91,7 +91,6 @@ userSchema.statics.signup = async function(email, password, username) {
     return user
 } 
 
-// static login method
 userSchema.statics.login = async function(email, password) {
 
     if(!email || !password){ 

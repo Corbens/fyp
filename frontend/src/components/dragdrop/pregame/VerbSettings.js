@@ -1,12 +1,13 @@
 import { useState, useRef } from 'react'
-import { getDecks } from '../../../utilities/Verbs';
 
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
-import Box from '@mui/material/Box';
-import Slider from '@mui/material/Slider';
-import Button from '@mui/material/Button';
+import FormControlLabel from '@mui/material/FormControlLabel'
+import Radio from '@mui/material/Radio'
+import RadioGroup from '@mui/material/RadioGroup'
+import Box from '@mui/material/Box'
+import Slider from '@mui/material/Slider'
+import Button from '@mui/material/Button'
+
+import { getDecks } from '../../../utilities/Verbs'
 
 const VerbSettings = ({ callback }) => {
 
@@ -19,9 +20,9 @@ const VerbSettings = ({ callback }) => {
 
     return (
         <div className="verbSettings">
-        <h3>Verb Settings</h3>
-        <p>This game mode is about matching the correct verb conjugation to the English version of the verb. Choose from one of the three categories of verbs and test your conjugation skills! </p>
-            <RadioGroup defaultValue="Godan" name="radio-buttons-group" onChange={(e) => setSelectedDeck(e.target.value)}>
+            <h3>Verb Settings</h3>
+            <p>This game mode is about matching the correct verb conjugation to the English version of the verb. Choose from one of the three categories of verbs and test your conjugation skills! </p>
+            <RadioGroup defaultValue="Godan" name="radio-buttons-group" onChange={(e) => setSelectedDeck(e.target.value)} sx={{display: "inline"}}>
                 <FormControlLabel value="Godan" control={<Radio />} label="Godan Verbs" />
                 <FormControlLabel value="Ichidan" control={<Radio />} label="Ichidan Verbs" />
                 <FormControlLabel value="Irregular" control={<Radio />} label="Irregular Verbs" />

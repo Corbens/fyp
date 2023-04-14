@@ -1,9 +1,10 @@
 import { useState } from 'react'
 
-import DragDrop from './DragDrop'
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace'
 import IconButton from '@mui/material/IconButton'
 import Tooltip from '@mui/material/Tooltip'
+
+import DragDrop from './DragDrop'
 
 const Midgame = ({deck, cards, type, callback}) => {
 
@@ -72,9 +73,6 @@ const Midgame = ({deck, cards, type, callback}) => {
             <Tooltip title="Go Back">
                 <IconButton variant="contained" onClick={() => callback(false)}><KeyboardBackspaceIcon/></IconButton>
             </Tooltip>
-            {/* <Tooltip title={helpMessage}>
-                <IconButton><HelpOutlineIcon/></IconButton>
-            </Tooltip> */}
         </div>
     )
 }

@@ -1,24 +1,23 @@
 import { useState } from 'react'
 
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormControl from '@mui/material/FormControl';
-import FormLabel from '@mui/material/FormLabel';
+import Radio from '@mui/material/Radio'
+import RadioGroup from '@mui/material/RadioGroup'
+import FormControlLabel from '@mui/material/FormControlLabel'
+import FormControl from '@mui/material/FormControl'
+import FormLabel from '@mui/material/FormLabel'
 
 import AdjectiveSettings from './pregame/AdjectiveSettings'
-import NounSettings from './pregame/NounSettings';
-import ParticleSettings from './pregame/ParticleSettings';
-import VerbSettings from './pregame/VerbSettings';
-import VocabularySettings from './pregame/VocabularySettings';
+import NounSettings from './pregame/NounSettings'
+import ParticleSettings from './pregame/ParticleSettings'
+import VerbSettings from './pregame/VerbSettings'
+import VocabularySettings from './pregame/VocabularySettings'
 
 const Pregame = ({ callback }) => {
 
     const [value, setValue] = useState("Vocabulary");
 
-    // callback function to be used by settingComponent
     const startGame = (deck, cards) => {
-        callback(deck, cards, value) // calls the callback function from the parent component (BlankGame) to go to MidGame
+        callback(deck, cards, value) 
     }
 
     let settingComponent;
@@ -48,12 +47,11 @@ const Pregame = ({ callback }) => {
                 <div className="settingsTitle">
                     <h2>Select Your Game Settings</h2>
                 </div>
-                <div className="settingsContents">
+                <div className="settingsContents" align="center">
                 <FormControl>
                     <FormLabel id="demo-row-radio-buttons-group-label">Game Type</FormLabel>
                     <RadioGroup 
                         row 
-                        aria-labelledby="demo-row-radio-buttons-group-label"
                         name="row-radio-buttons-group"
                         value={value}
                         onChange={(e) => setValue(e.target.value)}>

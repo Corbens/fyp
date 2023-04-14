@@ -36,8 +36,6 @@ const Test = ({ slide }) => {
         setTestAnswer(null)
     }
 
-
-
     return(
         <div className="slideDiv">
             <div className="slideTitle">

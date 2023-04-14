@@ -88,17 +88,14 @@ const Practice = ({ callback, deck }) => {
                     <div className="flashcard">
                         <Grid container spacing={2}>
                             <Grid item xs={9}>
-
                                 <h2>{deck.sideNames[displaySide]}</h2>
                                     {(cards.contents[cardNum][displaySideObj].ruby) ?
                                         ((user.ruby) ? <div>
                                             <h1>
                                                 {cards.contents[cardNum][displaySideObj].raw.map((value, index) => (
-
                                                     <ruby>
-                                                    {value} <rt> {cards.contents[cardNum][displaySideObj].ruby[index]} </rt>
+                                                        {value} <rt> {cards.contents[cardNum][displaySideObj].ruby[index]} </rt>
                                                     </ruby> 
-
                                                 ))}
                                             </h1>
                                         </div>
@@ -112,7 +109,6 @@ const Practice = ({ callback, deck }) => {
                                          <h1>{cards.contents[cardNum][displaySideObj]}</h1>
                                     </div>
                                     }                   
-    
                                 <Stack direction='row' justifyContent='center' spacing={0} sx={{width: '100 %'}}> 
                                     <Tooltip title="Previous Card">
                                         <IconButton variant="contained" onClick={() => changeCard(false)}><ArrowLeftIcon sx={{ fontSize: "80px" }}/></IconButton>

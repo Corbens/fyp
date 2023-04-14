@@ -26,7 +26,7 @@ const PracticeMenu = ({ callback }) => {
             <div className='menuContents'>
                 <Box sx={{ flexGrow: 1 }}>
                     <Grid container spacing={2}>
-                        <Grid item xs={6}>
+                        <Grid item xs={6} align="center">
                             <h3>Premade Decks</h3>
                             <Autocomplete
                                 isOptionEqualToValue={(option, value) => option.pos === value.pos}
@@ -40,7 +40,7 @@ const PracticeMenu = ({ callback }) => {
                                 sx={{ width: '400px' }}
                                 renderInput={(params) => <TextField {...params} label="Deck" />}
                             />
-                            <br></br>
+                            <br/>
                             <Button variant='outlined' disabled = {!Boolean(premadeValue)} onClick={practicePremade}>Practice Selected Deck</Button>
                         </Grid>
                         <Grid item xs={6}>

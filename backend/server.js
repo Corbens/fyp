@@ -11,8 +11,7 @@ const srsRoutes = require('./routes/srsRoutes')
 const app = express()
 
 //middleware
-//not sure but think this is necessary for postman requests at least sometimes. make things have the right json format
-app.use(express.json())
+app.use(express.json()) //this is necessary to make json format for postman requests.
 
 //displays the route path and method when a route is invoked
 app.use((req, res, next) => {

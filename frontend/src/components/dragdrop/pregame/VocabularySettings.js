@@ -1,12 +1,13 @@
 import { useState, useRef } from 'react'
-import { getDecks } from '../../../utilities/Vocabulary';
 
-import FormGroup from '@mui/material/FormGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Box from '@mui/material/Box';
-import Slider from '@mui/material/Slider';
-import Button from '@mui/material/Button';
+import FormGroup from '@mui/material/FormGroup'
+import FormControlLabel from '@mui/material/FormControlLabel'
+import Checkbox from '@mui/material/Checkbox'
+import Box from '@mui/material/Box'
+import Slider from '@mui/material/Slider'
+import Button from '@mui/material/Button'
+
+import { getDecks } from '../../../utilities/Vocabulary'
 
 const VocabularySettings = ({ callback }) => {
 
@@ -62,7 +63,7 @@ const VocabularySettings = ({ callback }) => {
         <div className="vocabSettings">
             <h3>Vocabulary Settings</h3>
             <p>This vocabulary game mode involves matching Japanese words to English words. Choose what decks you wish to test your knowledge on and how many cards to be tested on! </p>
-            <FormGroup>
+            <FormGroup sx={{display: "inline"}}>
                 <FormControlLabel control={<Checkbox defaultChecked onChange={handleChangeCountries}/>} label="Countries" />
                 <FormControlLabel control={<Checkbox onChange={handleChangeFood} />} label="Food" />
                 <FormControlLabel control={<Checkbox onChange={handleChangeNumbers} />} label="Numbers" />

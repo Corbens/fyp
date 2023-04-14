@@ -1,19 +1,19 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
+import Table from '@mui/material/Table'
+import TableBody from '@mui/material/TableBody'
+import TableCell from '@mui/material/TableCell'
+import TableHead from '@mui/material/TableHead'
+import TableRow from '@mui/material/TableRow'
 
 import Lesson from '../components/lessons/Lesson'
-import { getHiragana, getKatakana } from '../utilities/Lessons'
+import { getHiragana, getKatakana, getNumbers } from '../utilities/Lessons'
 import { useAuthContext } from '../hooks/useAuthContext'
 
 const Lessons = () => {
     const { user } = useAuthContext()
-    const lessonContent = [getHiragana(), getKatakana()] // need to get and create numbers lesson.
+    const lessonContent = [getHiragana(), getKatakana(), getNumbers()] 
 
     const [lessonStatus, setLessonStatus] = useState(null)
     const [lesson, setLesson] = useState(null)
@@ -47,35 +47,33 @@ const Lessons = () => {
                 <div className="preLessonsDiv">
                     <div className="preLessonsTitle">
                         <h2>Lessons</h2>
-                        <p>Click on a lesson to begin!</p>
+                        <p>Lessons allow you to learn an introduction to the topic stated. Navigate through a series of slides and learn about a topic, test your knowledge and see where you can practice further. To start, click on a lesson from the table</p>
                     </div>
 
                     <div className='lessonsList'>
                         <Table>
                             <TableHead>
-                                <TableRow sx={{ 'th' : { background: "#b9a4ff", borderBottom: "thin solid black" }, 'h4' : { marginTop: 0, marginBottom: 0} }}>
-                                    <TableCell><h4>Lesson Number</h4></TableCell>
-                                    <TableCell><h4>Lesson Name</h4></TableCell>
-                                    <TableCell><h4>Completed?</h4></TableCell>
+                                <TableRow sx={{ 'th' : { background: "#b9a4ff", borderBottom: "thin solid black"}, 'th:first-child': { borderTopLeftRadius: "20px"}, 'th:last-child': { borderTopRightRadius: "20px" } }}>
+                                    <TableCell><h2>Lesson Number</h2></TableCell>
+                                    <TableCell><h2>Lesson Name</h2></TableCell>
+                                    <TableCell><h2>Completed?</h2></TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
                                 <TableRow className='lessonEntry' onClick={() => startLesson(0)} key="hiragana" sx={{ '&:last-child td': { border: 0 }, 'td': {borderBottom: "thin solid black"} }}>
-                                    <TableCell>1</TableCell>
-                                    <TableCell>Hiragana</TableCell>
-                                    <TableCell>{lessonStatus && (lessonStatus[0] ? "⭕" : "❌")}</TableCell>
+                                    <TableCell><p>1</p></TableCell>
+                                    <TableCell><p>Hiragana</p></TableCell>
+                                    <TableCell>{lessonStatus && (lessonStatus[0] ? <h2>⭕</h2> : <h2>❌</h2>)}</TableCell>
                                 </TableRow>
                                 <TableRow className='lessonEntry' onClick={() => startLesson(1)} key="katakana" sx={{ '&:last-child td': { border: 0 }, 'td': {borderBottom: "thin solid black"} }}>
                                     <TableCell>2</TableCell>
                                     <TableCell>Katakana</TableCell>
-                                    <TableCell>{lessonStatus && (lessonStatus[1] ? "⭕" : "❌")}</TableCell>
+                                    <TableCell >{lessonStatus && (lessonStatus[1] ? <h2>⭕</h2> : <h2>❌</h2>)}</TableCell>
                                 </TableRow>
-                                <TableRow className='lessonEntry' 
-                                // onClick={() => startLesson(2)}
-                                key="numbers" sx={{ '&:last-child td': { border: 0 }, 'td': {borderBottom: "thin solid black"} }}>
+                                <TableRow className='lessonEntry' onClick={() => startLesson(2)} key="numbers" sx={{ '&:last-child td': { border: 0 }, 'td': {borderBottom: "thin solid black"} }}>
                                     <TableCell>3</TableCell>
                                     <TableCell>Kanji</TableCell>
-                                    <TableCell>{lessonStatus && (lessonStatus[2] ? "⭕" : "❌")}</TableCell>
+                                    <TableCell>{lessonStatus && (lessonStatus[2] ? <h2>⭕</h2> : <h2>❌</h2>)}</TableCell>
                                 </TableRow>
                             </TableBody>
                         </Table>

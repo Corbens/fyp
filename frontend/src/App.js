@@ -1,11 +1,10 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { useState } from 'react'
-import { useAuthContext } from './hooks/useAuthContext'
 import axios from "axios"
 
-import Fab from '@mui/material/Fab'
-import SettingsIcon from '@mui/icons-material/Settings'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
+import SettingsIcon from '@mui/icons-material/Settings'
+import Fab from '@mui/material/Fab'
 import Modal from '@mui/material/Modal'
 
 import Home from './pages/Home'
@@ -17,6 +16,7 @@ import Flashcards from './pages/Flashcards'
 import Kanji from './pages/Kanji'
 import Navbar from './components/Navbar'
 import Extra from './components/extra/Extra'
+import { useAuthContext } from './hooks/useAuthContext'
 
 axios.defaults.baseURL = process.env.REACT_APP_API_BASE_URL
 
@@ -27,7 +27,6 @@ function App() {
   const theme = createTheme({
     palette: {
       primary: {
-        // main: "#8f6dff"
         main: "#333333"
       },
       secondary: {

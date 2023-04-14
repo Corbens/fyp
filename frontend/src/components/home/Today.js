@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
-import axios from 'axios'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 import { useAuthContext } from '../../hooks/useAuthContext'
 import { getSpecialDay } from '../../utilities/AnniversaryDates'
@@ -10,18 +10,6 @@ const Today = () => {
     const { user } = useAuthContext()
     const date = new Date()
     const specialDay = getSpecialDay(date)
-
-    // const dateTime = () => {
-    //     const d = new Date();
-    //     let diff = d.getTimezoneOffset();
-    //     d.setHours(d.getHours() - diff/60)
-    //     return d
-    // }
-    // get user timezone
-    // compare date at that timezone to our timezone to calculate hours shift
-    // have a current date object which you update by the timezone shift
-    // get the date of this time object
-
 
     const [srsDecks, setSrsDecks] = useState(null)
     const [reviewMessage, setReviewMessage] = useState("0 Cards To Review.")
@@ -76,8 +64,6 @@ const Today = () => {
             setReviewMessage("You have " + count + " cards to review!")
         }
     }
-
-
 
     return(
         <div className="homeComponent">

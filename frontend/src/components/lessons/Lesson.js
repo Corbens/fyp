@@ -4,19 +4,19 @@ import axios from 'axios'
 import Grid from '@mui/material/Grid'
 import Stack from '@mui/material/Stack'
 import Information from './Information'
-import Test from './Test'
-import Tooltip from '@mui/material/Tooltip';
-import IconButton from '@mui/material/IconButton';
-import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
-import ArrowRightIcon from '@mui/icons-material/ArrowRight';
-import Button from '@mui/material/Button';
+import Tooltip from '@mui/material/Tooltip'
+import IconButton from '@mui/material/IconButton'
+import ArrowLeftIcon from '@mui/icons-material/ArrowLeft'
+import ArrowRightIcon from '@mui/icons-material/ArrowRight'
+import Button from '@mui/material/Button'
 
+import Test from './Test'
 import { useAuthContext } from '../../hooks/useAuthContext'
 
 const Lesson = ({ callback, status, content, num }) => {
     const { user } = useAuthContext()
 
-    const [lessonStatus, setLessonStatus] = useState(status) //get initial from props, therefore change from link method to component method. 
+    const [lessonStatus, setLessonStatus] = useState(status)
     const [pages] = useState(content.pages)
     const [page, setPage] = useState(0)
 
@@ -28,11 +28,10 @@ const Lesson = ({ callback, status, content, num }) => {
         }
     }
 
-    // instantly change on click.
     const changeLessonStatus = () => {
         axios.post("user/updatelessonstatus", { 
             email: user.email,
-            lesson: num //this will change depending on props. will be given an index to determine what lesson and a function to get the lesson's data.  also pass what lessonStatus is in props.
+            lesson: num 
         }).then((response) => {
         })
         setLessonStatus(!lessonStatus)

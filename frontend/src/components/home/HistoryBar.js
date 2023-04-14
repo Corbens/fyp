@@ -1,7 +1,8 @@
-import { useAuthContext } from '../../hooks/useAuthContext'
 import { useState, useEffect, useRef } from 'react'
 import axios from 'axios'
-import { getDate } from '../../utilities/HandleDate';
+
+import { useAuthContext } from '../../hooks/useAuthContext'
+import { getDate } from '../../utilities/HandleDate'
 
 const HistoryBar = () => {
     const { user } = useAuthContext()
@@ -10,7 +11,6 @@ const HistoryBar = () => {
 
     const firstRender = useRef(true)
     useEffect(() => {
-        // actually, store the history in the user object when saved to local storage so don't have to keep requesting backend for this data.
         if (firstRender.current) {
             firstRender.current = false
             axios.post("user/gethistory", { 
@@ -26,7 +26,7 @@ const HistoryBar = () => {
                 setComponent(<div>No Match History</div>)
             })
         }
-    });
+    })
 
     return(
         <div className="homeComponent">
@@ -34,7 +34,7 @@ const HistoryBar = () => {
                 <h2>Recent Game History</h2>
             </div>
             <div className="homeContents historyCards">
-            {component}
+                {component}
             </div>
         </div>
     )

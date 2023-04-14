@@ -3,7 +3,7 @@ import axios from 'axios'
 
 import Grid from '@mui/material/Grid'
 import Button from '@mui/material/Button'
-import Stack from '@mui/material/Stack';
+import Stack from '@mui/material/Stack'
 import TextField from '@mui/material/TextField'
 import Autocomplete from '@mui/material/Autocomplete'
 import Modal from '@mui/material/Modal'
@@ -11,15 +11,13 @@ import ListItem from '@mui/material/ListItem'
 import ListItemText from '@mui/material/ListItemText'
 import IconButton from '@mui/material/IconButton'
 import DeleteIcon from '@mui/icons-material/Delete'
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormControl from '@mui/material/FormControl';
-import FormLabel from '@mui/material/FormLabel';
+import Radio from '@mui/material/Radio'
+import RadioGroup from '@mui/material/RadioGroup'
+import FormControlLabel from '@mui/material/FormControlLabel'
+import FormControl from '@mui/material/FormControl'
+import FormLabel from '@mui/material/FormLabel'
 
 import { useAuthContext } from '../../hooks/useAuthContext'
-
-
 
 const PracticeMenuCustom = ({ callback }) => {
 
@@ -321,12 +319,10 @@ const PracticeMenuCustom = ({ callback }) => {
         callback("Practice", customDecks[Number(customValue.pos)])
     }
 
-
-
     return(
         <div>
-            <Grid container spacing={2}>
-                <Grid item xs={6}>
+            <Grid container spacing={2} align="center">
+                <Grid item xs={10}>
                 <h3>Custom Decks</h3>
                     <Autocomplete
                         isOptionEqualToValue={(option, value) => option.pos === value.pos}
@@ -340,11 +336,12 @@ const PracticeMenuCustom = ({ callback }) => {
                         sx={{ width: '400px' }}
                         renderInput={(params) => <TextField {...params} label="Deck" />}
                     />
-                    <br></br>
-                    <Stack spacing={2} sx={{width: '50%'}} > 
+                    <br/>
+                    <Stack spacing={2} sx={{ width: '300px' }}> 
                         <Button variant='outlined' onClick={handleCreateOpen}>Create New Deck</Button>
                         <Button variant='outlined' disabled = {!Boolean(customValue)} onClick={handleEditOpen}>Edit Selected Deck</Button>
                         <Button variant='outlined' disabled = {!Boolean(customValue)} onClick={startPractice}>Practice Selected Deck</Button>
+                        <br/>
                     </Stack>
                 </Grid>
             </Grid>
@@ -475,8 +472,7 @@ const PracticeMenuCustom = ({ callback }) => {
                     </Grid>
                 </div>
             </Modal>
-
-
+            
         </div>
     )
 }

@@ -42,8 +42,6 @@ const srsSchema = new Schema({
 
 srsSchema.statics.createSrs = async function(email) {
 
-    // make sure this is run when a new user is created on signup, so for each user there is an associated SRS entry
-
     if(!email){
         throw Error('No user to associate SRS with')
     }
@@ -137,7 +135,7 @@ srsSchema.statics.resetSrs = async function(email, values){
         throw Error('Need Reset Array')
     }
 
-    if(values.length !== 4){ // maybe instead of four have it the deck (object above) .length so it is more adaptable and less hard-coded.
+    if(values.length !== 4){ 
         throw Error('Incorrect Number of Values')
     }
 

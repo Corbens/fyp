@@ -1,4 +1,5 @@
 import KanaTable from "../components/extra/KanaTable"
+import Numbers from "../components/extra/Numbers"
 
 const hiragana = {
     title: "Lesson 1: Hiragana",
@@ -166,6 +167,95 @@ const katakana = {
             content: [<p>This was an introduction into Katakana. Hopefully you now understand what Katakana is and can begin to read some characters. To practice and learn more, try out the Katakana deck on the flashcard page.</p>]
         }
     ]
+}
+
+const numbers = {
+    title: "Lesson 3: Numbers",
+    pages: [
+        {
+            title: "Numbers in Japanese",
+            type: "Information",
+            content: [<p>Numbers in Japanese can be written using the same numerals we use in English, or using the more traditional Kanji characters.</p>, <p>For example, the number "one" could be written as "1" or「一」.</p>]
+        },
+        {
+            title: "Learn Some Numbers",
+            type: "Information",
+            content: [<p>Here is a table showing some key numbers and their pronunciations.</p>, <Numbers/>]
+        },
+        {
+            title: "Combining Numbers",
+            type: "Information",
+            content: [<p>Numbers in Japanese don't always follow the same order when reading them out as they do in English.</p>,
+            <p>For example, numbers between two consecutive tens (e.g. 10 and 20) are literally said as the ten followed by the single number. So 12 would be said as "ten two" and written as "十二". </p>,
+            <p>Instead of having words for 20, 30, 40 and etc. in Japanese these are literally as the number you need to multiply ten by to get the number, followed by ten. For example fifty is said as "five ten" and written as "五十".</p>]
+        },
+        {
+            title: "Testing Your Knowledge",
+            type: "Test",
+            content: [
+                {
+                    task: "Click the correct number!",
+                    display: "六",
+                    choices: [{
+                            value: "2",
+                            right: false
+                        },
+                        {
+                            value: "4",
+                            right: false
+                        },
+                        {
+                            value: "6",
+                            right: true
+                        }
+                    ]
+                },
+                {
+                    task: "Click the correct number!",
+                    display: "千",
+                    choices: [{
+                            value: "10,000",
+                            right: false
+                        },
+                        {
+                            value: "1,000",
+                            right: true
+                        },
+                        {
+                            value: "100",
+                            right: false
+                        }
+                    ]
+                },
+                {
+                    task: "Click the correct number!",
+                    display: "九十八",
+                    choices: [{
+                            value: "19",
+                            right: false
+                        },
+                        {
+                            value: "98",
+                            right: true
+                        },
+                        {
+                            value: "89",
+                            right: false
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            title: "Conclusion",
+            type: "Information",
+            content: [<p>This was an introduction to numbers in Japanese.</p>, <p> Hopefully you now begin to read some numbers in Japanese and understand how they are said.</p>, <p>To practice with numbers more, you can play the numbers mode in the Drag & Drop game or use the numbers flashcard decks.</p>]
+        }
+    ]
+}
+
+export const getNumbers = () => {
+    return numbers
 }
 
 export const getHiragana = () => {

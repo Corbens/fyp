@@ -41,7 +41,7 @@ function a11yProps(index) {
         'aria-controls': `simple-tabpanel-${index}`,
     }
 }
-// end 
+// end of mui tabs
 
 const Extra = () => {
 

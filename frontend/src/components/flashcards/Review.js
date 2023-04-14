@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
-import { getFlashcardDeck } from '../../utilities/Vocabulary'
-import { useAuthContext } from '../../hooks/useAuthContext'
-
 import Grid from '@mui/material/Grid'
 import Button from '@mui/material/Button'
-import Stack from '@mui/material/Stack';
+import Stack from '@mui/material/Stack'
+
+import { getFlashcardDeck } from '../../utilities/Vocabulary'
+import { useAuthContext } from '../../hooks/useAuthContext'
 
 const Review = ({ callback }) => {
 
@@ -35,7 +35,7 @@ const Review = ({ callback }) => {
                 if(srs.decks[deck].enabled){
                     let srsDeck = srs.decks[deck]
                     let flashcardDeck = getFlashcardDeck(deck)
-                    if(flashcardDeck.title === srsDeck.title){ // check to confirm that the decks are the same
+                    if(flashcardDeck.title === srsDeck.title){ 
                         titles.push(flashcardDeck.title)
                         for(let card in srsDeck.srs){
                             let cardDate = new Date(srsDeck.srs[card].date)
@@ -159,8 +159,6 @@ const Review = ({ callback }) => {
         }).catch((error) => {
         })
     }
-
-
 
     return(
         <div className='reviewContents'>

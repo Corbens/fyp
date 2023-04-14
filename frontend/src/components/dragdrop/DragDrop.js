@@ -156,8 +156,6 @@ const DragDrop = ({deck, cards, filler, callback, instructions}) => {
     const [resultsComponent, setResultsComponent] = useState(null)
     const [resultsOpen, setResultsOpen] = useState(false)
 
-    console.log(instructions)
-
     return (
         <div>
             <div className="gameDiv">
