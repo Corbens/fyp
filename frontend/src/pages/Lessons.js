@@ -72,7 +72,7 @@ const Lessons = () => {
                                 </TableRow>
                                 <TableRow className='lessonEntry' onClick={() => startLesson(2)} key="numbers" sx={{ '&:last-child td': { border: 0 }, 'td': {borderBottom: "thin solid black"} }}>
                                     <TableCell>3</TableCell>
-                                    <TableCell>Kanji</TableCell>
+                                    <TableCell>Numbers</TableCell>
                                     <TableCell>{lessonStatus && (lessonStatus[2] ? <h2>⭕</h2> : <h2>❌</h2>)}</TableCell>
                                 </TableRow>
                             </TableBody>

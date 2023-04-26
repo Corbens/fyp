@@ -5,6 +5,7 @@ import Button from '@mui/material/Button'
 import Stack from '@mui/material/Stack'
 import Modal from '@mui/material/Modal'
 import Tooltip from '@mui/material/Tooltip'
+import { Typography } from '@mui/material'
 
 const Game = ({ theKanji, kanjiNum, callback }) => {
 
@@ -146,12 +147,12 @@ const Game = ({ theKanji, kanjiNum, callback }) => {
                         <Grid container spacing={0}>
                             <Grid item xs={9} align="center">
                                 {success ? 
-                                    <Tooltip title="This circle is used similarly to a tick in western countries indicating something that is correct. However, a tick in Japan can often be used to indicate that something is incorrect!">
+                                    <Tooltip title={<Typography fontSize={14}>This circle is used similarly to a tick in western countries indicating something that is correct. However, a tick in Japan can often be used to indicate that something is incorrect!</Typography>}>
                                         <h1>⭕ Well Done!</h1> 
                                     </Tooltip>
                                     : 
                                     <div>
-                                        <Tooltip title="This cross is used similarly to how it is used in western countries, indicating that an answer is incorrect.">
+                                        <Tooltip title={<Typography fontSize={14}>This cross is used similarly to how it is used in western countries, indicating that an answer is incorrect.</Typography>}>
                                             <h1>❌ Better Luck Next Time!</h1>
                                         </Tooltip>
                                         <p>The correct components have now been selected</p>

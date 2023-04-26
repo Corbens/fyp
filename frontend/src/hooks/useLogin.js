@@ -17,7 +17,6 @@ export const useLogin = () => {
             email: email,
             password: password
         }).then((response) => {
-            console.log(response.data)
             localStorage.setItem('user', JSON.stringify(response.data))
             dispatch({type: 'LOGIN', payload: response.data}) // saves the user object to local storage
             setIsLoading(false)

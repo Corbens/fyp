@@ -2,6 +2,7 @@ import { useRef } from 'react'
 
 import Tooltip from '@mui/material/Tooltip'
 import Button from '@mui/material/Button'
+import { Typography } from '@mui/material'
 
 const Results = ({results, callback}) => {
 
@@ -22,7 +23,7 @@ const Results = ({results, callback}) => {
     return (
         <div className="displayResults">
             <h2>Results</h2>
-            <Tooltip title={iconRef.current[1]}>
+            <Tooltip title={<Typography fontSize={14}>{iconRef.current[1]}</Typography>}>
                 <h1>{iconRef.current[0]}</h1>
             </Tooltip>
             <p>Score: {results.score}</p>

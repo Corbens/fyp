@@ -38,10 +38,6 @@ const lessons = [{
         question: <h4>How are lessons structured?</h4>,
         answer: <p>Lessons are structured through a series of 'slides'. You can navigate through these at your own pace reading through the material. Some slides may have an interactive element where you can test your understanding.</p>
     },
-    {
-        question: <h4>What do the </h4>,
-        answer: <p>Lessons are structured through a series of 'slides'. You can navigate through these at your own pace reading through the material. Some slides may have an interactive element where you can test your understanding.</p>
-    },
 ]
 
 const dragdrop = [{

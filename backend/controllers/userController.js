@@ -31,7 +31,7 @@ const signupUser = async (req, res) => {
     try {
         const user = await User.signup(email, password, username)
         await Srs.createSrs(email)
-        const ruby = false
+        const ruby = true
 
         const token = createToken(user._id)
         

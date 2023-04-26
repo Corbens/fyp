@@ -9,6 +9,7 @@ import IconButton from '@mui/material/IconButton'
 import ArrowLeftIcon from '@mui/icons-material/ArrowLeft'
 import ArrowRightIcon from '@mui/icons-material/ArrowRight'
 import Button from '@mui/material/Button'
+import { Typography } from '@mui/material'
 
 import Test from './Test'
 import { useAuthContext } from '../../hooks/useAuthContext'
@@ -52,7 +53,7 @@ const Lesson = ({ callback, status, content, num }) => {
                 <Grid container spacing={2}>
                     <Grid item xs={1}>
                         {(page !== 0) &&
-                            <Tooltip title="Previous Slide">
+                            <Tooltip title={<Typography fontSize={14}>Previous Slide</Typography>}>
                                 <IconButton variant="contained" onClick={() => changePage(false)}><ArrowLeftIcon sx={{ fontSize: "80px" }}/></IconButton>
                             </Tooltip>
                         }
@@ -64,7 +65,7 @@ const Lesson = ({ callback, status, content, num }) => {
                     </Grid>
                     <Grid item xs={1}>
                         {(page+1 < pages.length) &&
-                            <Tooltip title="Next Slide">
+                            <Tooltip title={<Typography fontSize={14}>Next Slide</Typography>}>
                                 <IconButton variant="contained" onClick={() => changePage(true)}><ArrowRightIcon sx={{ fontSize: "80px" }}/></IconButton>
                             </Tooltip>
                         }

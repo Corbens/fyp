@@ -8,6 +8,7 @@ import InputAdornment from "@mui/material/InputAdornment"
 import VisibilityOff from "@mui/icons-material/VisibilityOff"
 import Button from '@mui/material/Button'
 import Tooltip from '@mui/material/Tooltip'
+import { Typography } from '@mui/material'
 
 import { getStreetview } from '../utilities/Streetview'
 
@@ -106,7 +107,7 @@ const Login = () => {
                         }}
                     />
                     <Button variant='outlined' disabled={isLoading} sx={{ width: 1}} type="submit" color="primary">Login</Button>
-                    <Tooltip title={streetviewObj.info}><Button sx={{ width: 1, mt: 2 }}>Where Am I?</Button></Tooltip>
+                    <Tooltip title={<Typography fontSize={14}>{streetviewObj.info}</Typography>}><Button sx={{ width: 1, mt: 2 }}>Where Am I?</Button></Tooltip>
                     {error && <div className="error">{error}</div>}
                 </div>
             </form>

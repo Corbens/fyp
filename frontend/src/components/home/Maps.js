@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 import Stack from '@mui/material/Stack'
 
@@ -34,7 +35,7 @@ const Maps = () => {
                         style={{"border" :"1px solid"}}
                     >
                     </iframe>
-                    <p>Did you know by setting your language in Google Maps to Japanese, foreign place names are transliterated and displayed in Katakana? By allowing location access, you can explore where you are right now! This is a great way to improve your Katakana skills. Don't know Katakana? Learn about it here. </p>
+                    <p>Did you know by setting your language in Google Maps to Japanese, foreign place names are transliterated and displayed in Katakana? By allowing location access, you can explore where you are right now! This is a great way to improve your Katakana skills. Don't know Katakana? Learn about it { <Link to={window.location.href + "lessons"}>here!</Link>} </p>
                 </Stack>
             </div>
         </div>

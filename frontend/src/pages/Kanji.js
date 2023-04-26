@@ -5,6 +5,7 @@ import Button from '@mui/material/Button'
 import Modal from '@mui/material/Modal'
 import Stack from '@mui/material/Stack'
 import Tooltip from '@mui/material/Tooltip'
+import { Typography } from '@mui/material'
 
 import Game from "../components/kanji/Game"
 import { getKanji } from '../utilities/Kanji'
@@ -87,7 +88,7 @@ const Kanji = () => {
                     </div>
                     <div className="preKanjiContents">
                         <p>In this game, you are tasked with selecting which components are used to make up the given Kanji. There are 5 Kanji for you to work through and you will be given the English translation. To aid you there will be a set of hints you can use.</p>
-                        <p>Working through this game will help improve your Kanji comprehension skills, as you begin to distinguish between the slight visual differences between Kanji.</p>
+                        <p>Working through this game will help improve your Kanji comprehension skills, as you begin to distinguish between the visual differences between Kanji.</p>
                         <Button variant="outlined" onClick={() => startGame()}>{!played ? "Start Game" : "Play Again"}</Button>
                         { played && <Button variant="outlined" onClick={() => handleResultsOpen()}>Show Results</Button>}
                     </div>
@@ -96,18 +97,18 @@ const Kanji = () => {
                         <div className="resultsModal">
                             <Stack spacing={1}> 
                                 <h1>Results</h1>
-                                <Tooltip title={getIcon((results.filter(Boolean).length / 5)*100)[1]}>
+                                <Tooltip title={<Typography fontSize={14}>{getIcon((results.filter(Boolean).length / 5)*100)[1]}</Typography>}>
                                     <h3>{getIcon((results.filter(Boolean).length / 5)*100)[0]}</h3>
                                 </Tooltip>
                                 <h2>Score - {(results.filter(Boolean).length / 5)*100}</h2>
                                 {results.map((value, index) => (
                                     <Stack key="index" direction="row" spacing = {1} alignItems="center" justifyContent="center" >
                                         { value ?               
-                                            <Tooltip title="This circle is used similarly to a tick in western countries indicating something that is correct. However, a tick in Japan can often be used to indicate that something is incorrect!">
+                                            <Tooltip title={<Typography fontSize={14}>This circle is used similarly to a tick in western countries indicating something that is correct. However, a tick in Japan can often be used to indicate that something is incorrect!</Typography>}>
                                                 <h1>⭕</h1>
                                             </Tooltip>
                                             :
-                                            <Tooltip title="This cross is used similarly to how it is used in western countries, indicating that an answer is incorrect.">
+                                            <Tooltip title={<Typography fontSize={14}>This cross is used similarly to how it is used in western countries, indicating that an answer is incorrect.</Typography>}>
                                                 <h1>❌</h1>
                                             </Tooltip>
                                         }

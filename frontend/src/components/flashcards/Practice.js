@@ -7,6 +7,7 @@ import Tooltip from '@mui/material/Tooltip'
 import IconButton from '@mui/material/IconButton'
 import ArrowLeftIcon from '@mui/icons-material/ArrowLeft'
 import ArrowRightIcon from '@mui/icons-material/ArrowRight'
+import { Typography } from '@mui/material'
 
 import { useAuthContext } from '../../hooks/useAuthContext'
 
@@ -110,10 +111,10 @@ const Practice = ({ callback, deck }) => {
                                     </div>
                                     }                   
                                 <Stack direction='row' justifyContent='center' spacing={0} sx={{width: '100 %'}}> 
-                                    <Tooltip title="Previous Card">
+                                    <Tooltip title={<Typography fontSize={14}>Previous Card</Typography>}>
                                         <IconButton variant="contained" onClick={() => changeCard(false)}><ArrowLeftIcon sx={{ fontSize: "80px" }}/></IconButton>
                                     </Tooltip>
-                                    <Tooltip title="Next Card">
+                                    <Tooltip title={<Typography fontSize={14}>Next Card</Typography>}>
                                         <IconButton variant="contained" onClick={() => changeCard(true)}><ArrowRightIcon sx={{ fontSize: "80px" }}/></IconButton>
                                     </Tooltip>
                                 </Stack>

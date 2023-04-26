@@ -21,7 +21,9 @@ app.use((req, res, next) => {
 
 // middleware to enable cors (so can avoid installing cors package). basically allows all request where the origin is our frontend.
 app.use((req, res, next) => {
-    res.append('Access-Control-Allow-Origin', [process.env.ALLOWED_ORIGINS])
+    if(process.env.ALLOWED_ORIGINS.includes(req.headers.origin)){
+        res.append('Access-Control-Allow-Origin', req.headers.origin)
+    }
     res.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
     res.append('Access-Control-Allow-Headers', 'Content-Type')
     next()
