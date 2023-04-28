@@ -573,7 +573,10 @@ rt {
   text-shadow: -2px 0 #111827, 0 -2px #111827, 2px 0 #111827, 0 2px #111827, 2px 2px #111827, -2px -2px #111827, -2px 2px #111827, 2px -2px #111827, 5px 5px #db2777;
 }
 
+.spaceDivs a {
+  margin-right: 10px;
+}
 
 
-/* Colours: Dark Purple #b9a4ff, Light Purple #e8c5ff, Pink #ffe2f0, White and Black. */
+/* Colours: Dark Purple #b9a4ff, Light Purple #e8c5ff, Pink #ffacd4, White and Black. */
 /* Order: Top, Right, Bottom, Left. */

@@ -16,10 +16,11 @@ const loginUser = async (req, res) => {
         const user = await User.login(email, password)
         const username = user.username
         const ruby = user.ruby
+        const japanese = user.japanese
 
         const token = createToken(user._id)
         
-        res.status(200).json({email, token, username, ruby})
+        res.status(200).json({email, token, username, ruby, japanese})
     } catch (error) {
         res.status(400).json({error: error.message})
     }
@@ -32,10 +33,11 @@ const signupUser = async (req, res) => {
         const user = await User.signup(email, password, username)
         await Srs.createSrs(email)
         const ruby = true
+        const japanese = false
 
         const token = createToken(user._id)
         
-        res.status(201).json({email, token, username, ruby})
+        res.status(201).json({email, token, username, ruby, japanese})
     } catch (error) {
         res.status(400).json({error: error.message})
     }
@@ -115,4 +117,26 @@ const toggleRuby = async(req, res) => {
     }
 }
 
-module.exports = { loginUser, signupUser, addHistory, getHistory, getLeaderboard, getLessonStatus, updateLessonStatus, getRuby, toggleRuby }
+const getJapanese = async (req, res) => {
+    const { email } = req.body
+
+    try {
+        const japanese = await User.getJapanese(email)
+        res.status(200).json({"japanese": japanese})
+    } catch (error) {
+        res.status(400).json({error: error.message})
+    }
+}
+
+const toggleJapanese = async(req, res) => {
+    const { email } = req.body
+
+    try {
+        const result = await User.toggleJapanese(email)
+        res.status(200).json({result})
+    } catch (error) {
+        res.status(400).json({error: error.message})
+    }
+}
+
+module.exports = { loginUser, signupUser, addHistory, getHistory, getLeaderboard, getLessonStatus, updateLessonStatus, getRuby, toggleRuby, getJapanese, toggleJapanese }

@@ -46,6 +46,10 @@ const userSchema = new Schema({
     ruby: {
         type: Boolean,
         default: true
+    },
+    japanese: {
+        type: Boolean,
+        default: false
     }
 
 })
@@ -160,5 +164,20 @@ userSchema.statics.toggleRuby = async function(email) {
 
     return ("Successfully updated")
 }
+
+userSchema.statics.getJapanese = async function(email) {
+    const user = await this.findOne({ email })
+    return user.japanese
+}
+
+userSchema.statics.toggleJapanese = async function(email) {
+    const user = await this.findOne({ email })
+    user.japanese = !user.japanese
+    await user.save()
+
+    return ("Successfully updated")
+}
+
+
 
 module.exports = mongoose.model('User', userSchema)

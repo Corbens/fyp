@@ -14,6 +14,8 @@ const Navbar = () => {
     const { logout } = useLogout()
     const { user } = useAuthContext()
 
+    // retrieve from user context. store in user context.
+
     const spanRef = useRef()
     const [open, setOpen] = useState(false)
     const expandMenu = () => {
@@ -50,20 +52,44 @@ const Navbar = () => {
                 <nav>
                     {user && ( 
                         <div>
-                            <NavLink style={({ isActive }) => ({color: isActive ? '#efede5' : 'black'})} to="/lessons">Lessons</NavLink>
-                            <NavLink style={({ isActive }) => ({color: isActive ? '#efede5' : 'black'})} to="/dragdrop">Drag & Drop</NavLink>
-                            <NavLink style={({ isActive }) => ({color: isActive ? '#efede5' : 'black'})} to="/flashcards">Flashcards</NavLink>
-                            <NavLink style={({ isActive }) => ({color: isActive ? '#efede5' : 'black'})} to="/kanji">Kanji</NavLink>
-                            <span> | {user.username} </span>
-                            <IconButton variant="contained" onClick={expandMenu} ref={spanRef}><ExpandCircleDownIcon/></IconButton>
-                            <Menu
-                                id="basic-menu"
-                                anchorEl={spanRef.current}
-                                open={open}
-                                onClose={closeMenu}
-                            >
-                                <MenuItem onClick={userLogout}><LogoutIcon/>Logout</MenuItem>
-                            </Menu>
+                            {!user.japanese ?
+                            <div>
+                                <NavLink style={({ isActive }) => ({color: isActive ? '#efede5' : 'black'})} to="/lessons">Lessons</NavLink>
+                                <NavLink style={({ isActive }) => ({color: isActive ? '#efede5' : 'black'})} to="/dragdrop">Drag & Drop</NavLink>
+                                <NavLink style={({ isActive }) => ({color: isActive ? '#efede5' : 'black'})} to="/flashcards">Flashcards</NavLink>
+                                <NavLink style={({ isActive }) => ({color: isActive ? '#efede5' : 'black'})} to="/kanji">Kanji</NavLink>  
+                                <span> | {user.username} </span>
+                                <IconButton variant="contained" onClick={expandMenu} ref={spanRef}><ExpandCircleDownIcon/></IconButton>
+                                <Menu
+                                    id="basic-menu"
+                                    anchorEl={spanRef.current}
+                                    open={open}
+                                    onClose={closeMenu}
+                                >
+                                    <MenuItem onClick={userLogout}><LogoutIcon/>Logout</MenuItem>
+                                </Menu>
+                            </div>
+                            :
+                            <div className="spaceDivs">
+                                <NavLink style={({ isActive }) => ({color: isActive ? '#efede5' : 'black'})} to="/習い事">習い事</NavLink>
+                                 ・
+                                <NavLink style={({ isActive }) => ({color: isActive ? '#efede5' : 'black'})} to="/ドラッグ＆ドロップ">ドラッグ＆ドロップ</NavLink>
+                                 ・
+                                <NavLink style={({ isActive }) => ({color: isActive ? '#efede5' : 'black'})} to="/フラッシュカード">フラッシュカード</NavLink>
+                                 ・
+                                <NavLink style={({ isActive }) => ({color: isActive ? '#efede5' : 'black'})} to="/漢字のゲーム">漢字のゲーム</NavLink>     
+                                <span> | {user.username} </span>
+                                <IconButton variant="contained" onClick={expandMenu} ref={spanRef}><ExpandCircleDownIcon/></IconButton>
+                                <Menu
+                                    id="basic-menu"
+                                    anchorEl={spanRef.current}
+                                    open={open}
+                                    onClose={closeMenu}
+                                >
+                                    <MenuItem onClick={userLogout}><LogoutIcon/>Logout</MenuItem>
+                                </Menu>
+                            </div>
+                            }
                         </div>
                     )}
                     {!user && (

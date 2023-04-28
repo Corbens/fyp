@@ -54,22 +54,38 @@ function App() {
                 path="/signup"
                 element={!user ? <Signup /> : <Navigate to="/" />}
               />
-              <Route
-                path="/lessons"
-                element={user ? <div className="pagesIn"><Lessons /></div> : <Navigate to="/" />}
-              />
-              <Route
-                path="/dragdrop"
-                element={user ? <div className="pagesIn"><DragDrop /></div> : <Navigate to="/" />}
-              />
-              <Route
-                path="/flashcards"
-                element={user ? <div className="pagesIn"><Flashcards /></div> : <Navigate to="/" />}
-              />
-              <Route
-                path="/kanji"
-                element={user ? <div className="pagesIn"><Kanji /></div> : <Navigate to="/" />}
-              />
+              {["/lessons", "/習い事"].map((path, index) => {
+                return (
+                  <Route path={path} 
+                  element={user ? <div className="pagesIn"><Lessons /></div> : <Navigate to="/" />}
+                  key={index}
+                  />
+                )
+              })}
+              {["/dragdrop", "/ドラッグ＆ドロップ"].map((path, index) => {
+                return (
+                  <Route path={path} 
+                  element={user ? <div className="pagesIn"><DragDrop /></div> : <Navigate to="/" />}
+                  key={index}
+                  />
+                )
+              })}
+              {["/flashcards", "/フラッシュカード"].map((path, index) => {
+                return (
+                  <Route path={path} 
+                  element={user ? <div className="pagesIn"><Flashcards /></div> : <Navigate to="/" />}
+                  key={index}
+                  />
+                )
+              })}
+              {["/kanji", "/漢字のゲーム"].map((path, index) => {
+                return (
+                  <Route path={path} 
+                  element={user ? <div className="pagesIn"><Kanji /></div> : <Navigate to="/" />}
+                  key={index}
+                  />
+                )
+              })}
             </Routes>
           </div>
         </ThemeProvider>
