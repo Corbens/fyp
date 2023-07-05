@@ -1,2 +1,2 @@
-# FYP
-This repository contains the source code for my final year project
+## FYP (Japanese Language Learning Website)
+This repository contains the source code for my university final year project. The project is a Japanese language learning website with a focus on internationalisation and teaching about Japanese culture. The hosted website is accessible at https://コーベンの日本語.みんな. The website was built using the MERN stack (MongoDB, ExpressJS, ReactJS and NodeJS) is hosted using the Google Cloud Platform. The website is no longer being actively maintained, but is still functioning when last checked on 05/07/2023.
